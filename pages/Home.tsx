@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
-import { PROJECTS, SERVICES, TESTIMONIALS, FAQS, AWARDS, TEAM_MEMBERS, STATS } from '../constants';
+import { PROJECTS, SERVICES, TESTIMONIALS, FAQS, TEAM_MEMBERS, STATS } from '../constants';
 
 // Icon mapping for Services
 const ServiceIconMap: any = {
@@ -84,8 +84,8 @@ export const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
           <img
-            src="https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=2000"
-            alt="Luxury Architecture"
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
+            alt="Luxury RERA approved residential property in Anantapur - iConstructions Real Estate"
             className="w-full h-full object-cover animate-ken-burns"
           />
         </div>
@@ -267,7 +267,7 @@ export const Home: React.FC = () => {
                   Schedule a Meeting
                 </a>
                 <div className="flex items-center gap-3">
-                   <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Managing Director" className="w-14 h-14 rounded-full object-cover border-2 border-brand-primary" />
+                   <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Anantha Venkata Naidu - Managing Director of iConstructions Real Estate Anantapur" className="w-14 h-14 rounded-full object-cover border-2 border-brand-primary" loading="lazy" />
                    <div>
                      <p className="text-sm font-bold text-brand-dark">Anantha Venkata Naidu</p>
                      <p className="text-xs text-gray-500">Managing Director & Founder</p>
@@ -279,8 +279,8 @@ export const Home: React.FC = () => {
             {/* Right Images - Enhanced */}
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
-                <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=400&h=500" className="mt-12 rounded-lg w-full h-64 object-cover shadow-lg hover:shadow-2xl transition-shadow" alt="Modern Interior" />
-                <img src="https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=400&h=600" className="rounded-lg w-full h-80 object-cover shadow-lg hover:shadow-2xl transition-shadow" alt="Luxury Exterior" />
+                <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=400&h=500" className="mt-12 rounded-lg w-full h-64 object-cover shadow-lg hover:shadow-2xl transition-shadow" alt="Modern Vastu compliant interior design for 3BHK apartments in Anantapur" loading="lazy" />
+                <img src="https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=400&h=600" className="rounded-lg w-full h-80 object-cover shadow-lg hover:shadow-2xl transition-shadow" alt="Luxury villa exterior architecture in Anantapur by iConstructions" loading="lazy" />
               </div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300">
                  <div className="border-2 border-brand-primary rounded-full p-8 w-32 h-32 flex items-center justify-center text-center bg-brand-light">
@@ -452,6 +452,86 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* 6.5 Properties by Location - NEW SEO SECTION */}
+      <section className="py-24 bg-gradient-to-br from-brand-dark to-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-brand-primary text-xs tracking-widest uppercase font-bold">Explore by Location</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mt-4 mb-4">
+              Find Properties in <span className="italic text-brand-primary">Your City</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+              Discover RERA approved residential, commercial, and luxury properties across Andhra Pradesh and Telangana
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { city: 'Anantapur', url: '/properties-in-anantapur', projects: '12+ Projects', image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=400' },
+              { city: 'Hyderabad', url: '/properties-in-hyderabad', projects: '8+ Projects', image: 'https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=400' },
+              { city: 'Kurnool', url: '/properties-in-kurnool', projects: 'Coming Soon', image: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=400' },
+              { city: 'Kadapa', url: '/properties-in-kadapa', projects: 'Coming Soon', image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=400' }
+            ].map((location, index) => (
+              <Link
+                key={index}
+                to={location.url}
+                className="group relative overflow-hidden rounded-lg bg-white/5 border border-white/10 hover:border-brand-primary transition-all duration-300 hover:shadow-2xl hover:shadow-brand-primary/20"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={location.image}
+                    alt={`Properties in ${location.city}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">
+                    {location.city}
+                  </h3>
+                  <p className="text-sm text-gray-300 mb-3">{location.projects}</p>
+                  <div className="flex items-center gap-2 text-brand-primary text-sm font-bold">
+                    View Properties
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <h3 className="text-2xl font-serif font-bold mb-6">Browse by Property Type</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/villas-in-anantapur"
+                className="px-6 py-3 bg-white/10 hover:bg-brand-primary border border-white/20 hover:border-brand-primary rounded-lg text-white font-medium transition-all duration-300 flex items-center gap-2 group"
+              >
+                <HomeIcon className="w-4 h-4" />
+                Luxury Villas
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" />
+              </Link>
+              <Link
+                to="/flats-in-anantapur"
+                className="px-6 py-3 bg-white/10 hover:bg-brand-primary border border-white/20 hover:border-brand-primary rounded-lg text-white font-medium transition-all duration-300 flex items-center gap-2 group"
+              >
+                <Building2 className="w-4 h-4" />
+                2BHK & 3BHK Flats
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" />
+              </Link>
+              <Link
+                to="/commercial-property-anantapur"
+                className="px-6 py-3 bg-white/10 hover:bg-brand-primary border border-white/20 hover:border-brand-primary rounded-lg text-white font-medium transition-all duration-300 flex items-center gap-2 group"
+              >
+                <Building2 className="w-4 h-4" />
+                Commercial Spaces
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 7. Floor Plans / Infrastructure */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -596,42 +676,9 @@ export const Home: React.FC = () => {
 
              {/* Image/Visual for FAQ */}
              <div className="relative h-full min-h-[400px]">
-                <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Architecture" className="w-full h-full object-cover rounded-sm" />
+                <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800" alt="RERA approved residential property architecture in Anantapur - FAQ section" className="w-full h-full object-cover rounded-sm" loading="lazy" />
              </div>
            </div>
-        </div>
-      </section>
-
-      {/* 10. Awards Section - Dark */}
-      <section className="py-24 bg-brand-dark text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <span className="text-brand-primary text-xs tracking-widest uppercase">Awards</span>
-            <h2 className="text-4xl font-serif mt-2">
-              <span className="italic">Awards</span> And industry <br/> recognition for excellence
-            </h2>
-          </div>
-
-          <div className="space-y-6 max-w-4xl mx-auto">
-             {AWARDS.map((award, idx) => (
-               <div key={idx} className="flex items-center justify-between border-b border-white/10 pb-6 group hover:pl-4 transition-all duration-300 cursor-default">
-                 <div className="flex items-center gap-8">
-                    <span className="text-gray-500 font-mono text-sm">{award.year}</span>
-                    <span className="font-serif text-xl group-hover:text-brand-primary transition-colors">{award.title}</span>
-                 </div>
-                 <div className="flex items-center gap-4">
-                    <span className="text-xs uppercase tracking-widest text-gray-400">{award.status}</span>
-                    <ArrowRight className="w-4 h-4 text-brand-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                 </div>
-               </div>
-             ))}
-          </div>
-
-          <div className="flex justify-center gap-12 mt-16 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
-             {[1, 2, 3, 4].map((_, i) => (
-               <Award key={i} className="w-16 h-16 text-brand-primary" />
-             ))}
-          </div>
         </div>
       </section>
 

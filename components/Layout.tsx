@@ -329,33 +329,45 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Services */}
+            {/* Properties by Location - NEW SEO SECTION */}
             <div className="lg:col-span-3">
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">Our Services</h3>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">Properties by Location</h3>
               <ul className="space-y-3">
-                <li className="text-gray-400 text-sm flex items-start gap-2">
-                  <span className="text-brand-primary mt-1">•</span>
-                  Residential Apartments
+                <li>
+                  <Link to="/properties-in-anantapur" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                    Properties in Anantapur
+                  </Link>
                 </li>
-                <li className="text-gray-400 text-sm flex items-start gap-2">
-                  <span className="text-brand-primary mt-1">•</span>
-                  Luxury Villas
+                <li>
+                  <Link to="/properties-in-hyderabad" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                    Properties in Hyderabad
+                  </Link>
                 </li>
-                <li className="text-gray-400 text-sm flex items-start gap-2">
-                  <span className="text-brand-primary mt-1">•</span>
-                  Commercial Spaces
+                <li>
+                  <Link to="/properties-in-kurnool" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                    Properties in Kurnool
+                  </Link>
                 </li>
-                <li className="text-gray-400 text-sm flex items-start gap-2">
-                  <span className="text-brand-primary mt-1">•</span>
-                  Interior Design
+                <li>
+                  <Link to="/properties-in-kadapa" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                    Properties in Kadapa
+                  </Link>
                 </li>
-                <li className="text-gray-400 text-sm flex items-start gap-2">
-                  <span className="text-brand-primary mt-1">•</span>
-                  Property Investment
+                <li>
+                  <Link to="/villas-in-anantapur" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                    Villas in Anantapur
+                  </Link>
                 </li>
-                <li className="text-gray-400 text-sm flex items-start gap-2">
-                  <span className="text-brand-primary mt-1">•</span>
-                  Vastu Consultation
+                <li>
+                  <Link to="/flats-in-anantapur" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                    Flats in Anantapur
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -428,6 +440,32 @@ const Footer: React.FC = () => {
                 <Link to="#" className="hover:text-brand-primary transition-colors">RERA Compliance</Link>
                 <Link to="#" className="hover:text-brand-primary transition-colors">Sitemap</Link>
               </div>
+            </div>
+          </div>
+
+          {/* Design & Development Credit */}
+          <div className="pt-6 border-t border-gray-800/50 mt-6">
+            <div className="text-center">
+              <p className="text-sm text-gray-400 mb-1">
+                Design and Development by{' '}
+                <a
+                  href="https://ananthadigital.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-primary font-bold hover:text-amber-500 transition-colors"
+                >
+                  Anantha Web Solutions Pvt Ltd
+                </a>
+              </p>
+              <p className="text-xs text-gray-500">
+                Software Development & Marketing Services:{' '}
+                <a
+                  href="tel:+919963789858"
+                  className="text-brand-primary font-bold hover:text-amber-500 transition-colors"
+                >
+                  +91 99637 89858
+                </a>
+              </p>
             </div>
           </div>
         </div>

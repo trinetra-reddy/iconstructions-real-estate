@@ -1,0 +1,24 @@
+# Robots.txt for iConstructions Real Estate
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://iconstructions.in/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 10
+
+# Specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
