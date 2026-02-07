@@ -36,6 +36,7 @@ export const Home: React.FC = () => {
   const [searchLocation, setSearchLocation] = useState('');
   const [searchPropertyType, setSearchPropertyType] = useState('');
   const [propertyFilter, setPropertyFilter] = useState<string>('All Properties');
+  const [categoryIndex, setCategoryIndex] = useState<number>(0);
 
   // Filter projects based on selected filter
   const getFilteredProjects = () => {
@@ -347,18 +348,37 @@ export const Home: React.FC = () => {
                </h2>
             </div>
             <div className="flex gap-2 hidden sm:flex">
-               <button className="p-3 border border-gray-200 rounded-full hover:bg-brand-dark hover:text-white transition-colors"><ChevronRight className="rotate-180 w-5 h-5" /></button>
-               <button className="p-3 border border-gray-200 rounded-full hover:bg-brand-dark hover:text-white transition-colors"><ChevronRight className="w-5 h-5" /></button>
+               <button
+                 onClick={() => setCategoryIndex(prev => prev > 0 ? prev - 1 : 5)}
+                 className="p-3 border border-gray-200 rounded-full hover:bg-brand-dark hover:text-white transition-colors"
+                 aria-label="Previous category"
+               >
+                 <ChevronRight className="rotate-180 w-5 h-5" />
+               </button>
+               <button
+                 onClick={() => setCategoryIndex(prev => prev < 5 ? prev + 1 : 0)}
+                 className="p-3 border border-gray-200 rounded-full hover:bg-brand-dark hover:text-white transition-colors"
+                 aria-label="Next category"
+               >
+                 <ChevronRight className="w-5 h-5" />
+               </button>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {[
-              { title: "Commercial Spaces", img: "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=800" },
-              { title: "Residential Apartments", img: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800" },
-              { title: "Luxury Villas", img: "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=800" }
-            ].map((cat, i) => (
-              <div key={i} className="group relative h-[280px] sm:h-[400px] overflow-hidden rounded-sm cursor-pointer">
+              { title: "Commercial Spaces", img: "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/projects?type=Commercial" },
+              { title: "Residential Apartments", img: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/projects?type=Residential" },
+              { title: "Luxury Villas", img: "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/projects?type=Villa" },
+              { title: "Gated Communities", img: "https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/projects" },
+              { title: "Premium Plots", img: "https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/projects" },
+              { title: "Investment Properties", img: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/projects" }
+            ].slice(categoryIndex, categoryIndex + 3).map((cat, i) => (
+              <Link
+                key={i}
+                to={cat.link}
+                className="group relative h-[280px] sm:h-[400px] overflow-hidden rounded-sm cursor-pointer"
+              >
                 <img src={cat.img} alt={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex justify-between items-center">
@@ -367,7 +387,7 @@ export const Home: React.FC = () => {
                      <ArrowRight className="w-4 h-4" />
                    </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
