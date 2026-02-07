@@ -117,59 +117,57 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu Overlay - Enhanced */}
-      <div
-        className={`md:hidden fixed inset-0 bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark z-40 transform transition-all duration-500 ease-out ${
-          isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-        } pt-24 px-6`}
-      >
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl" />
+      {isOpen && (
+        <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark z-[100] pt-20 px-6 overflow-y-auto">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl" />
 
-        <div className="relative flex flex-col space-y-2">
-          {NAV_LINKS.map((link, index) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`text-2xl font-serif font-medium py-4 px-6 rounded-xl transition-all duration-300 ${
-                location.pathname === link.path
-                  ? 'text-brand-primary bg-brand-primary/10 border-l-4 border-brand-primary'
-                  : 'text-white hover:text-brand-primary hover:bg-white/5 hover:translate-x-2'
-              }`}
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              {link.name}
-            </Link>
-          ))}
-
-          <div className="pt-8 border-t border-gray-800 mt-4">
-            <Link
-              to="/contact"
-              className="block w-full text-center bg-gradient-to-r from-brand-primary to-amber-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-brand-primary/50 transition-all duration-300 hover:scale-105"
-            >
-              Get a Quote
-            </Link>
-
-            {/* Quick Contact in Mobile Menu */}
-            <div className="mt-6 space-y-3">
-              <a
-                href="tel:+919666622090"
-                className="flex items-center justify-center gap-3 text-gray-300 hover:text-brand-primary transition-colors py-3"
+          <div className="relative flex flex-col space-y-2 pb-8">
+            {NAV_LINKS.map((link, index) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`text-xl font-serif font-medium py-3 px-5 rounded-xl transition-all duration-300 ${
+                  location.pathname === link.path
+                    ? 'text-brand-primary bg-brand-primary/10 border-l-4 border-brand-primary'
+                    : 'text-white hover:text-brand-primary hover:bg-white/5 hover:translate-x-2'
+                }`}
+                style={{ animationDelay: `${index * 50}ms` }}
               >
-                <Phone className="w-5 h-5" />
-                <span>+91 96666 22090</span>
-              </a>
-              <a
-                href="mailto:hello@iconstructions.com"
-                className="flex items-center justify-center gap-3 text-gray-300 hover:text-brand-primary transition-colors py-3"
+                {link.name}
+              </Link>
+            ))}
+
+            <div className="pt-6 border-t border-gray-800 mt-4">
+              <Link
+                to="/contact"
+                className="block w-full text-center bg-gradient-to-r from-brand-primary to-amber-600 text-white py-3.5 rounded-xl font-bold text-base shadow-lg hover:shadow-brand-primary/50 transition-all duration-300"
               >
-                <Mail className="w-5 h-5" />
-                <span>hello@iconstructions.com</span>
-              </a>
+                Get a Quote
+              </Link>
+
+              {/* Quick Contact in Mobile Menu */}
+              <div className="mt-6 space-y-3">
+                <a
+                  href="tel:+919666622090"
+                  className="flex items-center justify-center gap-3 text-gray-300 hover:text-brand-primary transition-colors py-2.5 text-sm"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>+91 96666 22090</span>
+                </a>
+                <a
+                  href="mailto:hello@iconstructions.com"
+                  className="flex items-center justify-center gap-3 text-gray-300 hover:text-brand-primary transition-colors py-2.5 text-sm"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span className="text-sm">hello@iconstructions.com</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };
@@ -480,9 +478,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         {children}
       </main>
       <Footer />
