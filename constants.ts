@@ -4,6 +4,7 @@ export const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Projects', path: '/projects' },
   { name: 'Services', path: '/services' },
+  { name: 'Interior Design', path: '/interior-design' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -14,10 +15,10 @@ export const PROJECTS: Project[] = [
     location: 'Ram Nagar, Anantapur',
     category: ProjectCategory.RESIDENTIAL,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop',
-    priceStart: '₹85 L',
-    description: 'A premium residential complex featuring 3BHK luxury apartments with state-of-the-art amenities and city views.',
-    features: ['Swimming Pool', 'Gym', '24/7 Security', 'Clubhouse']
+    image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    priceStart: '₹85 Lakhs',
+    description: 'RERA-approved premium residential complex featuring Vastu-compliant 3BHK luxury apartments with modern amenities and city views.',
+    features: ['3 BHK', '1850 Sq.Ft', '2 Bathrooms', 'Covered Parking']
   },
   {
     id: '2',
@@ -25,10 +26,10 @@ export const PROJECTS: Project[] = [
     location: 'Jesus Nagar, Anantapur',
     category: ProjectCategory.VILLA,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1000&auto=format&fit=crop',
-    priceStart: '₹2.5 Cr',
-    description: 'An ultra-luxury villa project designed with contemporary aesthetics, Italian marble flooring, and sustainable materials.',
-    features: ['Private Garden', 'Home Automation', 'Solar Power', 'Home Theater']
+    image: 'https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    priceStart: '₹2.5 Crores',
+    description: 'Ultra-luxury Vastu-compliant villa with contemporary design, Italian marble flooring, rainwater harvesting, and solar power.',
+    features: ['4 BHK', '3500 Sq.Ft', '4 Bathrooms', '2 Car Parking']
   },
   {
     id: '3',
@@ -36,10 +37,10 @@ export const PROJECTS: Project[] = [
     location: 'Raptadu Road, Anantapur',
     category: ProjectCategory.COMMERCIAL,
     status: ProjectStatus.ONGOING,
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1000',
     priceStart: 'On Request',
-    description: 'Grade-A office space and commercial complex designed for modern businesses, featuring glass facades and ample parking.',
-    features: ['Modern Facade', 'High-speed Elevators', 'Food Court', 'Conference Halls']
+    description: 'RERA-registered Grade-A office space designed for IT companies and startups, featuring modern infrastructure and 24/7 power backup.',
+    features: ['Office Space', '5000 Sq.Ft', 'Conference Rooms', 'Parking']
   },
   {
     id: '4',
@@ -47,9 +48,9 @@ export const PROJECTS: Project[] = [
     location: 'Housing Board Colony, Anantapur',
     category: ProjectCategory.INTERIOR,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop',
-    description: 'Complete interior design execution for a luxury duplex, focusing on minimalism, warm lighting, and custom joinery.',
-    features: ['Custom Furniture', 'Italian Marble', 'Smart Lighting']
+    image: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    description: 'Complete Vastu-compliant interior design for luxury duplex with traditional Indian aesthetics blended with modern minimalism.',
+    features: ['2 BHK', '1200 Sq.Ft', '2 Bathrooms', 'Modular Kitchen']
   },
   {
     id: '5',
@@ -57,10 +58,10 @@ export const PROJECTS: Project[] = [
     location: 'Rudrampeta, Anantapur',
     category: ProjectCategory.RESIDENTIAL,
     status: ProjectStatus.UPCOMING,
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?q=80&w=1000&auto=format&fit=crop',
-    priceStart: '₹65 L',
-    description: 'Affordable luxury apartments surrounded by lush greenery and excellent connectivity to the highway.',
-    features: ['Jogging Track', 'Children\'s Play Area', 'Community Hall']
+    image: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    priceStart: '₹65 Lakhs',
+    description: 'RERA-approved affordable luxury apartments with Vastu-compliant design, surrounded by greenery and excellent highway connectivity.',
+    features: ['2 BHK', '1100 Sq.Ft', '2 Bathrooms', 'Bike Parking']
   },
   {
     id: '6',
@@ -68,9 +69,9 @@ export const PROJECTS: Project[] = [
     location: 'Clock Tower Area, Anantapur',
     category: ProjectCategory.COMMERCIAL,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=1000&auto=format&fit=crop',
-    description: 'A mixed-use development combining premium retail spaces on lower floors and corporate office spaces above.',
-    features: ['Ample Parking', 'Power Backup', 'Retail Frontage']
+    image: 'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    description: 'RERA-registered mixed-use development with premium retail spaces and corporate offices, featuring 100% power backup.',
+    features: ['Retail Space', '2000 Sq.Ft', 'Food Court', 'Parking']
   }
 ];
 
@@ -104,24 +105,24 @@ export const SERVICES: Service[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    name: 'Rajesh Kumar',
+    name: 'Rajesh Kumar Reddy',
     role: 'Homeowner, Azure Heights',
-    content: 'iConstructions delivered our dream home on time with exceptional quality. The attention to detail is unmatched.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop'
+    content: 'iConstructions delivered our dream home on time with exceptional quality. The Vastu-compliant design and attention to detail is unmatched.',
+    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'
   },
   {
     id: '2',
-    name: 'Priya Reddy',
-    role: 'CEO, TechStart',
-    content: 'The commercial space they built for us perfectly reflects our company culture. Professional and reliable.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop'
+    name: 'Priya Lakshmi Naidu',
+    role: 'CEO, TechStart India',
+    content: 'The commercial space they built for us in Anantapur perfectly reflects our company culture. RERA-approved and delivered on time. Highly professional!',
+    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'
   },
   {
     id: '3',
-    name: 'Vikram Singh',
-    role: 'Investor',
-    content: 'Their transparency regarding project timelines and legal documentation builds great trust for investors.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop'
+    name: 'Suresh Venkata Rao',
+    role: 'Real Estate Investor, Hyderabad',
+    content: 'Their transparency regarding project timelines, RERA compliance, and legal documentation builds great trust. Best investment decision I made!',
+    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'
   }
 ];
 
@@ -135,21 +136,21 @@ export const STATS = [
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: '1',
-    name: 'Michael Anderson',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop'
+    name: 'Anantha Venkata Naidu',
+    role: 'Managing Director & Founder',
+    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   },
   {
     id: '2',
-    name: 'Sarah Jenkins',
-    role: 'Senior Architect',
-    image: 'https://images.unsplash.com/photo-1573496359-136d4755be51?q=80&w=400&auto=format&fit=crop'
+    name: 'Lakshmi Devi Reddy',
+    role: 'Chief Architect',
+    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   },
   {
     id: '3',
-    name: 'David Chen',
-    role: 'Project Manager',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop'
+    name: 'Krishna Murthy Rao',
+    role: 'Senior Project Manager',
+    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   }
 ];
 
@@ -161,8 +162,265 @@ export const AWARDS = [
 ];
 
 export const FAQS = [
-  { question: 'What is the estimated timeline for a villa project?', answer: 'Typically, a luxury villa project takes between 12 to 18 months from design approval to handover, depending on the complexity and size.' },
-  { question: 'Do you handle legal approvals and permits?', answer: 'Yes, we provide end-to-end assistance with municipal approvals, RERA registration, and all necessary legal documentation.' },
-  { question: 'Can I customize the floor plan?', answer: 'Absolutely. We believe in bespoke living. Our architects work closely with you to tailor the floor plan to your specific lifestyle needs.' },
-  { question: 'What regions do you operate in?', answer: 'We primarily operate in Anantapur, Hyderabad, and Vijayawada, focusing on premium residential and commercial developments.' },
+  { question: 'Are all your projects RERA-approved?', answer: 'Yes, absolutely! All our residential and commercial projects are registered with RERA (Real Estate Regulatory Authority) and comply with all government regulations.' },
+  { question: 'Do you provide Vastu-compliant designs?', answer: 'Yes, we offer Vastu-compliant designs for all our projects. Our architects are well-versed in Vastu Shastra principles and can customize layouts according to your requirements.' },
+  { question: 'What is the estimated timeline for a villa project?', answer: 'Typically, a luxury villa project takes between 12 to 18 months from design approval to handover, depending on the complexity and size. We ensure timely delivery with quality construction.' },
+  { question: 'Do you handle legal approvals and permits?', answer: 'Yes, we provide end-to-end assistance with municipal approvals, RERA registration, DTCP approvals, and all necessary legal documentation. Complete transparency guaranteed.' },
+  { question: 'Can I customize the floor plan as per Vastu?', answer: 'Absolutely! We believe in bespoke living. Our architects work closely with you to tailor the floor plan according to Vastu principles and your specific lifestyle needs.' },
+  { question: 'What regions do you operate in?', answer: 'We primarily operate in Anantapur, Hyderabad, and Vijayawada (Andhra Pradesh & Telangana), focusing on premium residential and commercial developments.' },
+  { question: 'Do you offer home loan assistance?', answer: 'Yes, we have tie-ups with leading banks like SBI, HDFC, ICICI, and Axis Bank to help you get the best home loan rates and quick approvals.' },
+];
+
+// Interior Design Services
+export const INTERIOR_SERVICES = [
+  {
+    id: '1',
+    title: 'Residential Interiors',
+    description: 'Complete home interior solutions from concept to execution, tailored to your lifestyle and preferences.',
+    iconName: 'Home',
+    features: [
+      'Personalized design consultation',
+      'Space planning & optimization',
+      '3D visualization & walkthroughs',
+      'Premium material selection'
+    ]
+  },
+  {
+    id: '2',
+    title: 'Modular Kitchens',
+    description: 'Contemporary modular kitchen designs with smart storage solutions and premium finishes.',
+    iconName: 'ChefHat',
+    features: [
+      'Customized layouts & designs',
+      'German & Italian hardware',
+      'Soft-close mechanisms',
+      'Warranty up to 10 years'
+    ]
+  },
+  {
+    id: '3',
+    title: 'Bedroom Design',
+    description: 'Luxurious bedroom interiors with wardrobes, lighting, and furniture that create your personal sanctuary.',
+    iconName: 'Bed',
+    features: [
+      'Walk-in wardrobes',
+      'Ambient lighting design',
+      'Custom furniture',
+      'Vastu-compliant layouts'
+    ]
+  },
+  {
+    id: '4',
+    title: 'Living Room Design',
+    description: 'Elegant living spaces that blend aesthetics with functionality for entertaining and relaxation.',
+    iconName: 'Sofa',
+    features: [
+      'TV unit & entertainment centers',
+      'False ceiling designs',
+      'Designer lighting',
+      'Premium upholstery'
+    ]
+  },
+  {
+    id: '5',
+    title: 'Office Interiors',
+    description: 'Professional workspace design that enhances productivity and reflects your brand identity.',
+    iconName: 'Briefcase',
+    features: [
+      'Ergonomic workstations',
+      'Conference room design',
+      'Acoustic solutions',
+      'Branding integration'
+    ]
+  },
+  {
+    id: '6',
+    title: 'Commercial Interiors',
+    description: 'Retail, hospitality, and commercial space design that attracts customers and drives business.',
+    iconName: 'Store',
+    features: [
+      'Retail store design',
+      'Restaurant interiors',
+      'Hotel & hospitality',
+      'Showroom design'
+    ]
+  },
+  {
+    id: '7',
+    title: 'Vastu-Compliant Interiors',
+    description: 'Traditional Vastu Shastra principles integrated with modern interior design for harmony and prosperity.',
+    iconName: 'Compass',
+    features: [
+      'Vastu consultation',
+      'Direction-based planning',
+      'Color therapy',
+      'Energy flow optimization'
+    ]
+  },
+  {
+    id: '8',
+    title: 'Luxury Villa Interiors',
+    description: 'Opulent villa interiors with bespoke furniture, imported materials, and world-class finishes.',
+    iconName: 'Crown',
+    features: [
+      'Italian marble & granite',
+      'Designer chandeliers',
+      'Home automation',
+      'Landscape integration'
+    ]
+  }
+];
+
+// Interior Design Portfolio
+export const INTERIOR_PORTFOLIO = [
+  {
+    id: '1',
+    title: 'Modern Minimalist Apartment',
+    category: 'Living Room',
+    location: 'Jubilee Hills, Hyderabad',
+    year: '2024',
+    style: 'Modern',
+    image: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Clean lines, neutral palette, and functional elegance define this contemporary living space.'
+  },
+  {
+    id: '2',
+    title: 'Luxury Master Bedroom',
+    category: 'Bedroom',
+    location: 'Banjara Hills, Hyderabad',
+    year: '2024',
+    style: 'Contemporary',
+    image: 'https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Plush textures, ambient lighting, and custom furniture create a serene retreat.'
+  },
+  {
+    id: '3',
+    title: 'Modular Kitchen Excellence',
+    category: 'Kitchen',
+    location: 'Gachibowli, Hyderabad',
+    year: '2023',
+    style: 'Modern',
+    image: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'German hardware, quartz countertops, and smart storage solutions.'
+  },
+  {
+    id: '4',
+    title: 'Corporate Office Design',
+    category: 'Office',
+    location: 'Hitech City, Hyderabad',
+    year: '2024',
+    style: 'Industrial',
+    image: 'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Open-plan workspace with collaborative zones and private meeting rooms.'
+  },
+  {
+    id: '5',
+    title: 'Traditional Indian Living',
+    category: 'Living Room',
+    location: 'Anantapur',
+    year: '2023',
+    style: 'Traditional',
+    image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Rich colors, intricate patterns, and cultural elements blend beautifully.'
+  },
+  {
+    id: '6',
+    title: 'Scandinavian Bedroom',
+    category: 'Bedroom',
+    location: 'Kondapur, Hyderabad',
+    year: '2024',
+    style: 'Scandinavian',
+    image: 'https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Light woods, white walls, and cozy textiles create a peaceful haven.'
+  }
+];
+
+// Ongoing Interior Projects
+export const ONGOING_INTERIOR_PROJECTS = [
+  {
+    id: '1',
+    title: 'Luxury Duplex - Jubilee Hills',
+    location: 'Jubilee Hills, Hyderabad',
+    status: 'Execution 75% Complete',
+    completion: 'March 2026',
+    progress: 75,
+    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: '4BHK duplex with contemporary interiors, home theater, and rooftop lounge.'
+  },
+  {
+    id: '2',
+    title: 'Corporate Office - Hitech City',
+    location: 'Hitech City, Hyderabad',
+    status: 'Design Phase',
+    completion: 'May 2026',
+    progress: 30,
+    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: '15,000 sq.ft office space for tech startup with collaborative zones.'
+  },
+  {
+    id: '3',
+    title: 'Villa Interiors - Anantapur',
+    location: 'Anantapur',
+    status: 'Material Selection',
+    completion: 'April 2026',
+    progress: 50,
+    image: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: 'Vastu-compliant luxury villa with traditional and modern fusion design.'
+  },
+  {
+    id: '4',
+    title: 'Boutique Hotel - Vijayawada',
+    location: 'Vijayawada',
+    status: 'Execution 40% Complete',
+    completion: 'June 2026',
+    progress: 40,
+    image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: '25-room boutique hotel with contemporary Indian aesthetics.'
+  }
+];
+
+// Design Styles
+export const DESIGN_STYLES = [
+  {
+    id: '1',
+    name: 'Modern',
+    description: 'Clean lines, minimal ornamentation, and functional beauty with neutral color palettes.',
+    image: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600',
+    features: ['Open spaces', 'Neutral colors', 'Minimal decor', 'Functional furniture']
+  },
+  {
+    id: '2',
+    name: 'Contemporary',
+    description: 'Current trends with bold colors, mixed materials, and artistic elements.',
+    image: 'https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=600',
+    features: ['Bold accents', 'Mixed textures', 'Artistic pieces', 'Curved lines']
+  },
+  {
+    id: '3',
+    name: 'Traditional',
+    description: 'Rich colors, ornate details, and cultural heritage with timeless elegance.',
+    image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600',
+    features: ['Rich fabrics', 'Ornate details', 'Dark woods', 'Cultural motifs']
+  },
+  {
+    id: '4',
+    name: 'Minimalist',
+    description: 'Less is more philosophy with essential elements and maximum impact.',
+    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600',
+    features: ['Simple forms', 'Monochrome palette', 'Hidden storage', 'Clean surfaces']
+  },
+  {
+    id: '5',
+    name: 'Industrial',
+    description: 'Raw materials, exposed structures, and urban aesthetics with character.',
+    image: 'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=600',
+    features: ['Exposed brick', 'Metal accents', 'Open ceilings', 'Vintage pieces']
+  },
+  {
+    id: '6',
+    name: 'Scandinavian',
+    description: 'Light, airy spaces with natural materials and cozy, functional design.',
+    image: 'https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=600',
+    features: ['Light woods', 'White walls', 'Cozy textiles', 'Natural light']
+  }
 ];

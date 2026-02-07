@@ -1,17 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
 import { PROJECTS } from '../constants';
-import { ProjectCategory } from '../types';
+import { ProjectCategory, ProjectStatus } from '../types';
 
 export const Projects: React.FC = () => {
-  const [filter, setFilter] = useState<string>('All');
+  const [searchParams] = useSearchParams();
+  const [categoryFilter, setCategoryFilter] = useState<string>('All');
+  const [statusFilter, setStatusFilter] = useState<string>('All');
+
+  // Read URL parameters from hero search
+  const locationParam = searchParams.get('location');
+  const typeParam = searchParams.get('type');
+
+  useEffect(() => {
+    // If type parameter exists, set it as the category filter
+    if (typeParam && Object.values(ProjectCategory).includes(typeParam as ProjectCategory)) {
+      setCategoryFilter(typeParam);
+    }
+  }, [typeParam]);
 
   const categories = ['All', ...Object.values(ProjectCategory)];
+  const statuses = ['All', ...Object.values(ProjectStatus)];
 
-  const filteredProjects = filter === 'All' 
-    ? PROJECTS 
-    : PROJECTS.filter(p => p.category === filter);
+  // Filter by category
+  let filteredProjects = categoryFilter === 'All'
+    ? PROJECTS
+    : PROJECTS.filter(p => p.category === categoryFilter);
+
+  // Filter by status
+  if (statusFilter !== 'All') {
+    filteredProjects = filteredProjects.filter(p => p.status === statusFilter);
+  }
+
+  // Further filter by location if provided
+  if (locationParam) {
+    filteredProjects = filteredProjects.filter(p =>
+      p.location.toLowerCase().includes(locationParam.toLowerCase())
+    );
+  }
 
   return (
     <Layout>
@@ -23,21 +51,44 @@ export const Projects: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === cat 
-                  ? 'bg-brand-primary text-white shadow-lg scale-105' 
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-brand-primary hover:text-brand-primary'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Category Filters */}
+        <div className="mb-8">
+          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 text-center">Filter by Category</h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setCategoryFilter(cat)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  categoryFilter === cat
+                    ? 'bg-brand-primary text-white shadow-lg scale-105'
+                    : 'bg-white text-gray-600 border border-gray-200 hover:border-brand-primary hover:text-brand-primary'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Status Filters */}
+        <div className="mb-12">
+          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 text-center">Filter by Status</h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {statuses.map((status) => (
+              <button
+                key={status}
+                onClick={() => setStatusFilter(status)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  statusFilter === status
+                    ? 'bg-green-600 text-white shadow-lg scale-105'
+                    : 'bg-white text-gray-600 border border-gray-200 hover:border-green-600 hover:text-green-600'
+                }`}
+              >
+                {status}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Grid */}

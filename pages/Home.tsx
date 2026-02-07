@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  CheckCircle, 
-  Star, 
-  MapPin, 
-  Building2, 
+import {
+  ArrowRight,
+  CheckCircle,
+  Star,
+  MapPin,
+  Building2,
   Hammer,
   ChevronDown,
   Quote,
@@ -15,11 +15,12 @@ import {
   Plus,
   Minus,
   Award,
-  ChevronRight
+  ChevronRight,
+  MessageCircle
 } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
-import { PROJECTS, SERVICES, TESTIMONIALS, FAQS, AWARDS, TEAM_MEMBERS } from '../constants';
+import { PROJECTS, SERVICES, TESTIMONIALS, FAQS, AWARDS, TEAM_MEMBERS, STATS } from '../constants';
 
 // Icon mapping for Services
 const ServiceIconMap: any = {
@@ -32,62 +33,171 @@ const ServiceIconMap: any = {
 export const Home: React.FC = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
   const [activeFloorPlan, setActiveFloorPlan] = useState<string>('Paradise');
-  const featuredProjects = PROJECTS.slice(0, 3);
+  const [searchLocation, setSearchLocation] = useState('');
+  const [searchPropertyType, setSearchPropertyType] = useState('');
+  const [propertyFilter, setPropertyFilter] = useState<string>('All Properties');
+
+  // Filter projects based on selected filter
+  const getFilteredProjects = () => {
+    if (propertyFilter === 'All Properties') {
+      return PROJECTS.slice(0, 3);
+    } else if (propertyFilter === 'Residential') {
+      return PROJECTS.filter(p => p.category === 'Residential');
+    } else if (propertyFilter === 'Commercial') {
+      return PROJECTS.filter(p => p.category === 'Commercial');
+    } else if (propertyFilter === 'Villa') {
+      return PROJECTS.filter(p => p.category === 'Luxury Villa');
+    } else if (propertyFilter === 'Completed') {
+      return PROJECTS.filter(p => p.status === 'Completed');
+    } else if (propertyFilter === 'Ongoing') {
+      return PROJECTS.filter(p => p.status === 'Ongoing');
+    }
+    return PROJECTS.slice(0, 3);
+  };
+
+  const featuredProjects = getFilteredProjects();
 
   const toggleAccordion = (index: number) => {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
 
+  const handleSearch = () => {
+    // Build query parameters
+    const params = new URLSearchParams();
+    if (searchLocation) params.append('location', searchLocation);
+    if (searchPropertyType) params.append('type', searchPropertyType);
+
+    // Navigate to projects page with filters
+    window.location.href = `/projects?${params.toString()}`;
+  };
+
   const floorPlans: any = {
-    'Paradise': 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1600&auto=format&fit=crop',
-    'Deluxe': 'https://images.unsplash.com/photo-1600566752355-35792bedcfe1?q=80&w=1600&auto=format&fit=crop',
-    'Penthouse': 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1600&auto=format&fit=crop'
+    'Paradise': 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    'Deluxe': 'https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    'Penthouse': 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600'
   };
 
   return (
     <Layout>
-      {/* 1. Hero Section - Cinematic */}
+      {/* 1. Hero Section - Enhanced with Search & Trust Signals */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/40 z-10" />
-          <img 
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop" 
-            alt="Luxury Architecture" 
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
+          <img
+            src="https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=2000"
+            alt="Luxury Architecture"
             className="w-full h-full object-cover animate-ken-burns"
           />
         </div>
 
-        <div className="relative z-20 text-center text-white px-4 max-w-5xl mx-auto">
+        <div className="relative z-20 text-center text-white px-4 max-w-6xl mx-auto">
+          {/* Trust Badges */}
+          <div className="flex items-center justify-center gap-4 md:gap-8 mb-6 animate-fade-in flex-wrap">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <Award className="w-4 h-4 text-brand-primary" />
+              <span className="text-xs font-medium">RERA Certified</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <CheckCircle className="w-4 h-4 text-brand-primary" />
+              <span className="text-xs font-medium">Vastu Compliant</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <Star className="w-4 h-4 text-brand-primary" />
+              <span className="text-xs font-medium">500+ Happy Families</span>
+            </div>
+          </div>
+
           <p className="text-xs md:text-sm font-medium tracking-[0.3em] uppercase mb-6 text-brand-primary/90 animate-fade-in">
-            Anantapur • Hyderabad • Amaravati
+            Anantapur • Hyderabad • Vijayawada
           </p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium mb-8 leading-tight animate-fade-in-up">
-            Your Smarter <br />
-            <span className="italic text-brand-primary">Property Decisions</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium mb-6 leading-tight animate-fade-in-up">
+            Find Your Dream <br />
+            <span className="italic text-brand-primary">Property Today</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up delay-100">
-            Premium residential and commercial developments designed for the modern elite. Experience the pinnacle of construction excellence.
+          <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up delay-100">
+            Premium residential and commercial developments with transparent pricing, legal clarity, and expert guidance.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up delay-200">
-             <Link 
-              to="/projects" 
-              className="px-10 py-4 bg-white text-brand-dark hover:bg-brand-primary hover:text-white text-sm font-bold tracking-widest uppercase transition-all duration-300 rounded-full"
+
+          {/* Enhanced Search Bar */}
+          <div className="max-w-4xl mx-auto mb-8 animate-fade-in-up delay-150">
+            <div className="bg-white rounded-full p-2 shadow-2xl flex flex-col md:flex-row gap-2">
+              <div className="flex-1 flex items-center px-4 py-2 border-r border-gray-200">
+                <MapPin className="w-5 h-5 text-gray-400 mr-2" />
+                <input
+                  type="text"
+                  placeholder="Location (e.g., Anantapur, Hyderabad)"
+                  className="w-full outline-none text-gray-700 text-sm"
+                  value={searchLocation}
+                  onChange={(e) => setSearchLocation(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                />
+              </div>
+              <div className="flex-1 flex items-center px-4 py-2 border-r border-gray-200">
+                <Building2 className="w-5 h-5 text-gray-400 mr-2" />
+                <select
+                  className="w-full outline-none text-gray-700 text-sm bg-transparent"
+                  value={searchPropertyType}
+                  onChange={(e) => setSearchPropertyType(e.target.value)}
+                >
+                  <option value="">Property Type</option>
+                  <option value="Residential">Residential</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Villa">Villa</option>
+                </select>
+              </div>
+              <button
+                onClick={handleSearch}
+                className="px-8 py-3 bg-brand-primary hover:bg-brand-dark text-white font-bold text-sm uppercase tracking-wide rounded-full transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <span>Search</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-200">
+             <Link
+              to="/projects"
+              className="px-10 py-4 bg-brand-primary text-white hover:bg-white hover:text-brand-dark text-sm font-bold tracking-widest uppercase transition-all duration-300 rounded-full shadow-lg"
             >
-              Browse Properties
+              View All Properties
             </Link>
+            <a
+              href="https://wa.me/919666622090?text=Hi%2C%20I'd%20like%20to%20schedule%20a%20site%20visit.%20When%20are%20you%20available%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-4 bg-green-500 hover:bg-green-600 text-white text-sm font-bold tracking-widest uppercase transition-all duration-300 rounded-full border-2 border-green-400 shadow-lg flex items-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Schedule Visit
+            </a>
           </div>
         </div>
-        
-        {/* Floating Satisfaction Badge */}
-        <div className="absolute bottom-20 right-8 md:right-20 z-20 bg-white p-6 shadow-2xl rounded-sm hidden md:block animate-fade-in delay-300 max-w-xs">
-          <div className="flex items-start justify-between mb-2">
-             <span className="text-xs text-gray-400 uppercase tracking-wider">Client Satisfaction</span>
-             <span className="text-4xl font-serif text-brand-primary">98%</span>
+
+        {/* Enhanced Stats Badge */}
+        <div className="absolute bottom-20 right-8 md:right-20 z-20 bg-white p-6 shadow-2xl rounded-lg hidden md:block animate-fade-in delay-300 max-w-xs">
+          <div className="flex items-center justify-between mb-4">
+             <div>
+               <span className="text-xs text-gray-400 uppercase tracking-wider">Client Satisfaction</span>
+               <div className="flex items-baseline gap-1 mt-1">
+                 <span className="text-4xl font-serif text-brand-primary">98</span>
+                 <span className="text-xl text-brand-primary">%</span>
+               </div>
+             </div>
+             <div className="flex flex-col gap-1">
+               {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-brand-primary text-brand-primary" />)}
+             </div>
           </div>
-          <p className="text-xs text-gray-500 leading-relaxed border-t border-gray-100 pt-2">
-             Premium residential and commercial properties tailored to your lifestyle and investment goals.
-          </p>
+          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-gray-100">
+            <div>
+              <p className="text-2xl font-bold text-brand-dark">25 Lakh+</p>
+              <p className="text-[10px] text-gray-500 uppercase tracking-wider">Sq.Ft Delivered</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-brand-dark">500+</p>
+              <p className="text-[10px] text-gray-500 uppercase tracking-wider">Happy Families</p>
+            </div>
+          </div>
         </div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-white/50">
@@ -95,57 +205,89 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Intro / About Section */}
+      {/* 2. Stats Bar - Quick Trust Signals */}
+      <section className="py-8 bg-brand-dark text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {STATS.map((stat, idx) => (
+              <div key={idx} className="text-center">
+                <p className="text-3xl md:text-4xl font-serif text-brand-primary mb-1">{stat.value}</p>
+                <p className="text-xs uppercase tracking-widest text-gray-400">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Intro / About Section - Enhanced */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             {/* Left Content */}
             <div>
-              <span className="text-gray-400 text-sm tracking-widest uppercase mb-4 block">About Us</span>
+              <span className="text-gray-400 text-sm tracking-widest uppercase mb-4 block">About iConstructions</span>
               <h2 className="text-4xl md:text-6xl font-serif text-brand-dark mb-8 leading-none">
-                Guiding <span className="italic text-brand-primary">Smart</span> <br />
-                property decisions
+                Building <span className="italic text-brand-primary">Trust</span> Through <br />
+                Quality & Transparency
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed text-lg font-light">
-                We are a professional real estate business dedicated to helping clients buy, sell, and invest in properties with confidence. Our team combines local market knowledge with transparent processes.
+              <p className="text-gray-600 mb-6 leading-relaxed text-lg font-light">
+                Since 2008, we've been transforming the real estate landscape in Anantapur and beyond. Our commitment to quality construction, transparent pricing, and timely delivery has made us the preferred choice for over 500 families.
               </p>
-              
+
               <div className="mb-10">
-                 <h3 className="font-serif text-xl mb-4 text-brand-dark">Our Business Advantages</h3>
-                 <ul className="space-y-3">
-                   {['Trusted Market Expertise', 'Local & Regional Market Knowledge', 'Clear Pricing and Documentation'].map((item, i) => (
-                     <li key={i} className="flex items-center gap-3 text-gray-600">
-                       <CheckCircle className="w-5 h-5 text-brand-primary" /> {item}
+                 <h3 className="font-serif text-xl mb-6 text-brand-dark">Why Choose Us</h3>
+                 <ul className="space-y-4">
+                   {[
+                     { title: 'RERA Certified Projects', desc: 'All projects registered with RERA & DTCP approved' },
+                     { title: 'Vastu-Compliant Designs', desc: 'Traditional Vastu principles with modern architecture' },
+                     { title: 'On-Time Delivery', desc: '98% projects delivered on schedule' },
+                     { title: 'Bank Loan Assistance', desc: 'Tie-ups with SBI, HDFC, ICICI, Axis Bank' }
+                   ].map((item, i) => (
+                     <li key={i} className="flex items-start gap-4 group">
+                       <div className="mt-1 p-2 bg-brand-light rounded-full group-hover:bg-brand-primary transition-colors">
+                         <CheckCircle className="w-4 h-4 text-brand-primary group-hover:text-white" />
+                       </div>
+                       <div>
+                         <p className="font-bold text-brand-dark mb-1">{item.title}</p>
+                         <p className="text-sm text-gray-500">{item.desc}</p>
+                       </div>
                      </li>
                    ))}
                  </ul>
               </div>
 
-              <div className="flex items-center gap-6">
-                <Link to="/contact" className="px-8 py-3 bg-brand-light text-brand-dark hover:bg-brand-dark hover:text-white transition-colors rounded-full text-sm font-bold uppercase tracking-wide">
-                  More About Us
-                </Link>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                <a
+                  href="https://wa.me/919666622090?text=Hi%2C%20I'd%20like%20to%20schedule%20a%20meeting%20to%20discuss%20your%20projects."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white transition-colors rounded-full text-sm font-bold uppercase tracking-wide shadow-lg flex items-center gap-2"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Schedule a Meeting
+                </a>
                 <div className="flex items-center gap-3">
-                   <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="Signature" className="w-12 h-12 rounded-full grayscale object-cover" />
+                   <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Managing Director" className="w-14 h-14 rounded-full object-cover border-2 border-brand-primary" />
                    <div>
-                     <p className="text-xs font-bold text-brand-dark uppercase">Michael Anderson</p>
-                     <p className="text-[10px] text-gray-500 uppercase tracking-widest">Managing Director</p>
+                     <p className="text-sm font-bold text-brand-dark">Anantha Venkata Naidu</p>
+                     <p className="text-xs text-gray-500">Managing Director & Founder</p>
                    </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Images */}
+            {/* Right Images - Enhanced */}
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" className="mt-12 rounded-sm w-full h-64 object-cover" alt="Interior" />
-                <img src="https://images.unsplash.com/photo-1600596542815-2a4d9fbea40d?q=80&w=800&auto=format&fit=crop" className="rounded-sm w-full h-80 object-cover" alt="Exterior" />
+                <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=400&h=500" className="mt-12 rounded-lg w-full h-64 object-cover shadow-lg hover:shadow-2xl transition-shadow" alt="Modern Interior" />
+                <img src="https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=400&h=600" className="rounded-lg w-full h-80 object-cover shadow-lg hover:shadow-2xl transition-shadow" alt="Luxury Exterior" />
               </div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-xl">
-                 <div className="border border-brand-primary rounded-full p-8 w-32 h-32 flex items-center justify-center text-center">
-                    <span className="font-serif text-brand-primary text-xs uppercase tracking-widest leading-relaxed">
-                      Real<br/>Estate<br/>Agency
-                    </span>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300">
+                 <div className="border-2 border-brand-primary rounded-full p-8 w-32 h-32 flex items-center justify-center text-center bg-brand-light">
+                    <div>
+                      <p className="font-serif text-brand-primary text-2xl font-bold">15+</p>
+                      <p className="text-[10px] text-brand-dark uppercase tracking-widest mt-1">Years</p>
+                    </div>
                  </div>
               </div>
             </div>
@@ -153,30 +295,42 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Services Section - Circular Icons */}
+      {/* 4. Services Section - Enhanced with CTAs */}
       <section className="py-24 bg-brand-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-gray-400 text-xs tracking-widest uppercase">Our Services</span>
+            <span className="text-gray-400 text-xs tracking-widest uppercase">What We Offer</span>
             <h2 className="text-3xl md:text-5xl font-serif text-brand-dark mt-3">
-              <span className="italic font-serif">Professional</span> Services designed <br />
-              for your property goals
+              <span className="italic font-serif">Comprehensive</span> Real Estate <br />
+              Solutions for Every Need
             </h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              From finding your dream home to investment consulting, we provide end-to-end services with complete transparency.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-6">
             {SERVICES.map((service, idx) => {
               const Icon = ServiceIconMap[service.iconName] || HomeIcon;
               return (
-                <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-center group">
-                  <div className="w-20 h-20 mx-auto bg-brand-light rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors duration-300">
+                <div key={idx} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer border border-transparent hover:border-brand-primary">
+                  <div className="w-20 h-20 mx-auto bg-brand-light rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-all duration-300 group-hover:scale-110">
                     <Icon className="w-8 h-8 text-brand-dark group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-lg font-bold font-serif text-brand-dark mb-3">{service.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{service.description}</p>
+                  <h3 className="text-lg font-bold font-serif text-brand-dark mb-3 group-hover:text-brand-primary transition-colors">{service.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4">{service.description}</p>
+                  <button className="text-xs font-bold uppercase tracking-widest text-brand-primary flex items-center gap-2 mx-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn More <ArrowRight className="w-3 h-3" />
+                  </button>
                 </div>
               )
             })}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/services" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-dark text-white rounded-full text-sm font-bold uppercase tracking-wide hover:bg-brand-primary transition-colors shadow-lg">
+              View All Services <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -200,9 +354,9 @@ export const Home: React.FC = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: "Commercial Spaces", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" },
-              { title: "Residential Apartments", img: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=800&auto=format&fit=crop" },
-              { title: "Luxury Villas", img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop" }
+              { title: "Commercial Spaces", img: "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=800" },
+              { title: "Residential Apartments", img: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800" },
+              { title: "Luxury Villas", img: "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=800" }
             ].map((cat, i) => (
               <div key={i} className="group relative h-[400px] overflow-hidden rounded-sm cursor-pointer">
                 <img src={cat.img} alt={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -225,25 +379,69 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Featured Properties */}
-      <section className="py-24 bg-brand-light">
+      {/* 6. Featured Properties - Enhanced with Filters */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-gray-400 text-xs tracking-widest uppercase">Featured List</span>
-            <h2 className="text-4xl font-serif text-brand-dark mt-2">
-              <span className="italic">Featured</span> Properties you'll love
+          <div className="text-center mb-12">
+            <span className="text-gray-400 text-xs tracking-widest uppercase">Featured Properties</span>
+            <h2 className="text-4xl font-serif text-brand-dark mt-2 mb-4">
+              <span className="italic">Handpicked</span> Properties <br />
+              For Your Dream Lifestyle
             </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore our carefully curated selection of premium properties across Anantapur, Hyderabad, and Amaravati.
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {featuredProjects.map(project => (
-              <ProjectCard key={project.id} project={project} />
+
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {['All Properties', 'Residential', 'Commercial', 'Villa', 'Completed', 'Ongoing'].map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setPropertyFilter(filter)}
+                className={`px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wide transition-all ${
+                  propertyFilter === filter
+                    ? 'bg-brand-primary text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-brand-light border border-gray-200'
+                }`}
+              >
+                {filter}
+              </button>
             ))}
+          </div>
+
+          {featuredProjects.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {featuredProjects.map(project => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-xl text-gray-500">No properties found for this filter.</p>
+              <button
+                onClick={() => setPropertyFilter('All Properties')}
+                className="mt-4 px-6 py-2 bg-brand-primary text-white rounded-full hover:bg-brand-dark transition-colors"
+              >
+                View All Properties
+              </button>
+            </div>
+          )}
+
+          <div className="text-center">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-10 py-4 bg-brand-dark text-white rounded-full text-sm font-bold uppercase tracking-wide hover:bg-brand-primary transition-colors shadow-lg"
+            >
+              View All Properties
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* 6. Video Experience Section */}
-      <section className="relative h-[600px] w-full flex items-center justify-center bg-fixed bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2000&auto=format&fit=crop')` }}>
+      <section className="relative h-[600px] w-full flex items-center justify-center bg-fixed bg-cover bg-center" style={{ backgroundImage: `url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=2000')` }}>
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white px-4">
           <button className="w-24 h-24 bg-white rounded-full flex items-center justify-center text-brand-primary mb-8 hover:scale-110 transition-transform duration-300 mx-auto">
@@ -302,33 +500,66 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. Testimonials - Refined */}
+      {/* 9. Testimonials - Enhanced with Verification */}
       <section className="py-24 bg-brand-light">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-16">
-             <span className="text-gray-400 text-xs tracking-widest uppercase">Testimonial</span>
+             <span className="text-gray-400 text-xs tracking-widest uppercase">Client Reviews</span>
              <h2 className="text-4xl font-serif text-brand-dark mt-2">
-               <span className="italic">Proven</span> Results through <br/> client satisfaction
+               <span className="italic">Real Stories</span> From <br/> Our Happy Clients
              </h2>
+             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+               Don't just take our word for it. Here's what our clients have to say about their experience with iConstructions.
+             </p>
            </div>
-           
+
            <div className="grid md:grid-cols-3 gap-8">
              {TESTIMONIALS.map((t) => (
-               <div key={t.id} className="bg-white p-8 rounded-sm shadow-sm relative">
-                 <Quote className="w-10 h-10 text-brand-primary/20 absolute top-6 right-6" />
-                 <p className="text-gray-600 italic mb-6 leading-relaxed">"{t.content}"</p>
-                 <div className="flex items-center gap-4">
-                   <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
-                   <div>
-                     <h4 className="font-serif font-bold text-brand-dark">{t.name}</h4>
-                     <p className="text-xs text-gray-500 uppercase tracking-widest">{t.role}</p>
-                   </div>
+               <div key={t.id} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-100">
+                 <Quote className="w-12 h-12 text-brand-primary/10 absolute top-6 right-6" />
+
+                 {/* Rating */}
+                 <div className="flex text-brand-primary mb-4">
+                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                  </div>
-                 <div className="mt-4 flex text-brand-primary">
-                   {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-current" />)}
+
+                 <p className="text-gray-700 mb-6 leading-relaxed text-sm">"{t.content}"</p>
+
+                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                   <div className="flex items-center gap-3">
+                     <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-brand-primary" />
+                     <div>
+                       <h4 className="font-bold text-brand-dark text-sm">{t.name}</h4>
+                       <p className="text-xs text-gray-500">{t.role}</p>
+                     </div>
+                   </div>
+                   <div className="flex items-center gap-1 bg-green-50 px-2 py-1 rounded-full">
+                     <CheckCircle className="w-3 h-3 text-green-600" />
+                     <span className="text-[10px] font-bold text-green-600 uppercase">Verified</span>
+                   </div>
                  </div>
                </div>
              ))}
+           </div>
+
+           {/* Trust Indicators */}
+           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+             <div>
+               <p className="text-3xl font-serif text-brand-primary mb-2">4.9/5</p>
+               <p className="text-xs text-gray-500 uppercase tracking-wider">Average Rating</p>
+             </div>
+             <div>
+               <p className="text-3xl font-serif text-brand-primary mb-2">500+</p>
+               <p className="text-xs text-gray-500 uppercase tracking-wider">Happy Clients</p>
+             </div>
+             <div>
+               <p className="text-3xl font-serif text-brand-primary mb-2">98%</p>
+               <p className="text-xs text-gray-500 uppercase tracking-wider">Satisfaction Rate</p>
+             </div>
+             <div>
+               <p className="text-3xl font-serif text-brand-primary mb-2">100%</p>
+               <p className="text-xs text-gray-500 uppercase tracking-wider">Verified Reviews</p>
+             </div>
            </div>
          </div>
       </section>
@@ -365,7 +596,7 @@ export const Home: React.FC = () => {
 
              {/* Image/Visual for FAQ */}
              <div className="relative h-full min-h-[400px]">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop" alt="Architecture" className="w-full h-full object-cover rounded-sm" />
+                <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Architecture" className="w-full h-full object-cover rounded-sm" />
              </div>
            </div>
         </div>
@@ -432,36 +663,142 @@ export const Home: React.FC = () => {
          </div>
       </section>
 
-      {/* 12. Pre-Footer Contact */}
-      <section className="py-32 bg-gray-100 relative overflow-hidden">
-         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1577086664693-894553052526?q=80&w=2000&auto=format&fit=crop')` }} />
-         
-         <div className="max-w-5xl mx-auto px-4 relative z-10">
-           <div className="bg-white p-12 md:p-16 shadow-2xl rounded-sm flex flex-col md:flex-row items-center justify-between gap-12">
-             <div>
-               <span className="text-gray-400 text-xs tracking-widest uppercase">Contact</span>
-               <h2 className="text-4xl md:text-5xl font-serif text-brand-dark mt-2 leading-none">
-                 <span className="italic">Get in Touch</span> With our <br/> real estate experts
-               </h2>
-               
-               <div className="mt-8 space-y-2">
-                 <div className="flex items-center gap-3">
-                   <MapPin className="w-5 h-5 text-brand-primary" />
-                   <p className="text-gray-600">Plot 42, Jubilee Enclave, Hitech City, Hyderabad</p>
+      {/* 13. Pre-Footer Contact - Enhanced */}
+      <section className="py-32 bg-gradient-to-br from-brand-dark via-brand-dark to-gray-900 relative overflow-hidden">
+         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url('https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=2000')` }} />
+
+         {/* Decorative Elements */}
+         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl" />
+         <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl" />
+
+         <div className="max-w-6xl mx-auto px-4 relative z-10">
+           <div className="text-center mb-12">
+             <span className="text-brand-primary text-xs tracking-widest uppercase">Get Started</span>
+             <h2 className="text-4xl md:text-5xl font-serif text-white mt-3 mb-4">
+               <span className="italic">Ready</span> To Find Your <br/> Dream Property?
+             </h2>
+             <p className="text-gray-300 max-w-2xl mx-auto">
+               Schedule a free consultation with our real estate experts. We'll help you find the perfect property that matches your needs and budget.
+             </p>
+           </div>
+
+           <div className="bg-white p-8 md:p-12 shadow-2xl rounded-xl">
+             <div className="grid md:grid-cols-2 gap-12">
+               {/* Contact Info */}
+               <div>
+                 <h3 className="text-2xl font-serif text-brand-dark mb-6">Contact Information</h3>
+
+                 <div className="space-y-6">
+                   <div className="flex items-start gap-4">
+                     <div className="p-3 bg-brand-light rounded-lg">
+                       <MapPin className="w-5 h-5 text-brand-primary" />
+                     </div>
+                     <div>
+                       <p className="font-bold text-brand-dark mb-1">Head Office</p>
+                       <p className="text-gray-600 text-sm">Plot 42, Jubilee Enclave, Hitech City, Hyderabad - 500081</p>
+                     </div>
+                   </div>
+
+                   <div className="flex items-start gap-4">
+                     <div className="p-3 bg-brand-light rounded-lg">
+                       <div className="w-5 h-5 flex items-center justify-center text-brand-primary font-bold">@</div>
+                     </div>
+                     <div>
+                       <p className="font-bold text-brand-dark mb-1">Email Us</p>
+                       <a
+                         href="mailto:hello@iconstructions.com"
+                         className="text-gray-600 text-sm hover:text-brand-primary transition-colors block"
+                       >
+                         hello@iconstructions.com
+                       </a>
+                       <a
+                         href="mailto:sales@iconstructions.com"
+                         className="text-gray-600 text-sm hover:text-brand-primary transition-colors block"
+                       >
+                         sales@iconstructions.com
+                       </a>
+                     </div>
+                   </div>
+
+                   <div className="flex items-start gap-4">
+                     <div className="p-3 bg-brand-light rounded-lg">
+                       <Building2 className="w-5 h-5 text-brand-primary" />
+                     </div>
+                     <div>
+                       <p className="font-bold text-brand-dark mb-1">Office Hours</p>
+                       <p className="text-gray-600 text-sm">Mon - Sat: 9:00 AM - 7:00 PM</p>
+                       <p className="text-gray-600 text-sm">Sunday: By Appointment</p>
+                     </div>
+                   </div>
                  </div>
-                 <div className="flex items-center gap-3">
-                   <div className="w-5 h-5 flex items-center justify-center text-brand-primary">@</div>
-                   <p className="text-gray-600">hello@iconstructions.com</p>
+
+                 {/* Trust Badges */}
+                 <div className="mt-8 pt-8 border-t border-gray-200">
+                   <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">Certified & Trusted</p>
+                   <div className="flex gap-4">
+                     <div className="flex items-center gap-2 bg-green-50 px-3 py-2 rounded-lg">
+                       <CheckCircle className="w-4 h-4 text-green-600" />
+                       <span className="text-xs font-bold text-green-600">RERA Certified</span>
+                     </div>
+                     <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg">
+                       <Award className="w-4 h-4 text-blue-600" />
+                       <span className="text-xs font-bold text-blue-600">ISO 9001:2015</span>
+                     </div>
+                   </div>
                  </div>
                </div>
-             </div>
 
-             <form className="w-full md:w-96 space-y-4">
-                <input type="text" placeholder="Name" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:border-brand-primary outline-none transition-colors" />
-                <input type="email" placeholder="Email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:border-brand-primary outline-none transition-colors" />
-                <textarea rows={3} placeholder="Message" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:border-brand-primary outline-none transition-colors" />
-                <button className="w-full py-4 bg-brand-dark text-white font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors">Submit Now</button>
-             </form>
+               {/* WhatsApp Contact */}
+               <div>
+                 <h3 className="text-2xl font-serif text-brand-dark mb-4">Get Instant Response</h3>
+                 <p className="text-gray-600 mb-6">
+                   Chat with us on WhatsApp for immediate assistance!
+                 </p>
+
+                 <div className="space-y-3">
+                   {/* Primary WhatsApp Button */}
+                   <a
+                     href="https://wa.me/919666622090?text=Hi%2C%20I'm%20interested%20in%20your%20properties.%20Can%20you%20help%20me%3F"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold uppercase tracking-widest transition-all rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3"
+                   >
+                     <MessageCircle className="w-5 h-5" />
+                     Chat on WhatsApp
+                   </a>
+
+                   {/* Quick Action Buttons */}
+                   <a
+                     href="https://wa.me/919666622090?text=Hi%2C%20I'd%20like%20to%20schedule%20a%20site%20visit.%20When%20are%20you%20available%3F"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="w-full py-3 bg-white hover:bg-brand-light text-brand-dark font-semibold border-2 border-brand-primary/30 hover:border-brand-primary transition-all rounded-lg flex items-center justify-center gap-2"
+                   >
+                     📅 Schedule Site Visit
+                   </a>
+
+                   <a
+                     href="https://wa.me/919666622090?text=Hi%2C%20I'd%20like%20to%20get%20the%20price%20list%20and%20floor%20plans."
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="w-full py-3 bg-white hover:bg-brand-light text-brand-dark font-semibold border-2 border-brand-primary/30 hover:border-brand-primary transition-all rounded-lg flex items-center justify-center gap-2"
+                   >
+                     📥 Get Price List & Floor Plans
+                   </a>
+
+                   <a
+                     href="tel:+919666622090"
+                     className="w-full py-3 bg-white hover:bg-brand-light text-brand-dark font-semibold border-2 border-brand-primary/30 hover:border-brand-primary transition-all rounded-lg flex items-center justify-center gap-2"
+                   >
+                     📞 Call Now
+                   </a>
+                 </div>
+
+                 <p className="text-xs text-gray-500 text-center mt-4">
+                   ⚡ Average response time: Under 5 minutes
+                 </p>
+               </div>
+             </div>
            </div>
          </div>
       </section>

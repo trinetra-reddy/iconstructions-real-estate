@@ -2,7 +2,9 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route, ScrollRestoration } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
+import { PropertyDetail } from './pages/PropertyDetail';
 import { Services } from './pages/Services';
+import { InteriorDesign } from './pages/InteriorDesign';
 import { Contact } from './pages/Contact';
 
 // ScrollToTop component to handle scroll restoration manually if needed, 
@@ -24,7 +26,9 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<PropertyDetail />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/interior-design" element={<InteriorDesign />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
