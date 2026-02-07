@@ -82,9 +82,9 @@ export const Home: React.FC = () => {
       {/* 1. Hero Section - Enhanced with Search & Trust Signals */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden max-w-full">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 z-10" />
           <img
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
+            src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80"
             alt="Luxury RERA approved residential property in Anantapur - iConstructions Real Estate"
             className="w-full h-full object-cover animate-ken-burns"
           />
@@ -110,11 +110,11 @@ export const Home: React.FC = () => {
           <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wide sm:tracking-wider uppercase mb-4 sm:mb-6 text-brand-primary/90 animate-fade-in">
             ANANTAPUR • HYDERABAD • VIJAYAWADA
           </p>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium mb-4 sm:mb-6 leading-tight animate-fade-in-up px-2">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium mb-4 sm:mb-6 leading-tight animate-fade-in-up px-2" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>
             Find Your Dream <br />
             <span className="italic text-brand-primary">Property Today</span>
           </h1>
-          <p className="text-sm sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-10 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up delay-100 px-2">
+          <p className="text-sm sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-10 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up delay-100 px-2" style={{ textShadow: '1px 2px 8px rgba(0,0,0,0.8)' }}>
             Premium residential and commercial developments with transparent pricing, legal clarity, and expert guidance.
           </p>
 
