@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, Instagram, Linkedin, Facebook, MapPin, Building2, MessageCircle, Clock, Award, Send, ArrowRight, Twitter, Youtube } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
+import {
+  buttonSecondary,
+  buttonOutline
+} from '../styles/designSystem';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -33,27 +37,19 @@ const Navbar: React.FC = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
         shouldBeTransparent
-          ? 'bg-brand-dark backdrop-blur-lg shadow-lg py-5'
-          : 'bg-brand-dark backdrop-blur-lg shadow-2xl py-4 border-b border-brand-primary/10'
+          ? 'bg-black backdrop-blur-lg shadow-lg py-2'
+          : 'bg-black backdrop-blur-lg shadow-2xl py-2 border-b border-gray-800'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo - Enhanced */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className={`p-2 rounded-lg transition-all duration-300 ${
-              shouldBeTransparent
-                ? 'bg-brand-primary/90 group-hover:bg-brand-primary'
-                : 'bg-brand-primary group-hover:scale-110'
-            }`}>
-              <Building2 className="h-6 w-6 text-white" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-serif font-bold tracking-tight text-white group-hover:text-brand-primary transition-colors">
-                iConstructions
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-brand-primary font-bold">Real Estate</span>
-            </div>
+            <img
+              src="/images/main-black.png"
+              alt="iConstructions Real Estate Logo"
+              className="h-20 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Nav - Enhanced */}
@@ -64,14 +60,14 @@ const Navbar: React.FC = () => {
                 to={link.path}
                 className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-300 rounded-lg group ${
                   location.pathname === link.path
-                    ? 'text-brand-primary bg-brand-primary/10'
-                    : 'text-gray-200 hover:text-white hover:bg-white/5'
+                    ? 'text-white bg-gray-800'
+                    : 'text-gray-300 hover:text-white hover:bg-gray-900'
                 }`}
               >
                 {link.name.toUpperCase()}
                 {/* Active indicator */}
                 {location.pathname === link.path && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-primary rounded-full" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full" />
                 )}
               </Link>
             ))}
@@ -79,36 +75,36 @@ const Navbar: React.FC = () => {
             {/* CTA Button - Enhanced */}
             <Link
               to="/contact"
-              className="ml-4 relative px-6 py-2.5 bg-gradient-to-r from-brand-primary to-amber-600 hover:from-amber-600 hover:to-brand-primary text-white rounded-lg text-sm font-bold tracking-wide transition-all duration-300 shadow-lg hover:shadow-brand-primary/50 hover:scale-105 group overflow-hidden"
+              className={`${buttonSecondary} ml-4`}
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Get a Quote
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              Get a Quote
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
             </Link>
 
             {/* Phone Number - Quick Access */}
             <a
-              href="tel:+919666622090"
-              className="ml-2 flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:text-brand-primary transition-colors border border-gray-700 hover:border-brand-primary rounded-lg"
+              href="tel:+919347244397"
+              className={`${buttonOutline} ml-2 !bg-transparent !text-gray-300 hover:!text-white !border-gray-700 hover:!border-white hover:!bg-gray-900`}
             >
               <Phone className="w-4 h-4" />
-              <span className="hidden lg:inline">+91 96666 22090</span>
+              <span className="hidden lg:inline">+91 93472 44397</span>
             </a>
           </div>
 
           {/* Mobile Menu Button - Enhanced */}
           <div className="md:hidden flex items-center gap-3">
             <a
-              href="tel:+919666622090"
-              className="text-white hover:text-brand-primary transition-colors"
+              href="tel:+919347244397"
+              aria-label="Call +91 93472 44397"
+              className="text-white hover:text-gray-300 transition-colors"
             >
               <Phone className="h-5 w-5" />
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-brand-primary transition-colors focus:outline-none p-2 hover:bg-white/10 rounded-lg"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isOpen}
+              className="text-white hover:text-gray-300 transition-colors focus:outline-none p-2 hover:bg-white/10 rounded-lg"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -118,10 +114,10 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay - Enhanced */}
       {isOpen && (
-        <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark z-[100] pt-20 px-6 overflow-y-auto">
+        <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-gradient-to-br from-black via-gray-900 to-black z-[100] pt-20 px-6 overflow-y-auto">
           {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
 
           <div className="relative flex flex-col space-y-2 pb-8">
             {NAV_LINKS.map((link, index) => (
@@ -130,8 +126,8 @@ const Navbar: React.FC = () => {
                 to={link.path}
                 className={`text-xl font-serif font-medium py-3 px-5 rounded-xl transition-all duration-300 ${
                   location.pathname === link.path
-                    ? 'text-brand-primary bg-brand-primary/10 border-l-4 border-brand-primary'
-                    : 'text-white hover:text-brand-primary hover:bg-white/5 hover:translate-x-2'
+                    ? 'text-white bg-gray-800 border-l-4 border-white'
+                    : 'text-gray-300 hover:text-white hover:bg-gray-900 hover:translate-x-2'
                 }`}
                 style={{ animationDelay: `${index * 50}ms` }}
               >
@@ -142,23 +138,24 @@ const Navbar: React.FC = () => {
             <div className="pt-6 border-t border-gray-800 mt-4">
               <Link
                 to="/contact"
-                className="block w-full text-center bg-gradient-to-r from-brand-primary to-amber-600 text-white py-3.5 rounded-xl font-bold text-base shadow-lg hover:shadow-brand-primary/50 transition-all duration-300"
+                className={buttonSecondary}
               >
                 Get a Quote
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               {/* Quick Contact in Mobile Menu */}
               <div className="mt-6 space-y-3">
                 <a
-                  href="tel:+919666622090"
-                  className="flex items-center justify-center gap-3 text-gray-300 hover:text-brand-primary transition-colors py-2.5 text-sm"
+                  href="tel:+919347244397"
+                  className="flex items-center justify-center gap-3 text-gray-300 hover:text-white transition-colors py-2.5 text-sm"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>+91 96666 22090</span>
+                  <span>+91 93472 44397</span>
                 </a>
                 <a
                   href="mailto:hello@iconstructions.com"
-                  className="flex items-center justify-center gap-3 text-gray-300 hover:text-brand-primary transition-colors py-2.5 text-sm"
+                  className="flex items-center justify-center gap-3 text-gray-300 hover:text-white transition-colors py-2.5 text-sm"
                 >
                   <Mail className="w-4 h-4" />
                   <span className="text-sm">hello@iconstructions.com</span>
@@ -183,11 +180,11 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark text-white overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-primary rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-primary rounded-full blur-3xl" />
+    <footer className="relative bg-black text-white overflow-hidden border-t border-gray-800">
+      {/* Subtle Decorative Elements */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
       </div>
 
       {/* Newsletter Section */}
@@ -195,11 +192,11 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-brand-primary/10 border border-brand-primary/20 rounded-full px-4 py-1.5 mb-4">
-                <span className="text-brand-primary text-xs font-bold uppercase tracking-widest">Stay Updated</span>
+              <div className="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-4">
+                <span className="text-white text-xs font-bold uppercase tracking-widest">Stay Updated</span>
               </div>
               <h3 className="text-3xl md:text-4xl font-serif font-bold mb-3">
-                Get Exclusive <span className="italic text-brand-primary">Property Updates</span>
+                Get Exclusive <span className="italic text-gray-300">Property Updates</span>
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Subscribe to our newsletter for the latest property launches, investment opportunities, and real estate insights in Andhra Pradesh & Telangana.
@@ -214,13 +211,14 @@ const Footer: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
+                  aria-label="Email address for newsletter"
                   required
-                  className="w-full pl-12 pr-4 py-4 bg-white/5 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-primary transition-colors"
+                  className="w-full pl-12 pr-4 py-4 bg-white/5 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
               <button
                 type="submit"
-                className="px-8 py-4 bg-brand-primary hover:bg-amber-700 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group"
+                className={buttonSecondary}
               >
                 Subscribe
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -238,13 +236,11 @@ const Footer: React.FC = () => {
             {/* Company Info - Larger Column */}
             <div className="lg:col-span-4 space-y-6">
               <div className="flex items-center gap-2">
-                <div className="bg-brand-primary p-2 rounded-sm">
-                  <Building2 className="h-6 w-6 text-white" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-2xl font-serif font-bold tracking-tight">iConstructions</span>
-                  <span className="text-[10px] uppercase tracking-widest text-brand-primary font-semibold">Real Estate</span>
-                </div>
+                <img
+                  src="/images/main-black.png"
+                  alt="iConstructions Real Estate Logo"
+                  className="h-24 w-auto object-contain"
+                />
               </div>
 
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -254,15 +250,15 @@ const Footer: React.FC = () => {
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-3">
                 <div className="flex items-center gap-2 bg-white/5 border border-gray-800 rounded-lg px-3 py-2">
-                  <Award className="w-4 h-4 text-brand-primary" />
+                  <Award className="w-4 h-4 text-white" />
                   <span className="text-xs text-gray-300">RERA Certified</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white/5 border border-gray-800 rounded-lg px-3 py-2">
-                  <Award className="w-4 h-4 text-brand-primary" />
+                  <Award className="w-4 h-4 text-white" />
                   <span className="text-xs text-gray-300">15+ Years</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white/5 border border-gray-800 rounded-lg px-3 py-2">
-                  <Award className="w-4 h-4 text-brand-primary" />
+                  <Award className="w-4 h-4 text-white" />
                   <span className="text-xs text-gray-300">500+ Families</span>
                 </div>
               </div>
@@ -271,19 +267,19 @@ const Footer: React.FC = () => {
               <div>
                 <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">Follow Us</p>
                 <div className="flex gap-3">
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Facebook className="w-4 h-4 text-gray-400 group-hover:text-white" />
+                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
+                    <Facebook className="w-4 h-4 text-gray-400 group-hover:text-black" />
                   </a>
-                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Instagram className="w-4 h-4 text-gray-400 group-hover:text-white" />
+                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
+                    <Instagram className="w-4 h-4 text-gray-400 group-hover:text-black" />
                   </a>
-                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <Linkedin className="w-4 h-4 text-gray-400 group-hover:text-white" />
                   </a>
-                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <Twitter className="w-4 h-4 text-gray-400 group-hover:text-white" />
                   </a>
-                  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <Youtube className="w-4 h-4 text-gray-400 group-hover:text-white" />
                   </a>
                 </div>
@@ -390,12 +386,12 @@ const Footer: React.FC = () => {
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Phone Number</p>
                     <a
-                      href="https://wa.me/919666622090"
+                      href="https://wa.me/919347244397"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-gray-300 hover:text-brand-primary transition-colors"
                     >
-                      +91 96666 22090
+                      +91 93472 44397
                     </a>
                   </div>
                 </li>
@@ -473,7 +469,7 @@ const Footer: React.FC = () => {
 };
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const whatsappNumber = "919666622090";
+  const whatsappNumber = "919347244397";
   const whatsappMessage = "Hi, I'm interested in your properties. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 

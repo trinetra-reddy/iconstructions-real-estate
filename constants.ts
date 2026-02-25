@@ -15,7 +15,7 @@ export const PROJECTS: Project[] = [
     location: 'Ram Nagar, Anantapur',
     category: ProjectCategory.RESIDENTIAL,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    image: '/images/residential-apartments.jpg',
     priceStart: '₹85 Lakhs',
     description: 'RERA-approved premium residential complex featuring Vastu-compliant 3BHK luxury apartments with modern amenities and city views.',
     features: ['3 BHK', '1850 Sq.Ft', '2 Bathrooms', 'Covered Parking']
@@ -26,7 +26,7 @@ export const PROJECTS: Project[] = [
     location: 'Jesus Nagar, Anantapur',
     category: ProjectCategory.VILLA,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    image: '/images/Luxury-villas.jpg',
     priceStart: '₹2.5 Crores',
     description: 'Ultra-luxury Vastu-compliant villa with contemporary design, Italian marble flooring, rainwater harvesting, and solar power.',
     features: ['4 BHK', '3500 Sq.Ft', '4 Bathrooms', '2 Car Parking']
@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     location: 'Raptadu Road, Anantapur',
     category: ProjectCategory.COMMERCIAL,
     status: ProjectStatus.ONGOING,
-    image: 'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    image: '/images/commercial.jpg',
     priceStart: 'On Request',
     description: 'RERA-registered Grade-A office space designed for IT companies and startups, featuring modern infrastructure and 24/7 power backup.',
     features: ['Office Space', '5000 Sq.Ft', 'Conference Rooms', 'Parking']
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     location: 'Housing Board Colony, Anantapur',
     category: ProjectCategory.INTERIOR,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    image: '/images/image6.jpg',
     description: 'Complete Vastu-compliant interior design for luxury duplex with traditional Indian aesthetics blended with modern minimalism.',
     features: ['2 BHK', '1200 Sq.Ft', '2 Bathrooms', 'Modular Kitchen']
   },
@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     location: 'Rudrampeta, Anantapur',
     category: ProjectCategory.RESIDENTIAL,
     status: ProjectStatus.UPCOMING,
-    image: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    image: '/images/residential-apartments.jpg',
     priceStart: '₹65 Lakhs',
     description: 'RERA-approved affordable luxury apartments with Vastu-compliant design, surrounded by greenery and excellent highway connectivity.',
     features: ['2 BHK', '1100 Sq.Ft', '2 Bathrooms', 'Bike Parking']
@@ -69,7 +69,7 @@ export const PROJECTS: Project[] = [
     location: 'Clock Tower Area, Anantapur',
     category: ProjectCategory.COMMERCIAL,
     status: ProjectStatus.COMPLETED,
-    image: 'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    image: '/images/commercial.jpg',
     description: 'RERA-registered mixed-use development with premium retail spaces and corporate offices, featuring 100% power backup.',
     features: ['Retail Space', '2000 Sq.Ft', 'Food Court', 'Parking']
   }
@@ -78,27 +78,27 @@ export const PROJECTS: Project[] = [
 export const SERVICES: Service[] = [
   {
     id: '1',
-    title: 'Property Buying',
-    description: 'Expert guidance to find your dream home or ideal investment property in prime locations.',
-    iconName: 'Home'
+    title: 'Construction',
+    description: 'Turnkey construction services with a focus on quality, timeline, and architectural integrity.',
+    iconName: 'HardHat'
   },
   {
     id: '2',
-    title: 'Construction',
-    description: 'Turnkey construction services with a focus on quality, timeline, and architectural integrity.',
-    iconName: 'Hammer'
-  },
-  {
-    id: '3',
     title: 'Development',
     description: 'Large-scale residential and commercial development projects reshaping the skyline.',
     iconName: 'Building2'
   },
   {
+    id: '3',
+    title: 'Property Buying',
+    description: 'Expert guidance to find your dream home or ideal investment property in prime locations.',
+    iconName: 'KeyRound'
+  },
+  {
     id: '4',
     title: 'Investment',
     description: 'Data-driven real estate investment consulting for high ROI and long-term asset appreciation.',
-    iconName: 'TrendingUp'
+    iconName: 'Coins'
   }
 ];
 
@@ -108,21 +108,21 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Rajesh Kumar Reddy',
     role: 'Homeowner, Azure Heights',
     content: 'iConstructions delivered our dream home on time with exceptional quality. The Vastu-compliant design and attention to detail is unmatched.',
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'
+    image: '/images/md1.jpg'
   },
   {
     id: '2',
     name: 'Priya Lakshmi Naidu',
     role: 'CEO, TechStart India',
     content: 'The commercial space they built for us in Anantapur perfectly reflects our company culture. RERA-approved and delivered on time. Highly professional!',
-    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'
+    image: '/images/md2.jpg'
   },
   {
     id: '3',
     name: 'Suresh Venkata Rao',
     role: 'Real Estate Investor, Hyderabad',
     content: 'Their transparency regarding project timelines, RERA compliance, and legal documentation builds great trust. Best investment decision I made!',
-    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'
+    image: '/images/md1.jpg'
   }
 ];
 
@@ -136,21 +136,17 @@ export const STATS = [
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: '1',
-    name: 'Anantha Venkata Naidu',
-    role: 'Managing Director & Founder',
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+    name: 'Sayyad Rahaman Basha',
+    role: 'Managing Partner',
+    image: '/images/md1.jpg',
+    phone: '+91 93472 44397'
   },
   {
     id: '2',
-    name: 'Lakshmi Devi Reddy',
-    role: 'Chief Architect',
-    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
-  },
-  {
-    id: '3',
-    name: 'Krishna Murthy Rao',
-    role: 'Senior Project Manager',
-    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+    name: 'Maligeli Saleem Basha',
+    role: 'Managing Partner',
+    image: '/images/md2.jpg',
+    phone: '+91 91335 75115'
   }
 ];
 
@@ -280,7 +276,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Jubilee Hills, Hyderabad',
     year: '2024',
     style: 'Modern',
-    image: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/images/image6.jpg',
     description: 'Clean lines, neutral palette, and functional elegance define this contemporary living space.'
   },
   {
@@ -290,7 +286,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Banjara Hills, Hyderabad',
     year: '2024',
     style: 'Contemporary',
-    image: 'https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/images/image7.jpg',
     description: 'Plush textures, ambient lighting, and custom furniture create a serene retreat.'
   },
   {
@@ -300,7 +296,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Gachibowli, Hyderabad',
     year: '2023',
     style: 'Modern',
-    image: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/images/image8.jpg',
     description: 'German hardware, quartz countertops, and smart storage solutions.'
   },
   {
@@ -310,7 +306,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Hitech City, Hyderabad',
     year: '2024',
     style: 'Industrial',
-    image: 'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/images/commercial.jpg',
     description: 'Open-plan workspace with collaborative zones and private meeting rooms.'
   },
   {
@@ -320,7 +316,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Anantapur',
     year: '2023',
     style: 'Traditional',
-    image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/images/image9.jpg',
     description: 'Rich colors, intricate patterns, and cultural elements blend beautifully.'
   },
   {
@@ -330,7 +326,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Kondapur, Hyderabad',
     year: '2024',
     style: 'Scandinavian',
-    image: 'https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/images/image10.jpg',
     description: 'Light woods, white walls, and cozy textiles create a peaceful haven.'
   }
 ];
@@ -344,7 +340,7 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Execution 75% Complete',
     completion: 'March 2026',
     progress: 75,
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/Luxury-villas.jpg',
     description: '4BHK duplex with contemporary interiors, home theater, and rooftop lounge.'
   },
   {
@@ -354,7 +350,7 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Design Phase',
     completion: 'May 2026',
     progress: 30,
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/commercial.jpg',
     description: '15,000 sq.ft office space for tech startup with collaborative zones.'
   },
   {
@@ -364,7 +360,7 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Material Selection',
     completion: 'April 2026',
     progress: 50,
-    image: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/Luxury-villas.jpg',
     description: 'Vastu-compliant luxury villa with traditional and modern fusion design.'
   },
   {
@@ -374,7 +370,7 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Execution 40% Complete',
     completion: 'June 2026',
     progress: 40,
-    image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/commercial.jpg',
     description: '25-room boutique hotel with contemporary Indian aesthetics.'
   }
 ];

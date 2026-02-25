@@ -14,7 +14,7 @@ export const FlatsInAnantapur: React.FC = () => {
      p.title?.toLowerCase().includes('apartment'))
   );
 
-  const whatsappNumber = "919666622090";
+  const whatsappNumber = "919347244397";
   const whatsappMessage = "Hi, I'm interested in 2BHK/3BHK flats in Anantapur. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 

@@ -3,7 +3,7 @@ import { Layout } from '../components/Layout';
 import { MapPin, Phone, Mail, Clock, Send, Navigation, Sparkles } from 'lucide-react';
 
 export const Contact: React.FC = () => {
-  const whatsappNumber = "919666622090";
+  const whatsappNumber = "919347244397";
   const whatsappMessage = "Hi, I'm interested in your properties. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -87,10 +87,10 @@ export const Contact: React.FC = () => {
                   <div>
                     <h4 className="font-bold text-brand-dark mb-2 text-lg">Call Us</h4>
                     <a
-                      href="tel:+919666622090"
+                      href="tel:+919347244397"
                       className="text-gray-600 hover:text-brand-primary transition-colors block text-lg font-semibold"
                     >
-                      +91 96666 22090
+                      +91 93472 44397
                     </a>
                     <p className="text-gray-500 text-xs mt-1">Available Mon-Sat, 9 AM - 7 PM</p>
                   </div>
@@ -303,14 +303,14 @@ export const Contact: React.FC = () => {
             </a>
 
             <a
-              href="tel:+919666622090"
+              href="tel:+919347244397"
               className="group bg-white hover:bg-brand-dark rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary text-center"
             >
               <div className="bg-brand-light group-hover:bg-brand-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors">
                 <Phone className="w-8 h-8 text-brand-primary group-hover:text-white transition-colors" />
               </div>
               <h3 className="font-bold text-brand-dark group-hover:text-white mb-2 transition-colors">Call Before Visit</h3>
-              <p className="text-gray-600 group-hover:text-gray-300 text-sm transition-colors">+91 96666 22090</p>
+              <p className="text-gray-600 group-hover:text-gray-300 text-sm transition-colors">+91 93472 44397</p>
             </a>
 
             <a

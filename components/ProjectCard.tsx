@@ -52,14 +52,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {/* Price Tag */}
         {project.priceStart && (
           <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg">
-            <p className="text-xs text-gray-500 uppercase tracking-wider">Starting From</p>
+            <p className="text-xs text-gray-600 uppercase tracking-wider">Starting From</p>
             <p className="text-xl font-bold text-brand-primary">{project.priceStart}</p>
           </div>
         )}
 
         {/* Quick View Button */}
         <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button className="bg-white text-brand-dark p-3 rounded-full hover:bg-brand-primary hover:text-white transition-colors">
+          <button aria-label={`Quick view ${project.title}`} className="bg-white text-brand-dark p-3 rounded-full hover:bg-brand-primary hover:text-white transition-colors">
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -75,7 +75,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.title}
         </h3>
 
-        <div className="flex items-center text-gray-500 text-sm mb-4">
+        <div className="flex items-center text-gray-600 text-sm mb-4">
           <MapPin className="h-4 w-4 mr-1 text-brand-primary" />
           {project.location}
         </div>
@@ -88,7 +88,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {project.features && project.features.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {project.features.slice(0, 3).map((feature, idx) => (
-              <span key={idx} className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded">
+              <span key={idx} className="text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded">
                 {feature}
               </span>
             ))}
