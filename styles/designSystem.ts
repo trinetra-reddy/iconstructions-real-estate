@@ -66,8 +66,8 @@ export const buttonPrimary = `
   ${designTokens.radius.button}
   ${designTokens.transitions.standard}
   ${designTokens.shadows.button}
-  bg-black text-white
-  hover:bg-gray-900
+  bg-black text-white border border-white/20
+  hover:bg-gray-900 hover:translate-y-[-2px] hover:shadow-2xl hover:shadow-black/50
   group inline-flex items-center justify-center gap-2
   w-full sm:w-auto
 `.trim().replace(/\s+/g, ' ');
@@ -84,8 +84,8 @@ export const buttonSecondary = `
   ${designTokens.radius.button}
   ${designTokens.transitions.standard}
   ${designTokens.shadows.button}
-  bg-white text-black
-  hover:bg-gray-100
+  bg-white text-black border border-white/30
+  hover:bg-gray-100 hover:translate-y-[-2px] hover:shadow-2xl hover:shadow-white/30
   group inline-flex items-center justify-center gap-2
   w-full sm:w-auto
 `.trim().replace(/\s+/g, ' ');

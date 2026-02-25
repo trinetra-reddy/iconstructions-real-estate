@@ -45,8 +45,6 @@ const ServiceIconMap: any = {
 export const Home: React.FC = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
   const [activeFloorPlan, setActiveFloorPlan] = useState<string>('Paradise');
-  const [searchLocation, setSearchLocation] = useState('');
-  const [searchPropertyType, setSearchPropertyType] = useState('');
   const [propertyFilter, setPropertyFilter] = useState<string>('All Properties');
   const [categoryIndex, setCategoryIndex] = useState<number>(0);
 
@@ -74,16 +72,6 @@ export const Home: React.FC = () => {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
 
-  const handleSearch = () => {
-    // Build query parameters
-    const params = new URLSearchParams();
-    if (searchLocation) params.append('location', searchLocation);
-    if (searchPropertyType) params.append('type', searchPropertyType);
-
-    // Navigate to projects page with filters
-    window.location.href = `/projects?${params.toString()}`;
-  };
-
   const floorPlans: any = {
     'Paradise': '/images/Luxury-villas.jpg',
     'Deluxe': '/images/residential-apartments.jpg',
@@ -92,132 +80,97 @@ export const Home: React.FC = () => {
 
   return (
     <Layout>
-      {/* 1. Hero Section - Enhanced with Search & Trust Signals */}
+      {/* 1. Hero Section - Construction-Focused */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden max-w-full">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/85 z-10" />
           <img
-            src="/images/Luxury-villas.jpg"
-            alt="Luxury RERA approved residential property in Anantapur - iConstructions Real Estate"
+            src="/images/construction-site.png"
+            alt="Modern residential construction project - iConstructions professional builders"
             className="w-full h-full object-cover animate-ken-burns"
           />
         </div>
 
         <div className="relative z-20 text-center text-white px-4 sm:px-6 max-w-6xl mx-auto">
-          {/* Trust Badges */}
+          {/* Trust Badges - Construction Focused with Enhanced Styling */}
           <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8 mb-4 sm:mb-6 animate-fade-in flex-wrap">
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
-              <Award className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium whitespace-nowrap">RERA Certified</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
+              <Award className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap">Licensed & Certified</span>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
-              <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium whitespace-nowrap">Vastu Compliant</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap">500+ Projects Completed</span>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
-              <Star className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs font-medium whitespace-nowrap">500+ Happy Families</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
+              <Star className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
+              <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap">On-Time Delivery</span>
             </div>
           </div>
 
-          <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wide sm:tracking-wider uppercase mb-4 sm:mb-6 text-gray-300 animate-fade-in">
-            ANANTAPUR • HYDERABAD • VIJAYAWADA
+          <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wide sm:tracking-wider uppercase mb-4 sm:mb-6 text-white animate-fade-in font-bold" style={{ textShadow: '2px 3px 8px rgba(0,0,0,1), 0px 0px 20px rgba(0,0,0,0.8)' }}>
+            RESIDENTIAL • COMMERCIAL • CONSTRUCTION SERVICES
           </p>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium mb-4 sm:mb-6 leading-tight animate-fade-in-up px-2" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>
-            Find Your Dream <br />
-            <span className="italic text-gray-200">Property Today</span>
+
+          {/* Decorative Accent Line */}
+          <div className="w-16 h-0.5 mx-auto mb-6 bg-gradient-to-r from-transparent via-white to-transparent opacity-70 animate-fade-in" />
+
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 sm:mb-6 leading-tight animate-fade-in-up px-2" style={{ textShadow: '4px 8px 20px rgba(0,0,0,1), 0px 0px 30px rgba(0,0,0,0.9)' }}>
+            We Build Your <br />
+            <span className="italic bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent" style={{ textShadow: 'none' }}>Dream Home</span>
           </h1>
-          <p className="text-sm sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-10 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up delay-100 px-2" style={{ textShadow: '1px 2px 8px rgba(0,0,0,0.8)' }}>
-            Premium residential and commercial developments with transparent pricing, legal clarity, and expert guidance.
+          <p className="text-sm sm:text-lg md:text-xl text-white mb-8 sm:mb-12 max-w-3xl mx-auto font-semibold leading-relaxed animate-fade-in-up delay-100 px-2" style={{ textShadow: '3px 5px 15px rgba(0,0,0,1), 0px 0px 25px rgba(0,0,0,0.8)' }}>
+            End-to-end residential and commercial construction services with structural precision, transparent pricing, and on-time project delivery.
           </p>
 
-          {/* Enhanced Search Bar */}
-          <div className="max-w-4xl mx-auto mb-6 sm:mb-8 animate-fade-in-up delay-150">
-            <div className="bg-white rounded-2xl sm:rounded-full p-3 sm:p-2 shadow-2xl flex flex-col md:flex-row gap-3 sm:gap-2">
-              <div className="flex-1 flex items-center px-3 sm:px-4 py-2.5 sm:py-2 md:border-r border-gray-200 rounded-xl md:rounded-none bg-gray-50 md:bg-transparent">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 mr-2 flex-shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Location (e.g., Anantapur, Hyderabad)"
-                  aria-label="Search by location"
-                  className="w-full outline-none text-gray-700 text-xs sm:text-sm bg-transparent"
-                  value={searchLocation}
-                  onChange={(e) => setSearchLocation(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                />
-              </div>
-              <div className="flex-1 flex items-center px-3 sm:px-4 py-2.5 sm:py-2 md:border-r border-gray-200 rounded-xl md:rounded-none bg-gray-50 md:bg-transparent">
-                <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 mr-2 flex-shrink-0" />
-                <select
-                  className="w-full outline-none text-gray-700 text-xs sm:text-sm bg-transparent"
-                  aria-label="Select property type"
-                  value={searchPropertyType}
-                  onChange={(e) => setSearchPropertyType(e.target.value)}
-                >
-                  <option value="">Property Type</option>
-                  <option value="Residential">Residential</option>
-                  <option value="Commercial">Commercial</option>
-                  <option value="Villa">Villa</option>
-                </select>
-              </div>
-              <button
-                onClick={handleSearch}
-                className={buttonPrimary}
-              >
-                <span>Search</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
-              </button>
-            </div>
-          </div>
-
+          {/* Construction-Focused CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-fade-in-up delay-200 px-4">
-             <Link
+            <Link
+              to="/contact"
+              className={buttonPrimary}
+            >
+              Get Free Construction Quote
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
+            </Link>
+            <Link
               to="/projects"
               className={buttonSecondary}
             >
-              View All Properties
+              View Our Projects
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
             </Link>
-            <a
-              href="https://wa.me/919347244397?text=Hi%2C%20I'd%20like%20to%20schedule%20a%20site%20visit.%20When%20are%20you%20available%3F"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonWhatsApp}
-            >
-              <MessageCircle className="w-4 h-4" />
-              Schedule Visit
-            </a>
           </div>
         </div>
 
-        {/* Enhanced Stats Badge */}
-        <div className="absolute bottom-20 right-8 md:right-20 z-20 bg-white p-6 shadow-2xl rounded-lg hidden md:block animate-fade-in delay-300 max-w-xs border border-gray-200">
-          <div className="flex items-center justify-between mb-4">
-             <div>
-               <span className="text-xs text-gray-600 uppercase tracking-wider">Client Satisfaction</span>
-               <div className="flex items-baseline gap-1 mt-1">
-                 <span className="text-4xl font-serif text-black">98</span>
-                 <span className="text-xl text-black">%</span>
-               </div>
-             </div>
-             <div className="flex flex-col gap-1">
-               {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-black text-black" />)}
-             </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-gray-100">
-            <div>
-              <p className="text-2xl font-bold text-black">25 Lakh+</p>
-              <p className="text-[10px] text-gray-700 uppercase tracking-wider">Sq.Ft Delivered</p>
+        {/* Construction Impact Stats Card - Glassmorphism */}
+        <div className="absolute bottom-20 right-8 md:right-20 z-20 bg-white/85 backdrop-blur-xl p-6 shadow-2xl shadow-white/10 rounded-lg hidden md:block animate-fade-in delay-300 max-w-xs border border-white/30 hover:shadow-2xl hover:shadow-white/20 transition-all duration-300">
+          <h3 className="text-sm font-bold text-black uppercase tracking-wider mb-4">Our Construction Impact</h3>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+              <span className="text-xs text-gray-600 uppercase tracking-wider">Projects Completed</span>
+              <span className="text-2xl font-bold text-black">500+</span>
             </div>
-            <div>
-              <p className="text-2xl font-bold text-black">500+</p>
-              <p className="text-[10px] text-gray-700 uppercase tracking-wider">Happy Families</p>
+            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+              <span className="text-xs text-gray-600 uppercase tracking-wider">Years Experience</span>
+              <span className="text-2xl font-bold text-black">10+</span>
+            </div>
+            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+              <span className="text-xs text-gray-600 uppercase tracking-wider">Sq.Ft Constructed</span>
+              <span className="text-2xl font-bold text-black">25L+</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-gray-600 uppercase tracking-wider">Client Satisfaction</span>
+              <span className="text-2xl font-bold text-black">98%</span>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-white/50">
-          <ChevronDown className="w-8 h-8" />
+        {/* Enhanced Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-fade-in">
+          <span className="text-xs uppercase tracking-widest text-white/60 font-semibold">Scroll to explore</span>
+          <div className="animate-bounce">
+            <ChevronDown className="w-6 h-6 text-white/70" />
+          </div>
         </div>
       </section>
 
@@ -467,14 +420,54 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 6. Video Experience Section */}
-      <section className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full flex items-center justify-center bg-fixed bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url('/images/Luxury-villas.jpg')` }}>
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <button aria-label="Watch our real estate project video" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center text-black mb-6 sm:mb-8 hover:scale-110 transition-transform duration-300 mx-auto">
-            <Play className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-current ml-1" />
+      <section className="relative h-[400px] sm:h-[500px] md:h-[800px] w-full flex items-center justify-center overflow-hidden bg-black" style={{ backgroundImage: `url('/images/Luxury-villas.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        {/* Video Background */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/images/Luxury-villas.jpg"
+          playsInline
+          controls
+          onPlay={(e) => {
+            const overlay = e.currentTarget.closest('section')?.querySelector('[data-overlay]') as HTMLElement;
+            const content = e.currentTarget.closest('section')?.querySelector('[data-content]') as HTMLElement;
+            if (overlay) overlay.style.opacity = '0';
+            if (content) content.style.opacity = '0';
+          }}
+          onEnded={(e) => {
+            const overlay = e.currentTarget.closest('section')?.querySelector('[data-overlay]') as HTMLElement;
+            const content = e.currentTarget.closest('section')?.querySelector('[data-content]') as HTMLElement;
+            if (overlay) overlay.style.opacity = '1';
+            if (content) content.style.opacity = '1';
+          }}
+        >
+          <source src="/video/Cinematic_Construction_Video_Generation.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40 transition-opacity duration-300" data-overlay style={{ opacity: '1' }} />
+
+        {/* Content */}
+        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto transition-opacity duration-300" data-content style={{ opacity: '1' }}>
+          <button
+            aria-label="Watch our real estate project video"
+            onClick={(e) => {
+              e.preventDefault();
+              const video = e.currentTarget.closest('section')?.querySelector('video') as HTMLVideoElement;
+              if (video) {
+                if (video.paused) {
+                  video.play();
+                } else {
+                  video.pause();
+                }
+              }
+            }}
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center text-black mb-6 sm:mb-8 hover:scale-110 hover:shadow-2xl hover:shadow-white/30 transition-all duration-300 mx-auto group"
+          >
+            <Play className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-current ml-1 group-hover:scale-110 transition-transform" />
           </button>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif italic mb-2 sm:mb-4">Experience Our Professional</h2>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif">Real Estate Approach</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif italic mb-2 sm:mb-4" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>Experience Our Professional</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>Real Estate Approach</h2>
         </div>
       </section>
 
