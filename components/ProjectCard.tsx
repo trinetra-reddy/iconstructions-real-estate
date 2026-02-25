@@ -11,9 +11,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [imageError, setImageError] = React.useState(false);
 
   return (
-    <div className="group cursor-pointer bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary">
-      <div className="relative overflow-hidden aspect-[4/3] bg-gray-200">
-        {!imageError ? (
+    <Link to={`/projects/${project.id}`} className="group cursor-pointer block">
+      <div className="h-full bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary">
+        <div className="relative overflow-hidden aspect-[4/3] bg-gray-200">
+          {!imageError ? (
           <img
             src={project.image}
             alt={project.title}
@@ -63,49 +64,48 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-6">
-        <div className="flex items-center gap-2 text-xs text-brand-primary uppercase tracking-widest font-bold mb-3">
-           <span className="bg-brand-light px-2 py-1 rounded">{project.category}</span>
         </div>
 
-        <h3 className="text-xl font-serif text-brand-dark mb-2 group-hover:text-brand-primary transition-colors duration-300">
-          {project.title}
-        </h3>
-
-        <div className="flex items-center text-gray-600 text-sm mb-4">
-          <MapPin className="h-4 w-4 mr-1 text-brand-primary" />
-          {project.location}
-        </div>
-
-        <p className="text-gray-600 text-sm line-clamp-2 leading-relaxed mb-4">
-          {project.description}
-        </p>
-
-        {/* Features */}
-        {project.features && project.features.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.features.slice(0, 3).map((feature, idx) => (
-              <span key={idx} className="text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded">
-                {feature}
-              </span>
-            ))}
-            {project.features.length > 3 && (
-              <span className="text-xs text-brand-primary font-bold">+{project.features.length - 3} more</span>
-            )}
+        {/* Content */}
+        <div className="p-6">
+          <div className="flex items-center gap-2 text-xs text-brand-primary uppercase tracking-widest font-bold mb-3">
+            <span className="bg-brand-light px-2 py-1 rounded">{project.category}</span>
           </div>
-        )}
 
-        {/* CTA */}
-        <Link to={`/projects/${project.id}`}>
+          <h3 className="text-xl font-serif text-brand-dark mb-2 group-hover:text-brand-primary transition-colors duration-300">
+            {project.title}
+          </h3>
+
+          <div className="flex items-center text-gray-600 text-sm mb-4">
+            <MapPin className="h-4 w-4 mr-1 text-brand-primary" />
+            {project.location}
+          </div>
+
+          <p className="text-gray-600 text-sm line-clamp-2 leading-relaxed mb-4">
+            {project.description}
+          </p>
+
+          {/* Features */}
+          {project.features && project.features.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.features.slice(0, 3).map((feature, idx) => (
+                <span key={idx} className="text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded">
+                  {feature}
+                </span>
+              ))}
+              {project.features.length > 3 && (
+                <span className="text-xs text-brand-primary font-bold">+{project.features.length - 3} more</span>
+              )}
+            </div>
+          )}
+
+          {/* CTA */}
           <button className="w-full py-3 border-2 border-gray-200 rounded-full text-sm font-bold uppercase tracking-wide text-brand-dark hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300 flex items-center justify-center gap-2">
             View Details
             <ArrowRight className="w-4 h-4" />
           </button>
-        </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };

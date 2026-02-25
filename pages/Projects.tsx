@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
 import { PROJECTS } from '../constants';
 import { ProjectCategory, ProjectStatus } from '../types';
+import {
+  buttonFilterPillActive,
+  buttonFilterPillInactive,
+  buttonPrimary
+} from '../styles/designSystem';
 
 export const Projects: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -43,27 +49,28 @@ export const Projects: React.FC = () => {
 
   return (
     <Layout>
-      <div className="bg-brand-dark pt-32 pb-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Our Projects</h1>
-        <p className="text-gray-400 max-w-2xl mx-auto px-4">
-          Discover our portfolio of completed and ongoing developments, ranging from luxury villas to state-of-the-art commercial hubs.
-        </p>
+      {/* Hero Section */}
+      <div className="bg-black pt-32 pb-16 sm:pb-20 md:pb-24 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight" style={{ textShadow: '3px 6px 16px rgba(0,0,0,0.95)' }}>
+            Our Projects
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-3xl mx-auto px-2 leading-relaxed" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>
+            Discover our portfolio of completed and ongoing developments, ranging from luxury villas to state-of-the-art commercial hubs.
+          </p>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         {/* Category Filters */}
-        <div className="mb-8">
-          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 text-center">Filter by Category</h3>
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className="mb-10 sm:mb-12">
+          <h3 className="text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Category</h3>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setCategoryFilter(cat)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  categoryFilter === cat
-                    ? 'bg-brand-primary text-white shadow-lg scale-105'
-                    : 'bg-white text-gray-600 border border-gray-200 hover:border-brand-primary hover:text-brand-primary'
-                }`}
+                className={categoryFilter === cat ? buttonFilterPillActive : buttonFilterPillInactive}
               >
                 {cat}
               </button>
@@ -72,18 +79,14 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Status Filters */}
-        <div className="mb-12">
-          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 text-center">Filter by Status</h3>
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className="mb-12 sm:mb-16">
+          <h3 className="text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Status</h3>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {statuses.map((status) => (
               <button
                 key={status}
                 onClick={() => setStatusFilter(status)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  statusFilter === status
-                    ? 'bg-green-600 text-white shadow-lg scale-105'
-                    : 'bg-white text-gray-600 border border-gray-200 hover:border-green-600 hover:text-green-600'
-                }`}
+                className={statusFilter === status ? buttonFilterPillActive : buttonFilterPillInactive}
               >
                 {status}
               </button>
@@ -93,14 +96,21 @@ export const Projects: React.FC = () => {
 
         {/* Grid */}
         {filteredProjects.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {filteredProjects.map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-500">No projects found in this category.</p>
+          <div className="text-center py-16 sm:py-20 md:py-24">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/70 mb-8 sm:mb-10 font-light">No projects found in this category.</p>
+            <Link
+              to="/projects"
+              className={buttonPrimary}
+            >
+              View All Projects
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
+            </Link>
           </div>
         )}
       </div>
