@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -18,7 +18,9 @@ import {
   Award,
   ChevronRight,
   MessageCircle,
-  Phone
+  Phone,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
@@ -46,6 +48,8 @@ export const Home: React.FC = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
   const [activeFloorPlan, setActiveFloorPlan] = useState<string>('Paradise');
   const [propertyFilter, setPropertyFilter] = useState<string>('All Properties');
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [categoryIndex, setCategoryIndex] = useState<number>(0);
 
   // Filter projects based on selected filter
@@ -80,16 +84,42 @@ export const Home: React.FC = () => {
 
   return (
     <Layout>
-      {/* 1. Hero Section - Construction-Focused */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden max-w-full">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/85 z-10" />
-          <img
-            src="/images/construction-site.png"
-            alt="Modern residential construction project - iConstructions professional builders"
-            className="w-full h-full object-cover animate-ken-burns"
-          />
-        </div>
+      {/* 1. Hero Section - Construction-Focused with Video Background */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden max-w-full bg-black">
+        {/* Video Background */}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted={isMuted}
+          loop
+          playsInline
+          poster="/images/construction-site.png"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video/Iconstruction.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/85 z-10" />
+
+        {/* Mute/Unmute Button */}
+        <button
+          onClick={() => {
+            setIsMuted(!isMuted);
+            if (videoRef.current) {
+              videoRef.current.muted = !isMuted;
+            }
+          }}
+          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+          className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-50 p-3 sm:p-4 bg-white/25 hover:bg-white/40 backdrop-blur-md rounded-full transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl"
+        >
+          {isMuted ? (
+            <VolumeX className="w-6 h-6 sm:w-7 sm:h-7 text-white group-hover:scale-125 transition-transform duration-200" />
+          ) : (
+            <Volume2 className="w-6 h-6 sm:w-7 sm:h-7 text-white group-hover:scale-125 transition-transform duration-200" />
+          )}
+        </button>
 
         <div className="relative z-20 text-center text-white px-4 sm:px-6 max-w-6xl mx-auto">
           {/* Trust Badges - Construction Focused with Enhanced Styling */}
@@ -419,57 +449,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. Video Experience Section */}
-      <section className="relative h-[400px] sm:h-[500px] md:h-[800px] w-full flex items-center justify-center overflow-hidden bg-black" style={{ backgroundImage: `url('/images/Luxury-villas.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        {/* Video Background */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/Luxury-villas.jpg"
-          playsInline
-          controls
-          onPlay={(e) => {
-            const overlay = e.currentTarget.closest('section')?.querySelector('[data-overlay]') as HTMLElement;
-            const content = e.currentTarget.closest('section')?.querySelector('[data-content]') as HTMLElement;
-            if (overlay) overlay.style.opacity = '0';
-            if (content) content.style.opacity = '0';
-          }}
-          onEnded={(e) => {
-            const overlay = e.currentTarget.closest('section')?.querySelector('[data-overlay]') as HTMLElement;
-            const content = e.currentTarget.closest('section')?.querySelector('[data-content]') as HTMLElement;
-            if (overlay) overlay.style.opacity = '1';
-            if (content) content.style.opacity = '1';
-          }}
-        >
-          <source src="/video/Cinematic_Construction_Video_Generation.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 transition-opacity duration-300" data-overlay style={{ opacity: '1' }} />
-
-        {/* Content */}
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto transition-opacity duration-300" data-content style={{ opacity: '1' }}>
-          <button
-            aria-label="Watch our real estate project video"
-            onClick={(e) => {
-              e.preventDefault();
-              const video = e.currentTarget.closest('section')?.querySelector('video') as HTMLVideoElement;
-              if (video) {
-                if (video.paused) {
-                  video.play();
-                } else {
-                  video.pause();
-                }
-              }
-            }}
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center text-black mb-6 sm:mb-8 hover:scale-110 hover:shadow-2xl hover:shadow-white/30 transition-all duration-300 mx-auto group"
-          >
-            <Play className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-current ml-1 group-hover:scale-110 transition-transform" />
-          </button>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif italic mb-2 sm:mb-4" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>Experience Our Professional</h2>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>Real Estate Approach</h2>
-        </div>
-      </section>
 
       {/* 6.5 Properties by Location - NEW SEO SECTION */}
       <section className="py-12 sm:py-24 bg-gradient-to-br from-black to-gray-900 text-white overflow-hidden">
@@ -765,8 +745,8 @@ export const Home: React.FC = () => {
                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
                      </div>
                      <div className="min-w-0">
-                       <p className="font-bold text-black mb-1 text-sm sm:text-base">Head Office</p>
-                       <p className="text-gray-600 text-xs sm:text-sm">Plot 42, Jubilee Enclave, Hitech City, Hyderabad - 500081</p>
+                       <p className="font-bold text-black mb-1 text-sm sm:text-base">Office Address</p>
+                       <p className="text-gray-600 text-xs sm:text-sm">Shop no. 2nd floor, Sampada Women's Complex, Bellary - Uravakonda Rd, Ganesha Nagar, Ananthapur, Andhra Pradesh 515004</p>
                      </div>
                    </div>
 

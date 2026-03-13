@@ -276,7 +276,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Jubilee Hills, Hyderabad',
     year: '2024',
     style: 'Modern',
-    image: '/images/image6.jpg',
+    image: '/images/Modern Minimalist Apartment.png',
     description: 'Clean lines, neutral palette, and functional elegance define this contemporary living space.'
   },
   {
@@ -286,7 +286,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Banjara Hills, Hyderabad',
     year: '2024',
     style: 'Contemporary',
-    image: '/images/image7.jpg',
+    image: '/images/Luxury Master Bedroom.png',
     description: 'Plush textures, ambient lighting, and custom furniture create a serene retreat.'
   },
   {
@@ -296,7 +296,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Gachibowli, Hyderabad',
     year: '2023',
     style: 'Modern',
-    image: '/images/image8.jpg',
+    image: '/images/Modular Kitchen.png',
     description: 'German hardware, quartz countertops, and smart storage solutions.'
   },
   {
@@ -306,7 +306,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Hitech City, Hyderabad',
     year: '2024',
     style: 'Industrial',
-    image: '/images/commercial.jpg',
+    image: '/images/Corporate Office Design.png',
     description: 'Open-plan workspace with collaborative zones and private meeting rooms.'
   },
   {
@@ -316,7 +316,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Anantapur',
     year: '2023',
     style: 'Traditional',
-    image: '/images/image9.jpg',
+    image: '/images/Traditional Indian Living.png',
     description: 'Rich colors, intricate patterns, and cultural elements blend beautifully.'
   },
   {
@@ -326,7 +326,7 @@ export const INTERIOR_PORTFOLIO = [
     location: 'Kondapur, Hyderabad',
     year: '2024',
     style: 'Scandinavian',
-    image: '/images/image10.jpg',
+    image: '/images/Scandinavian Bedroom.png',
     description: 'Light woods, white walls, and cozy textiles create a peaceful haven.'
   }
 ];
@@ -340,8 +340,8 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Execution 75% Complete',
     completion: 'March 2026',
     progress: 75,
-    image: '/images/Luxury-villas.jpg',
-    description: '4BHK duplex with contemporary interiors, home theater, and rooftop lounge.'
+    image: '/images/Luxury Duplex - Jubilee Hills.png',
+    description: 'Contemporary interior design with premium finishes, custom home theater setup, and elegant rooftop lounge area.'
   },
   {
     id: '2',
@@ -350,8 +350,8 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Design Phase',
     completion: 'May 2026',
     progress: 30,
-    image: '/images/commercial.jpg',
-    description: '15,000 sq.ft office space for tech startup with collaborative zones.'
+    image: '/images/Corporate Office - Hitech City.png',
+    description: 'Modern office interior design featuring collaborative workspaces, ergonomic workstations, and professional meeting areas.'
   },
   {
     id: '3',
@@ -360,8 +360,8 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Material Selection',
     completion: 'April 2026',
     progress: 50,
-    image: '/images/Luxury-villas.jpg',
-    description: 'Vastu-compliant luxury villa with traditional and modern fusion design.'
+    image: '/images/Villa Interiors - Anantapur.png',
+    description: 'Vastu-compliant luxury villa interiors blending traditional Indian aesthetics with modern minimalist design elements.'
   },
   {
     id: '4',
@@ -370,8 +370,8 @@ export const ONGOING_INTERIOR_PROJECTS = [
     status: 'Execution 40% Complete',
     completion: 'June 2026',
     progress: 40,
-    image: '/images/commercial.jpg',
-    description: '25-room boutique hotel with contemporary Indian aesthetics.'
+    image: '/images/Boutique Hotel - Vijayawada.png',
+    description: 'Boutique hotel interior design with contemporary Indian aesthetics, premium furnishings, and curated guest experience spaces.'
   }
 ];
 
@@ -381,42 +381,42 @@ export const DESIGN_STYLES = [
     id: '1',
     name: 'Modern',
     description: 'Clean lines, minimal ornamentation, and functional beauty with neutral color palettes.',
-    image: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/Modern Minimalist Apartment.png',
     features: ['Open spaces', 'Neutral colors', 'Minimal decor', 'Functional furniture']
   },
   {
     id: '2',
     name: 'Contemporary',
     description: 'Current trends with bold colors, mixed materials, and artistic elements.',
-    image: 'https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/Contemporary Interior Style.avif',
     features: ['Bold accents', 'Mixed textures', 'Artistic pieces', 'Curved lines']
   },
   {
     id: '3',
     name: 'Traditional',
     description: 'Rich colors, ornate details, and cultural heritage with timeless elegance.',
-    image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/Traditional Interior Style.webp',
     features: ['Rich fabrics', 'Ornate details', 'Dark woods', 'Cultural motifs']
   },
   {
     id: '4',
     name: 'Minimalist',
     description: 'Less is more philosophy with essential elements and maximum impact.',
-    image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/Minimalist.png',
     features: ['Simple forms', 'Monochrome palette', 'Hidden storage', 'Clean surfaces']
   },
   {
     id: '5',
     name: 'Industrial',
     description: 'Raw materials, exposed structures, and urban aesthetics with character.',
-    image: 'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/Industrial.png',
     features: ['Exposed brick', 'Metal accents', 'Open ceilings', 'Vintage pieces']
   },
   {
     id: '6',
     name: 'Scandinavian',
     description: 'Light, airy spaces with natural materials and cozy, functional design.',
-    image: 'https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: '/images/Scandinavian.jpeg',
     features: ['Light woods', 'White walls', 'Cozy textiles', 'Natural light']
   }
 ];

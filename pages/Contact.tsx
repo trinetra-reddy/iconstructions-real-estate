@@ -7,10 +7,10 @@ export const Contact: React.FC = () => {
   const whatsappMessage = "Hi, I'm interested in your properties. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-  // Office location coordinates (Hitech City, Hyderabad)
-  const officeAddress = "Plot 42, Jubilee Enclave, Hitech City, Hyderabad, Telangana 500081";
-  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=Hitech+City+Hyderabad+Telangana+500081";
-  const googleMapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3614!2d78.3808!3d17.4485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI2JzU0LjYiTiA3OMKwMjInNTEuMSJF!5e0!3m2!1sen!2sin!4v1234567890";
+  // Office location coordinates (Anantapur)
+  const officeAddress = "Shop no. 2nd floor, Sampada Women's Complex, Bellary - Uravakonda Rd, beside Power Office, Ganesha Nagar, Ananthapur, Andhra Pradesh 515004";
+  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=Sampada+Women's+Complex+Ananthapur+515004";
+  const googleMapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3614!2d77.6006!3d14.6819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDQwJzU0LjMiTiA3N8KwMzYnMDIuMiJF!5e0!3m2!1sen!2sin!4v1234567890";
 
   return (
     <Layout>
@@ -47,7 +47,7 @@ export const Contact: React.FC = () => {
               Visit Our <span className="italic text-brand-primary">Office</span>
             </h2>
             <p className="text-gray-600 mb-10 leading-relaxed text-lg">
-              Our headquarters is located in the heart of Hyderabad's IT corridor. We welcome you to visit us for a coffee and a detailed walkthrough of our portfolio.
+              Our office is located in Ananthapur, Andhra Pradesh. We welcome you to visit us for a coffee and a detailed walkthrough of our portfolio.
             </p>
 
             <div className="space-y-6">
@@ -59,10 +59,11 @@ export const Contact: React.FC = () => {
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-brand-dark mb-2 text-lg">Head Office</h4>
+                    <h4 className="font-bold text-brand-dark mb-2 text-lg">Office Address</h4>
                     <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                      Plot 42, Jubilee Enclave, Hitech City,<br />
-                      Hyderabad, Telangana 500081
+                      Shop no. 2nd floor, Sampada Women's Complex,<br />
+                      Bellary - Uravakonda Rd, Ganesha Nagar,<br />
+                      Ananthapur, Andhra Pradesh 515004
                     </p>
                     <a
                       href={googleMapsUrl}
@@ -223,7 +224,7 @@ export const Contact: React.FC = () => {
               Our <span className="italic text-brand-primary">Location</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Located in the heart of Hyderabad's tech hub, we're easily accessible from all major areas of the city.
+              Located in Ananthapur, Andhra Pradesh, we're easily accessible from all major areas of the region.
             </p>
           </div>
 
@@ -244,7 +245,7 @@ export const Contact: React.FC = () => {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="iConstructions Office Location - Hitech City, Hyderabad"
+                  title="iConstructions Office Location - Ananthapur, Andhra Pradesh"
                   className="w-full h-full"
                 />
               </div>
@@ -258,8 +259,9 @@ export const Contact: React.FC = () => {
                   <div className="flex-1">
                     <h3 className="font-bold text-brand-dark text-lg mb-2">iConstructions Real Estate</h3>
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                      Plot 42, Jubilee Enclave, Hitech City,<br />
-                      Hyderabad, Telangana 500081
+                      Shop no. 2nd floor, Sampada Women's Complex,<br />
+                      Bellary - Uravakonda Rd, Ganesha Nagar,<br />
+                      Ananthapur, Andhra Pradesh 515004
                     </p>
                     <div className="flex flex-wrap gap-3">
                       <a

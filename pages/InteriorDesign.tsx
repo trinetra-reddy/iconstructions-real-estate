@@ -30,7 +30,9 @@ import {
   Palette,
   Lightbulb,
   Ruler,
-  Package
+  Package,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 
 // Icon mapping for interior services
@@ -80,6 +82,8 @@ export const InteriorDesign: React.FC = () => {
   const [activeService, setActiveService] = useState<string | null>(null);
   const [activeProcessStep, setActiveProcessStep] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const servicesAnimation = useScrollAnimation();
   const portfolioAnimation = useScrollAnimation();
@@ -127,17 +131,42 @@ export const InteriorDesign: React.FC = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Full Page */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
-          <img
-            src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=2000"
-            alt="Interior Design Background"
-            className="w-full h-full object-cover"
-          />
-        </div>
+      {/* Hero Section - Full Page with Video Background */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+        {/* Video Background */}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted={isMuted}
+          loop
+          playsInline
+          poster="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=2000"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video/Interior.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
+
+        {/* Mute/Unmute Button */}
+        <button
+          onClick={() => {
+            setIsMuted(!isMuted);
+            if (videoRef.current) {
+              videoRef.current.muted = !isMuted;
+            }
+          }}
+          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+          className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-50 p-3 sm:p-4 bg-white/25 hover:bg-white/40 backdrop-blur-md rounded-full transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl"
+        >
+          {isMuted ? (
+            <VolumeX className="w-6 h-6 sm:w-7 sm:h-7 text-white group-hover:scale-125 transition-transform duration-200" />
+          ) : (
+            <Volume2 className="w-6 h-6 sm:w-7 sm:h-7 text-white group-hover:scale-125 transition-transform duration-200" />
+          )}
+        </button>
 
         {/* Animated Overlay Elements */}
         <div className="absolute inset-0 z-10 opacity-20">
@@ -336,10 +365,12 @@ export const InteriorDesign: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* Hover Details */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-xs font-bold text-brand-primary mb-1">{item.category} • {item.year}</p>
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-300 mb-3">{item.description}</p>
+                  <div className="absolute inset-0 p-6 text-white flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div>
+                      <p className="text-xs font-bold text-brand-primary mb-1">{item.category} • {item.year}</p>
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-sm text-gray-100 mb-3">{item.description}</p>
+                    </div>
                     <div className="flex items-center gap-2 text-xs">
                       <MapPin className="w-3 h-3" />
                       <span>{item.location}</span>

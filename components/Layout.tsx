@@ -376,7 +376,7 @@ const Footer: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Office Address</p>
-                    <p className="text-sm text-gray-300">Plot 42, Jubilee Enclave, Hitech City, Hyderabad, 500081</p>
+                    <p className="text-sm text-gray-300">Shop no. 2nd floor, Sampada Women's Complex, Bellary - Uravakonda Rd, beside Power Office, Ganesha Nagar, Ananthapur, Andhra Pradesh 515004</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3 group">
