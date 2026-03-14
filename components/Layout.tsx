@@ -371,8 +371,8 @@ const Footer: React.FC = () => {
               <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">Get In Touch</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3 group">
-                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-primary group-hover:border-brand-primary transition-all">
-                    <MapPin className="w-4 h-4 text-brand-primary group-hover:text-white" />
+                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-white group-hover:border-white transition-all">
+                    <MapPin className="w-4 h-4 text-white group-hover:text-black" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Office Address</p>
@@ -380,8 +380,8 @@ const Footer: React.FC = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-3 group">
-                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-primary group-hover:border-brand-primary transition-all">
-                    <Phone className="w-4 h-4 text-brand-primary group-hover:text-white" />
+                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-white group-hover:border-white transition-all">
+                    <Phone className="w-4 h-4 text-white group-hover:text-black" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Phone Number</p>
@@ -396,8 +396,8 @@ const Footer: React.FC = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-3 group">
-                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-primary group-hover:border-brand-primary transition-all">
-                    <Mail className="w-4 h-4 text-brand-primary group-hover:text-white" />
+                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-white group-hover:border-white transition-all">
+                    <Mail className="w-4 h-4 text-white group-hover:text-black" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email Address</p>
@@ -410,8 +410,8 @@ const Footer: React.FC = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-3 group">
-                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-primary group-hover:border-brand-primary transition-all">
-                    <Clock className="w-4 h-4 text-brand-primary group-hover:text-white" />
+                  <div className="w-10 h-10 bg-white/5 border border-gray-800 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-white group-hover:border-white transition-all">
+                    <Clock className="w-4 h-4 text-white group-hover:text-black" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Working Hours</p>
