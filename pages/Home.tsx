@@ -611,9 +611,9 @@ export const Home: React.FC = () => {
                        <p className="text-[10px] sm:text-xs text-gray-600 truncate">{t.role}</p>
                      </div>
                    </div>
-                   <div className="flex items-center gap-1 bg-green-50 px-1.5 sm:px-2 py-1 rounded-full flex-shrink-0">
-                     <CheckCircle className="w-3 h-3 text-green-600" />
-                     <span className="text-[9px] sm:text-[10px] font-bold text-green-600 uppercase whitespace-nowrap">Verified</span>
+                   <div className="flex items-center gap-1 bg-black px-1.5 sm:px-2 py-1 rounded-full flex-shrink-0">
+                     <CheckCircle className="w-3 h-3 text-white" />
+                     <span className="text-[9px] sm:text-[10px] font-bold text-white uppercase whitespace-nowrap">Verified</span>
                    </div>
                  </div>
                </div>
@@ -787,13 +787,13 @@ export const Home: React.FC = () => {
                  <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-200">
                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-3 sm:mb-4">Certified & Trusted</p>
                    <div className="flex flex-wrap gap-2 sm:gap-4">
-                     <div className="flex items-center gap-1.5 sm:gap-2 bg-green-50 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg">
-                       <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-600 flex-shrink-0" />
-                       <span className="text-[10px] sm:text-xs font-bold text-green-600 whitespace-nowrap">RERA Certified</span>
+                     <div className="flex items-center gap-1.5 sm:gap-2 bg-black px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg">
+                       <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
+                       <span className="text-[10px] sm:text-xs font-bold text-white whitespace-nowrap">RERA Certified</span>
                      </div>
-                     <div className="flex items-center gap-1.5 sm:gap-2 bg-blue-50 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg">
-                       <Award className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0" />
-                       <span className="text-[10px] sm:text-xs font-bold text-blue-600 whitespace-nowrap">ISO 9001:2015</span>
+                     <div className="flex items-center gap-1.5 sm:gap-2 bg-black px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg">
+                       <Award className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
+                       <span className="text-[10px] sm:text-xs font-bold text-white whitespace-nowrap">ISO 9001:2015</span>
                      </div>
                    </div>
                  </div>

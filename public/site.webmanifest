@@ -1,0 +1,23 @@
+{
+  "name": "iConstructions Real Estate",
+  "short_name": "iConstructions",
+  "description": "Leading real estate company in Anantapur offering RERA approved residential, commercial properties & villas",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
+

@@ -464,11 +464,11 @@ export const InteriorDesign: React.FC = () => {
                 <div className="mb-4">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-xs font-bold text-gray-700">Progress</span>
-                    <span className="text-xs font-bold text-brand-primary">{project.progress}%</span>
+                    <span className="text-xs font-bold text-black">{project.progress}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                     <div
-                      className="bg-gradient-to-r from-brand-primary to-amber-600 h-full rounded-full transition-all duration-1000"
+                      className="bg-gradient-to-r from-black to-gray-800 h-full rounded-full transition-all duration-1000"
                       style={{ width: `${project.progress}%` }}
                     />
                   </div>

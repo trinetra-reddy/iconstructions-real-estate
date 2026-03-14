@@ -41,11 +41,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
         {/* Status Badge */}
         <div className="absolute top-4 right-4">
-          <span className={`backdrop-blur-sm text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full ${
-            project.status === 'COMPLETED' ? 'bg-green-500/90 text-white' :
-            project.status === 'ONGOING' ? 'bg-blue-500/90 text-white' :
-            'bg-orange-500/90 text-white'
-          }`}>
+          <span className="backdrop-blur-sm bg-black/90 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-white/20">
             {project.status}
           </span>
         </div>

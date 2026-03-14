@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
+import { Breadcrumb } from '../components/SEO';
 import { PROJECTS } from '../constants';
 import {
   MapPin,
   TrendingUp,
   Building2,
-  Home as HomeIcon,
   CheckCircle,
   Award,
   Phone,
@@ -16,7 +17,6 @@ import {
   IndianRupee,
   Sparkles
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 export const PropertiesInAnantapur: React.FC = () => {
   // Filter projects in Anantapur
@@ -27,6 +27,12 @@ export const PropertiesInAnantapur: React.FC = () => {
   const whatsappNumber = "919666622090";
   const whatsappMessage = "Hi, I'm interested in properties in Anantapur. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  // Breadcrumb data for SEO
+  const breadcrumbItems = [
+    { name: 'Home', url: 'https://iconstructions.in/' },
+    { name: 'Properties in Anantapur', url: 'https://iconstructions.in/properties-in-anantapur' }
+  ];
 
   return (
     <Layout>
@@ -39,12 +45,8 @@ export const PropertiesInAnantapur: React.FC = () => {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
-            <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
-            <span>/</span>
-            <span className="text-brand-highlight">Properties in Anantapur</span>
-          </div>
+          {/* Breadcrumb with Schema */}
+          <Breadcrumb items={breadcrumbItems} />
 
           {/* Main Heading */}
           <div className="text-center mb-12">

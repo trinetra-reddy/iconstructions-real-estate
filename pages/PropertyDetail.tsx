@@ -108,11 +108,7 @@ export const PropertyDetail: React.FC = () => {
           <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 h-fit sticky top-28">
             <div className="mb-8">
               <p className="text-4xl font-bold text-brand-dark mb-3">{project.price}</p>
-              <div className={`inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide ${
-                project.status === 'Ready to Move' ? 'bg-green-100 text-green-800' :
-                project.status === 'Under Construction' ? 'bg-blue-100 text-blue-800' :
-                'bg-orange-100 text-orange-800'
-              }`}>
+              <div className="inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide bg-black text-white border border-gray-200">
                 {project.status}
               </div>
             </div>

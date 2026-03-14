@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Documentation files (exclude from deployment)
+*.md
+!README.md
+
+# Favicon source folder
+favicon_io/
