@@ -13,6 +13,10 @@ import { PropertiesInKadapa } from './pages/PropertiesInKadapa';
 import { VillasInAnantapur } from './pages/VillasInAnantapur';
 import { FlatsInAnantapur } from './pages/FlatsInAnantapur';
 import { CommercialPropertyAnantapur } from './pages/CommercialPropertyAnantapur';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsAndConditions } from './pages/TermsAndConditions';
+import { RERACompliance } from './pages/RERACompliance';
+import { Sitemap } from './pages/Sitemap';
 
 // ScrollToTop component to handle scroll restoration on route changes
 const ScrollToTop: React.FC = () => {
@@ -47,6 +51,12 @@ const App: React.FC = () => {
         <Route path="/villas-in-anantapur" element={<VillasInAnantapur />} />
         <Route path="/flats-in-anantapur" element={<FlatsInAnantapur />} />
         <Route path="/commercial-property-anantapur" element={<CommercialPropertyAnantapur />} />
+
+        {/* Legal & Compliance Pages */}
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsAndConditions />} />
+        <Route path="/rera-compliance" element={<RERACompliance />} />
+        <Route path="/sitemap" element={<Sitemap />} />
       </Routes>
     </Router>
   );

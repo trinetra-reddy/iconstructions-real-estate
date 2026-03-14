@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, Instagram, Linkedin, Facebook, MapPin, Building2, MessageCircle, Clock, Award, Send, ArrowRight, Twitter, Youtube } from 'lucide-react';
+import { Menu, X, Phone, Mail, Instagram, MapPin, Building2, MessageCircle, Clock, Award, ArrowRight, Youtube } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 import {
   buttonSecondary,
@@ -154,11 +154,11 @@ const Navbar: React.FC = () => {
                   <span>+91 93472 44397</span>
                 </a>
                 <a
-                  href="mailto:hello@iconstructions.com"
+                  href="mailto:hello@iconstructions.in"
                   className="flex items-center justify-center gap-3 text-gray-300 hover:text-white transition-colors py-2.5 text-sm"
                 >
                   <Mail className="w-4 h-4" />
-                  <span className="text-sm">hello@iconstructions.com</span>
+                  <span className="text-sm">hello@iconstructions.in</span>
                 </a>
               </div>
             </div>
@@ -170,62 +170,12 @@ const Navbar: React.FC = () => {
 };
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter subscription
-    alert(`Thank you for subscribing with: ${email}`);
-    setEmail('');
-  };
-
   return (
     <footer className="relative bg-black text-white overflow-hidden border-t border-gray-800">
       {/* Subtle Decorative Elements */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-      </div>
-
-      {/* Newsletter Section */}
-      <div className="relative border-b border-gray-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-4">
-                <span className="text-white text-xs font-bold uppercase tracking-widest">Stay Updated</span>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-serif font-bold mb-3">
-                Get Exclusive <span className="italic text-gray-300">Property Updates</span>
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Subscribe to our newsletter for the latest property launches, investment opportunities, and real estate insights in Andhra Pradesh & Telangana.
-              </p>
-            </div>
-
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
-              <div className="flex-1 relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  aria-label="Email address for newsletter"
-                  required
-                  className="w-full pl-12 pr-4 py-4 bg-white/5 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors"
-                />
-              </div>
-              <button
-                type="submit"
-                className={buttonSecondary}
-              >
-                Subscribe
-                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          </div>
-        </div>
       </div>
 
       {/* Main Footer Content */}
@@ -267,20 +217,11 @@ const Footer: React.FC = () => {
               <div>
                 <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">Follow Us</p>
                 <div className="flex gap-3">
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Facebook className="w-4 h-4 text-gray-300 group-hover:text-black" />
-                  </a>
-                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <a href="https://www.instagram.com/iconstructionanathapur/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <Instagram className="w-4 h-4 text-gray-300 group-hover:text-black" />
                   </a>
-                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Linkedin className="w-4 h-4 text-gray-300 group-hover:text-white" />
-                  </a>
-                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Twitter className="w-4 h-4 text-gray-300 group-hover:text-white" />
-                  </a>
-                  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Youtube className="w-4 h-4 text-gray-300 group-hover:text-white" />
+                  <a href="https://www.youtube.com/@iconstruction-h1f" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
+                    <Youtube className="w-4 h-4 text-gray-300 group-hover:text-black" />
                   </a>
                 </div>
               </div>
@@ -389,7 +330,7 @@ const Footer: React.FC = () => {
                       href="https://wa.me/919347244397"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-gray-300 hover:text-brand-primary transition-colors"
+                      className="text-sm text-gray-300 transition-colors"
                     >
                       +91 93472 44397
                     </a>
@@ -402,10 +343,10 @@ const Footer: React.FC = () => {
                   <div>
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email Address</p>
                     <a
-                      href="mailto:hello@iconstructions.com"
-                      className="text-sm text-gray-300 hover:text-brand-primary transition-colors"
+                      href="mailto:hello@iconstructions.in"
+                      className="text-sm text-gray-300 transition-colors"
                     >
-                      hello@iconstructions.com
+                      hello@iconstructions.in
                     </a>
                   </div>
                 </li>
@@ -429,10 +370,10 @@ const Footer: React.FC = () => {
                 &copy; {new Date().getFullYear()} <span className="text-white font-semibold">iConstructions Real Estate</span>. All rights reserved.
               </p>
               <div className="flex flex-wrap gap-6 text-xs text-gray-400">
-                <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                <Link to="#" className="hover:text-white transition-colors">Terms & Conditions</Link>
-                <Link to="#" className="hover:text-white transition-colors">RERA Compliance</Link>
-                <Link to="#" className="hover:text-white transition-colors">Sitemap</Link>
+                <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                <Link to="/terms-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
+                <Link to="/rera-compliance" className="hover:text-white transition-colors">RERA Compliance</Link>
+                <Link to="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
               </div>
             </div>
           </div>
@@ -446,7 +387,7 @@ const Footer: React.FC = () => {
                   href="https://ananthadigital.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-primary font-bold hover:text-amber-500 transition-colors"
+                  className="text-brand-highlight font-bold hover:text-amber-500 transition-colors"
                 >
                   Anantha Web Solutions Pvt Ltd
                 </a>
@@ -455,7 +396,7 @@ const Footer: React.FC = () => {
                 Software Development & Marketing Services:{' '}
                 <a
                   href="tel:+919963789858"
-                  className="text-brand-primary font-bold hover:text-amber-500 transition-colors"
+                  className="text-brand-highlight font-bold hover:text-amber-500 transition-colors"
                 >
                   +91 99637 89858
                 </a>
@@ -476,7 +417,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Navbar />
-      <main className="flex-grow overflow-x-hidden">
+      <main className="flex-grow overflow-x-hidden pt-24">
         {children}
       </main>
       <Footer />

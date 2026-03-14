@@ -135,7 +135,7 @@ export const PropertyDetail: React.FC = () => {
                 Call Now
               </a>
               <a
-                href="mailto:hello@iconstructions.com"
+                href="mailto:hello@iconstructions.in"
                 className={`${buttonOutline} py-3 sm:py-4`}
               >
                 <Mail className="w-5 h-5" />

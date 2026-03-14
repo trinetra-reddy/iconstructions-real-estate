@@ -757,10 +757,10 @@ export const Home: React.FC = () => {
                      <div className="min-w-0">
                        <p className="font-bold text-black mb-1 text-sm sm:text-base">Email Us</p>
                        <a
-                         href="mailto:hello@iconstructions.com"
+                         href="mailto:hello@iconstructions.in"
                          className="text-gray-600 text-xs sm:text-sm hover:text-black transition-colors block truncate"
                        >
-                         hello@iconstructions.com
+                         hello@iconstructions.in
                        </a>
                        <a
                          href="mailto:sales@iconstructions.com"

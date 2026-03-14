@@ -109,10 +109,10 @@ export const Contact: React.FC = () => {
                   <div>
                     <h4 className="font-bold text-brand-dark mb-2 text-lg">Email Us</h4>
                     <a
-                      href="mailto:hello@iconstructions.com"
+                      href="mailto:hello@iconstructions.in"
                       className="text-gray-600 hover:text-brand-primary transition-colors block font-semibold"
                     >
-                      hello@iconstructions.com
+                      hello@iconstructions.in
                     </a>
                     <p className="text-gray-500 text-xs mt-1">We'll respond within 24 hours</p>
                   </div>
