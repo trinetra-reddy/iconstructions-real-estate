@@ -466,10 +466,10 @@ export const Home: React.FC = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
             {[
-              { city: 'Anantapur', url: '/properties-in-anantapur', projects: '12+ Projects', image: '/images/image2.jpg' },
+              { city: 'Anantapur', url: '/properties-in-anantapur', projects: '12+ Projects', image: '/images/image5.jpg' },
               { city: 'Hyderabad', url: '/properties-in-hyderabad', projects: '8+ Projects', image: '/images/image3.jpg' },
               { city: 'Kurnool', url: '/properties-in-kurnool', projects: 'Coming Soon', image: '/images/image4.jpg' },
-              { city: 'Kadapa', url: '/properties-in-kadapa', projects: 'Coming Soon', image: '/images/image5.jpg' }
+              { city: 'Kadapa', url: '/properties-in-kadapa', projects: 'Coming Soon', image: '/images/image7.jpg' }
             ].map((location, index) => (
               <Link
                 key={index}
