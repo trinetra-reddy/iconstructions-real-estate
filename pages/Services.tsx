@@ -74,7 +74,7 @@ export const Services: React.FC = () => {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           {/* Breadcrumb */}
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-400 mb-6 animate-fade-in">
+          <div className="flex items-center justify-center gap-2 text-sm text-gray-300 mb-6 animate-fade-in">
             <a href="/" className="hover:text-brand-primary transition-colors">Home</a>
             <span>/</span>
             <span className="text-brand-primary">Services</span>
@@ -213,7 +213,7 @@ export const Services: React.FC = () => {
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-serif">
                   {stat.value}
                 </div>
-                <div className="text-gray-400 text-sm uppercase tracking-wider">
+                <div className="text-gray-300 text-sm uppercase tracking-wider">
                   {stat.label}
                 </div>
               </div>

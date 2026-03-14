@@ -64,7 +64,7 @@ export const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         {/* Category Filters */}
         <div className="mb-10 sm:mb-12">
-          <h3 className="text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Category</h3>
+          <h3 className="text-xs sm:text-sm font-bold text-gray-300 uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Category</h3>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {categories.map((cat) => (
               <button
@@ -80,7 +80,7 @@ export const Projects: React.FC = () => {
 
         {/* Status Filters */}
         <div className="mb-12 sm:mb-16">
-          <h3 className="text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Status</h3>
+          <h3 className="text-xs sm:text-sm font-bold text-gray-300 uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Status</h3>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {statuses.map((status) => (
               <button

@@ -140,7 +140,7 @@ export const buttonFilterPill = `
 `.trim().replace(/\s+/g, ' ');
 
 export const buttonFilterPillActive = `${buttonFilterPill} bg-black text-white border-black shadow-lg`;
-export const buttonFilterPillInactive = `${buttonFilterPill} bg-black text-gray-400 border-gray-700 hover:bg-gray-900 hover:text-white hover:border-white hover:scale-105`;
+export const buttonFilterPillInactive = `${buttonFilterPill} bg-black text-gray-300 border-gray-700 hover:bg-gray-900 hover:text-white hover:border-white hover:scale-105`;
 
 /**
  * ICON BUTTON (Navigation arrows, etc.)

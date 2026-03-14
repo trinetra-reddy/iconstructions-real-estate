@@ -268,19 +268,19 @@ const Footer: React.FC = () => {
                 <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">Follow Us</p>
                 <div className="flex gap-3">
                   <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Facebook className="w-4 h-4 text-gray-400 group-hover:text-black" />
+                    <Facebook className="w-4 h-4 text-gray-300 group-hover:text-black" />
                   </a>
                   <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Instagram className="w-4 h-4 text-gray-400 group-hover:text-black" />
+                    <Instagram className="w-4 h-4 text-gray-300 group-hover:text-black" />
                   </a>
                   <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="w-10 h-10 bg-white/5 hover:bg-white border border-gray-800 hover:border-white rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Linkedin className="w-4 h-4 text-gray-400 group-hover:text-white" />
+                    <Linkedin className="w-4 h-4 text-gray-300 group-hover:text-white" />
                   </a>
                   <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Twitter className="w-4 h-4 text-gray-400 group-hover:text-white" />
+                    <Twitter className="w-4 h-4 text-gray-300 group-hover:text-white" />
                   </a>
                   <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" className="w-10 h-10 bg-white/5 hover:bg-brand-primary border border-gray-800 hover:border-brand-primary rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <Youtube className="w-4 h-4 text-gray-400 group-hover:text-white" />
+                    <Youtube className="w-4 h-4 text-gray-300 group-hover:text-white" />
                   </a>
                 </div>
               </div>
@@ -291,31 +291,31 @@ const Footer: React.FC = () => {
               <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">Quick Links</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/projects" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/projects" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Our Projects
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/services" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/contact" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="#" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     About Us
                   </Link>
@@ -328,37 +328,37 @@ const Footer: React.FC = () => {
               <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">Properties by Location</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/properties-in-anantapur" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-anantapur" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Anantapur
                   </Link>
                 </li>
                 <li>
-                  <Link to="/properties-in-hyderabad" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-hyderabad" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Hyderabad
                   </Link>
                 </li>
                 <li>
-                  <Link to="/properties-in-kurnool" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-kurnool" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Kurnool
                   </Link>
                 </li>
                 <li>
-                  <Link to="/properties-in-kadapa" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-kadapa" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Kadapa
                   </Link>
                 </li>
                 <li>
-                  <Link to="/villas-in-anantapur" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/villas-in-anantapur" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Villas in Anantapur
                   </Link>
                 </li>
                 <li>
-                  <Link to="/flats-in-anantapur" className="text-gray-400 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/flats-in-anantapur" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Flats in Anantapur
                   </Link>
@@ -375,7 +375,7 @@ const Footer: React.FC = () => {
                     <MapPin className="w-4 h-4 text-brand-primary group-hover:text-white" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Office Address</p>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Office Address</p>
                     <p className="text-sm text-gray-300">Shop no. 2nd floor, Sampada Women's Complex, Bellary - Uravakonda Rd, beside Power Office, Ganesha Nagar, Ananthapur, Andhra Pradesh 515004</p>
                   </div>
                 </li>
@@ -384,7 +384,7 @@ const Footer: React.FC = () => {
                     <Phone className="w-4 h-4 text-brand-primary group-hover:text-white" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Phone Number</p>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Phone Number</p>
                     <a
                       href="https://wa.me/919347244397"
                       target="_blank"
@@ -400,7 +400,7 @@ const Footer: React.FC = () => {
                     <Mail className="w-4 h-4 text-brand-primary group-hover:text-white" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Email Address</p>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email Address</p>
                     <a
                       href="mailto:hello@iconstructions.com"
                       className="text-sm text-gray-300 hover:text-brand-primary transition-colors"
@@ -414,7 +414,7 @@ const Footer: React.FC = () => {
                     <Clock className="w-4 h-4 text-brand-primary group-hover:text-white" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Working Hours</p>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Working Hours</p>
                     <p className="text-sm text-gray-300">Mon - Sat: 9:00 AM - 7:00 PM</p>
                   </div>
                 </li>
@@ -425,10 +425,10 @@ const Footer: React.FC = () => {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-gray-800/50">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 &copy; {new Date().getFullYear()} <span className="text-brand-primary font-semibold">iConstructions Real Estate</span>. All rights reserved.
               </p>
-              <div className="flex flex-wrap gap-6 text-xs text-gray-500">
+              <div className="flex flex-wrap gap-6 text-xs text-gray-400">
                 <Link to="#" className="hover:text-brand-primary transition-colors">Privacy Policy</Link>
                 <Link to="#" className="hover:text-brand-primary transition-colors">Terms & Conditions</Link>
                 <Link to="#" className="hover:text-brand-primary transition-colors">RERA Compliance</Link>

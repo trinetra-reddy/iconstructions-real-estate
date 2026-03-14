@@ -211,7 +211,7 @@ export const Home: React.FC = () => {
             {STATS.map((stat, idx) => (
               <div key={idx} className="text-center">
                 <p className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-1">{stat.value}</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-400">{stat.label}</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-300">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -459,7 +459,7 @@ export const Home: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold mt-3 sm:mt-4 mb-3 sm:mb-4 px-4">
               Find Properties in <span className="italic text-gray-300">Your City</span>
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4">
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4">
               Discover RERA approved residential, commercial, and luxury properties across Andhra Pradesh and Telangana
             </p>
           </div>
@@ -662,7 +662,7 @@ export const Home: React.FC = () => {
                        onClick={() => toggleAccordion(index)}
                      >
                        <span className="font-serif text-sm sm:text-lg text-black flex-1">{faq.question}</span>
-                       {activeAccordion === index ? <Minus className="w-4 h-4 text-black flex-shrink-0 mt-1" /> : <Plus className="w-4 h-4 text-gray-400 flex-shrink-0 mt-1" />}
+                       {activeAccordion === index ? <Minus className="w-4 h-4 text-black flex-shrink-0 mt-1" /> : <Plus className="w-4 h-4 text-gray-600 flex-shrink-0 mt-1" />}
                      </button>
                      <div className={`overflow-hidden transition-all duration-300 ${activeAccordion === index ? 'max-h-40 mt-3 sm:mt-4' : 'max-h-0'}`}>
                        <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">{faq.answer}</p>

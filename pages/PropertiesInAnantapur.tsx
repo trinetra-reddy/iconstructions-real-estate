@@ -40,7 +40,7 @@ export const PropertiesInAnantapur: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
+          <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
             <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
             <span>/</span>
             <span className="text-brand-primary">Properties in Anantapur</span>

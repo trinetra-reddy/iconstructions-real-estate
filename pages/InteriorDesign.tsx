@@ -198,21 +198,21 @@ export const InteriorDesign: React.FC = () => {
               <Award className="w-6 h-6 text-brand-primary" />
               <div className="text-left">
                 <p className="text-white font-bold text-lg">500+</p>
-                <p className="text-gray-400 text-xs">Interiors Designed</p>
+                <p className="text-gray-300 text-xs">Interiors Designed</p>
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
               <Users className="w-6 h-6 text-brand-primary" />
               <div className="text-left">
                 <p className="text-white font-bold text-lg">15+</p>
-                <p className="text-gray-400 text-xs">Years Experience</p>
+                <p className="text-gray-300 text-xs">Years Experience</p>
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
               <Target className="w-6 h-6 text-brand-primary" />
               <div className="text-left">
                 <p className="text-white font-bold text-lg">Award</p>
-                <p className="text-gray-400 text-xs">Winning Designs</p>
+                <p className="text-gray-300 text-xs">Winning Designs</p>
               </div>
             </div>
           </div>
@@ -776,19 +776,19 @@ export const InteriorDesign: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-white/10">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">500+</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">Projects Completed</div>
+                <div className="text-sm text-gray-300 uppercase tracking-wide">Projects Completed</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">15+</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">Years Experience</div>
+                <div className="text-sm text-gray-300 uppercase tracking-wide">Years Experience</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">98%</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">Client Satisfaction</div>
+                <div className="text-sm text-gray-300 uppercase tracking-wide">Client Satisfaction</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">24/7</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">Support Available</div>
+                <div className="text-sm text-gray-300 uppercase tracking-wide">Support Available</div>
               </div>
             </div>
           </div>
