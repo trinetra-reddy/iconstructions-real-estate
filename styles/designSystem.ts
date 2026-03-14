@@ -129,6 +129,9 @@ export const buttonOutline = `
  * FILTER PILL BUTTON
  * Use for: Filter/category selection
  * Examples: Property filters, category tabs
+ *
+ * Active: Solid black background with white text (clearly selected)
+ * Inactive: Transparent background with black border and text (outline style)
  */
 export const buttonFilterPill = `
   px-4 sm:px-6 py-2 sm:py-3
@@ -139,8 +142,8 @@ export const buttonFilterPill = `
   flex items-center justify-center gap-2
 `.trim().replace(/\s+/g, ' ');
 
-export const buttonFilterPillActive = `${buttonFilterPill} bg-black text-white border-black shadow-lg`;
-export const buttonFilterPillInactive = `${buttonFilterPill} bg-black text-gray-300 border-gray-700 hover:bg-gray-900 hover:text-white hover:border-white hover:scale-105`;
+export const buttonFilterPillActive = `${buttonFilterPill} bg-black text-white border-black shadow-lg hover:shadow-xl hover:scale-105`;
+export const buttonFilterPillInactive = `${buttonFilterPill} bg-transparent text-black border-black hover:bg-black/5 hover:scale-105`;
 
 /**
  * ICON BUTTON (Navigation arrows, etc.)

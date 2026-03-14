@@ -31,13 +31,13 @@ export const PropertiesInHyderabad: React.FC = () => {
 
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-brand-primary" />
-              <span className="text-brand-primary font-bold tracking-widest uppercase text-xs">IT Hub</span>
-              <Sparkles className="w-5 h-5 text-brand-primary" />
+              <Sparkles className="w-5 h-5 text-white" />
+              <span className="text-white font-bold tracking-widest uppercase text-xs">IT Hub</span>
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              Properties for Sale in <span className="italic text-brand-primary">Hyderabad</span>
+              Properties for Sale in <span className="italic text-white">Hyderabad</span>
             </h1>
             
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
@@ -105,7 +105,7 @@ export const PropertiesInHyderabad: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Link to="/projects" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary hover:bg-brand-dark text-white font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+            <Link to="/projects" className="inline-flex items-center gap-2 px-8 py-4 bg-black hover:bg-gray-900 text-white font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl border border-white/20">
               View All Projects
               <ArrowRight className="w-5 h-5" />
             </Link>
@@ -117,7 +117,7 @@ export const PropertiesInHyderabad: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-brand-dark to-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Ready to Invest in <span className="italic text-brand-primary">Hyderabad?</span>
+            Ready to Invest in <span className="italic text-white">Hyderabad?</span>
           </h2>
           <p className="text-gray-300 text-lg mb-10">
             Contact us for expert guidance on Hyderabad real estate investments.

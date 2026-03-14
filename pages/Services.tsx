@@ -14,14 +14,20 @@ import {
   Sparkles,
   Target,
   Shield,
-  Zap
+  Zap,
+  HardHat,
+  KeyRound,
+  Coins
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ReactNode> = {
   Home: <Home className="w-10 h-10" />,
   Hammer: <Hammer className="w-10 h-10" />,
   Building2: <Building2 className="w-10 h-10" />,
-  TrendingUp: <TrendingUp className="w-10 h-10" />
+  TrendingUp: <TrendingUp className="w-10 h-10" />,
+  HardHat: <HardHat className="w-10 h-10" />,
+  KeyRound: <KeyRound className="w-10 h-10" />,
+  Coins: <Coins className="w-10 h-10" />
 };
 
 // Hook for scroll-triggered animations
@@ -67,9 +73,9 @@ export const Services: React.FC = () => {
       <div className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark pt-32 pb-24 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-brand-primary/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-3xl" />
+          <div className="absolute top-20 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
@@ -77,18 +83,18 @@ export const Services: React.FC = () => {
           <div className="flex items-center justify-center gap-2 text-sm text-gray-300 mb-6 animate-fade-in">
             <a href="/" className="hover:text-brand-primary transition-colors">Home</a>
             <span>/</span>
-            <span className="text-brand-primary">Services</span>
+            <span className="text-brand-highlight">Services</span>
           </div>
 
           {/* Main Heading with Stagger Animation */}
           <div className="space-y-4 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-              <Sparkles className="w-4 h-4 text-brand-primary" />
-              <span className="text-xs font-bold text-brand-primary tracking-widest uppercase">Premium Services</span>
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-white" />
+              <span className="text-xs font-bold text-white tracking-widest uppercase">Premium Services</span>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              Our <span className="italic text-brand-primary">Expertise</span>
+              Our <span className="italic text-white">Expertise</span>
             </h1>
 
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -342,7 +348,7 @@ export const Services: React.FC = () => {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-            Ready to Build Your <span className="italic text-brand-primary">Dream Project?</span>
+            Ready to Build Your <span className="italic text-brand-highlight">Dream Project?</span>
           </h2>
 
           <p className="text-xl text-gray-300 mb-10 leading-relaxed">

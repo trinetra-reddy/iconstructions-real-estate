@@ -54,13 +54,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {project.priceStart && (
           <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg">
             <p className="text-xs text-gray-700 uppercase tracking-wider">Starting From</p>
-            <p className="text-xl font-bold text-brand-primary">{project.priceStart}</p>
+            <p className="text-xl font-bold text-black">{project.priceStart}</p>
           </div>
         )}
 
         {/* Quick View Button */}
         <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button aria-label={`Quick view ${project.title}`} className="bg-white text-brand-dark p-3 rounded-full hover:bg-brand-primary hover:text-white transition-colors">
+          <button aria-label={`Quick view ${project.title}`} className="bg-white text-black p-3 rounded-full hover:bg-black hover:text-white transition-colors">
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -100,7 +100,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           )}
 
           {/* CTA */}
-          <button className="w-full py-3 border-2 border-gray-200 rounded-full text-sm font-bold uppercase tracking-wide text-brand-dark hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="w-full py-3 border-2 border-gray-200 rounded-full text-sm font-bold uppercase tracking-wide text-black hover:bg-black hover:text-white hover:border-black transition-all duration-300 flex items-center justify-center gap-2">
             View Details
             <ArrowRight className="w-4 h-4" />
           </button>

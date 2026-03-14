@@ -7,10 +7,11 @@ export const Contact: React.FC = () => {
   const whatsappMessage = "Hi, I'm interested in your properties. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-  // Office location coordinates (Anantapur)
+  // Office location coordinates (Sampada Banquet Hall, Anantapur)
   const officeAddress = "Shop no. 2nd floor, Sampada Women's Complex, Bellary - Uravakonda Rd, beside Power Office, Ganesha Nagar, Ananthapur, Andhra Pradesh 515004";
-  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=Sampada+Women's+Complex+Ananthapur+515004";
-  const googleMapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3614!2d77.6006!3d14.6819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDQwJzU0LjMiTiA3N8KwMzYnMDIuMiJF!5e0!3m2!1sen!2sin!4v1234567890";
+  const googleMapsUrl = "https://www.google.com/maps/place/SAMPADA+BANQUET+HALL/@14.688120974926546,77.57731107578253,15z";
+  // Embed URL - clean map view without default info card popup
+  const googleMapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4628.3037304520885!2d77.57731107578253!3d14.688120974926546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb14b09cf23cddd%3A0x86a8a059eb466bc9!2sSAMPADA%20BANQUET%20HALL!5e1!3m2!1sen!2sin!4v1773468893174!5m2!1sen!2sin";
 
   return (
     <Layout>
@@ -29,7 +30,7 @@ export const Contact: React.FC = () => {
             <Sparkles className="w-5 h-5 text-brand-primary" />
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">
-            Let's Build Your <span className="italic text-brand-primary">Dream</span>
+            Let's Build Your <span className="italic text-brand-highlight">Dream</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto px-4 leading-relaxed">
             Have a project in mind? Visit our office or connect with us instantly. We're here to bring your vision to life with expertise and dedication.
@@ -264,15 +265,7 @@ export const Contact: React.FC = () => {
                       Ananthapur, Andhra Pradesh 515004
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      <a
-                        href={googleMapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-brand-primary hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-all hover:gap-3 shadow-lg"
-                      >
-                        <Navigation className="w-4 h-4" />
-                        Get Directions
-                      </a>
+                     
                       <a
                         href={whatsappUrl}
                         target="_blank"

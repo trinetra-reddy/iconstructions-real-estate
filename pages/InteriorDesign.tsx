@@ -170,21 +170,21 @@ export const InteriorDesign: React.FC = () => {
 
         {/* Animated Overlay Elements */}
         <div className="absolute inset-0 z-10 opacity-20">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-brand-primary rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-amber-500 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-gray-400 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Premium Badge */}
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-5 h-5 text-brand-primary animate-pulse" />
-            <span className="text-brand-primary font-bold tracking-widest uppercase text-xs">Premium Interior Design</span>
-            <Sparkles className="w-5 h-5 text-brand-primary animate-pulse" />
+            <Sparkles className="w-5 h-5 text-white animate-pulse" />
+            <span className="text-white font-bold tracking-widest uppercase text-xs">Premium Interior Design</span>
+            <Sparkles className="w-5 h-5 text-white animate-pulse" />
           </div>
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-            Transform Your <span className="italic text-brand-primary">Space</span><br />
+            Transform Your <span className="italic text-white">Space</span><br />
             Into a Masterpiece
           </h1>
 
@@ -195,14 +195,14 @@ export const InteriorDesign: React.FC = () => {
           {/* Trust Badges */}
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 mb-10">
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-              <Award className="w-6 h-6 text-brand-primary" />
+              <Award className="w-6 h-6 text-white" />
               <div className="text-left">
                 <p className="text-white font-bold text-lg">500+</p>
                 <p className="text-gray-300 text-xs">Interiors Designed</p>
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-              <Users className="w-6 h-6 text-brand-primary" />
+              <Users className="w-6 h-6 text-white" />
               <div className="text-left">
                 <p className="text-white font-bold text-lg">15+</p>
                 <p className="text-gray-300 text-xs">Years Experience</p>
@@ -223,7 +223,7 @@ export const InteriorDesign: React.FC = () => {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group px-8 py-4 bg-gradient-to-r from-brand-primary to-amber-600 hover:from-amber-600 hover:to-brand-primary text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-brand-primary/50 hover:scale-105 flex items-center gap-3"
+              className="group px-8 py-4 bg-black hover:bg-gray-900 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-black/50 hover:scale-105 flex items-center gap-3 border border-white/20"
             >
               <Send className="w-5 h-5 group-hover:rotate-45 transition-transform" />
               Schedule Design Consultation
@@ -258,7 +258,7 @@ export const InteriorDesign: React.FC = () => {
           {INTERIOR_SERVICES.map((service, index) => (
             <div
               key={service.id}
-              className={`group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary cursor-pointer transform hover:-translate-y-2 ${
+              className={`group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-black cursor-pointer transform hover:-translate-y-2 ${
                 servicesAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
@@ -266,15 +266,15 @@ export const InteriorDesign: React.FC = () => {
               onMouseLeave={() => setActiveService(null)}
             >
               {/* Gradient Overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-amber-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className={`absolute inset-0 bg-gradient-to-br from-black/5 to-gray-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
               {/* Icon */}
-              <div className="relative mb-4 p-4 bg-gradient-to-br from-brand-primary to-amber-600 rounded-xl text-white inline-block group-hover:scale-110 transition-transform duration-300">
+              <div className="relative mb-4 p-4 bg-black rounded-xl text-white inline-block group-hover:scale-110 transition-transform duration-300">
                 {iconMap[service.iconName]}
               </div>
 
               {/* Content */}
-              <h3 className="relative text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-primary transition-colors">
+              <h3 className="relative text-xl font-bold text-brand-dark mb-3 group-hover:text-black transition-colors">
                 {service.title}
               </h3>
               <p className="relative text-sm text-gray-600 mb-4 leading-relaxed">
@@ -313,13 +313,13 @@ export const InteriorDesign: React.FC = () => {
         className="bg-gradient-to-b from-white via-gray-50 to-white py-24 relative"
       >
         {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-black/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gray-400/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <span className="text-brand-primary font-bold tracking-widest uppercase text-sm">Our Work</span>
+            <span className="text-black font-bold tracking-widest uppercase text-sm">Our Work</span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mt-3 mb-4">
-              Design <span className="italic text-brand-primary">Portfolio</span>
+              Design <span className="italic text-black">Portfolio</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-8">
               Explore our collection of completed projects showcasing diverse styles and exceptional craftsmanship.
@@ -333,8 +333,8 @@ export const InteriorDesign: React.FC = () => {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 ${
                     selectedCategory === cat
-                      ? 'bg-gradient-to-r from-brand-primary to-amber-600 text-white shadow-xl shadow-brand-primary/30 scale-105'
-                      : 'bg-brand-dark text-white border-2 border-brand-dark hover:border-brand-primary hover:bg-brand-primary/10 hover:scale-105 shadow-md'
+                      ? 'bg-black text-white shadow-xl shadow-black/30 scale-105 border-2 border-white'
+                      : 'bg-brand-dark text-white border-2 border-gray-700 hover:border-white hover:bg-gray-900 hover:scale-105 shadow-md'
                   }`}
                 >
                   {cat}
@@ -449,7 +449,7 @@ export const InteriorDesign: React.FC = () => {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-primary transition-colors">
+                <h3 className="text-2xl font-bold text-brand-dark mb-2 group-hover:text-black transition-colors">
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
@@ -508,7 +508,7 @@ export const InteriorDesign: React.FC = () => {
           <div className="text-center mb-16">
             <span className="text-brand-primary font-bold tracking-widest uppercase text-sm">How We Work</span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-3 mb-4">
-              Our Design <span className="italic text-brand-primary">Process</span>
+              Our Design <span className="italic text-brand-highlight">Process</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto mb-6">
               A systematic approach from concept to completion, ensuring your vision becomes reality.
@@ -586,8 +586,8 @@ export const InteriorDesign: React.FC = () => {
                 key={idx}
                 className={`group relative bg-white/5 backdrop-blur-md rounded-2xl p-8 border-2 transition-all duration-700 ${
                   activeProcessStep === idx
-                    ? 'border-brand-primary bg-gradient-to-br from-brand-primary/20 to-amber-600/20 shadow-2xl shadow-brand-primary/50 scale-105 -translate-y-2'
-                    : 'border-white/10 hover:border-brand-primary/50 hover:bg-white/10 hover:scale-102 hover:-translate-y-1'
+                    ? 'border-white bg-gradient-to-br from-black/20 to-gray-600/20 shadow-2xl shadow-black/50 scale-105 -translate-y-2'
+                    : 'border-white/10 hover:border-white/50 hover:bg-white/10 hover:scale-102 hover:-translate-y-1'
                 } ${processAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${idx * 100}ms` }}
                 onMouseEnter={() => setIsPaused(true)}
@@ -595,14 +595,14 @@ export const InteriorDesign: React.FC = () => {
               >
                 {/* Active Indicator Glow */}
                 {activeProcessStep === idx && (
-                  <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary to-amber-600 rounded-2xl opacity-20 blur-xl animate-pulse" />
+                  <div className="absolute -inset-1 bg-black rounded-2xl opacity-20 blur-xl animate-pulse" />
                 )}
 
                 {/* Step Number */}
                 <div className={`absolute -top-4 -right-4 w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg transition-all duration-500 ${
                   activeProcessStep === idx
-                    ? 'bg-gradient-to-br from-brand-primary to-amber-600 scale-125 shadow-2xl shadow-brand-primary/50'
-                    : 'bg-gradient-to-br from-gray-600 to-gray-700 group-hover:bg-gradient-to-br group-hover:from-brand-primary/70 group-hover:to-amber-600/70 group-hover:scale-110'
+                    ? 'bg-black scale-125 shadow-2xl shadow-black/50'
+                    : 'bg-gradient-to-br from-gray-600 to-gray-700 group-hover:bg-black group-hover:scale-110'
                 }`}>
                   {item.step}
                 </div>
@@ -610,16 +610,14 @@ export const InteriorDesign: React.FC = () => {
                 {/* Icon */}
                 <div className={`mb-6 p-4 rounded-xl inline-block transition-all duration-500 ${
                   activeProcessStep === idx
-                    ? 'bg-gradient-to-br from-brand-primary to-amber-600 text-white scale-110 shadow-lg shadow-brand-primary/50'
-                    : 'bg-gradient-to-br from-brand-primary/20 to-amber-600/20 text-brand-primary group-hover:bg-gradient-to-br group-hover:from-brand-primary/40 group-hover:to-amber-600/40 group-hover:scale-110 group-hover:shadow-md'
+                    ? 'bg-black text-white scale-110 shadow-lg shadow-black/50'
+                    : 'bg-black/20 text-white group-hover:bg-black/40 group-hover:scale-110 group-hover:shadow-md'
                 }`}>
                   {item.icon}
                 </div>
 
                 {/* Content */}
-                <h4 className={`text-2xl font-bold mb-3 transition-colors duration-500 ${
-                  activeProcessStep === idx ? 'text-brand-primary' : 'text-white group-hover:text-brand-primary'
-                }`}>
+                <h4 className="text-2xl font-bold mb-3 text-white transition-colors duration-500">
                   {item.title}
                 </h4>
                 <p className={`mb-4 leading-relaxed transition-colors duration-500 ${
@@ -674,9 +672,9 @@ export const InteriorDesign: React.FC = () => {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
       >
         <div className="text-center mb-16">
-          <span className="text-brand-primary font-bold tracking-widest uppercase text-sm">Design Styles</span>
+          <span className="text-black font-bold tracking-widest uppercase text-sm">Design Styles</span>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mt-3 mb-4">
-            Explore Our <span className="italic text-brand-primary">Signature Styles</span>
+            Explore Our <span className="italic text-black">Signature Styles</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             From modern minimalism to traditional elegance, we master diverse design aesthetics to match your personality.
@@ -718,7 +716,7 @@ export const InteriorDesign: React.FC = () => {
                   {style.features.map((feature, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-gray-600 group-hover:border-brand-primary group-hover:text-brand-primary transition-colors"
+                      className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium text-gray-600 group-hover:border-brand-primary group-hover:text-black transition-colors"
                     >
                       {feature}
                     </span>
@@ -737,16 +735,16 @@ export const InteriorDesign: React.FC = () => {
       >
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-96 h-96 bg-brand-primary rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-500 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-10 left-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-gray-400 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className={`${ctaAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <Sparkles className="w-12 h-12 text-brand-primary mx-auto mb-6 animate-pulse" />
+            <Sparkles className="w-12 h-12 text-white mx-auto mb-6 animate-pulse" />
             <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
               Ready to Transform <br />
-              <span className="italic text-brand-primary">Your Space?</span>
+              <span className="italic text-white">Your Space?</span>
             </h2>
             <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
               Schedule a free design consultation with our expert interior designers. Let's bring your vision to life with creativity, precision, and passion.
@@ -758,7 +756,7 @@ export const InteriorDesign: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-10 py-5 bg-gradient-to-r from-brand-primary to-amber-600 hover:from-amber-600 hover:to-brand-primary text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-brand-primary/50 hover:scale-105 flex items-center gap-3"
+                className="group px-10 py-5 bg-black hover:bg-gray-900 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-black/50 hover:scale-105 flex items-center gap-3 border border-white/20"
               >
                 <Send className="w-5 h-5 group-hover:rotate-45 transition-transform" />
                 Get Free Consultation
@@ -775,19 +773,19 @@ export const InteriorDesign: React.FC = () => {
             {/* Trust Indicators */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-white/10">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">500+</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
                 <div className="text-sm text-gray-300 uppercase tracking-wide">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">15+</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">15+</div>
                 <div className="text-sm text-gray-300 uppercase tracking-wide">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">98%</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">98%</div>
                 <div className="text-sm text-gray-300 uppercase tracking-wide">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">24/7</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
                 <div className="text-sm text-gray-300 uppercase tracking-wide">Support Available</div>
               </div>
             </div>

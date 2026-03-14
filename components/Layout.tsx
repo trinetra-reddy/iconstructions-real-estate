@@ -291,31 +291,31 @@ const Footer: React.FC = () => {
               <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">Quick Links</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/projects" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/projects" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Our Projects
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/services" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="#" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     About Us
                   </Link>
@@ -328,37 +328,37 @@ const Footer: React.FC = () => {
               <h3 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">Properties by Location</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/properties-in-anantapur" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-anantapur" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Anantapur
                   </Link>
                 </li>
                 <li>
-                  <Link to="/properties-in-hyderabad" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-hyderabad" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Hyderabad
                   </Link>
                 </li>
                 <li>
-                  <Link to="/properties-in-kurnool" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-kurnool" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Kurnool
                   </Link>
                 </li>
                 <li>
-                  <Link to="/properties-in-kadapa" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/properties-in-kadapa" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Properties in Kadapa
                   </Link>
                 </li>
                 <li>
-                  <Link to="/villas-in-anantapur" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/villas-in-anantapur" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Villas in Anantapur
                   </Link>
                 </li>
                 <li>
-                  <Link to="/flats-in-anantapur" className="text-gray-300 hover:text-brand-primary transition-colors text-sm flex items-center gap-2 group">
+                  <Link to="/flats-in-anantapur" className="text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     Flats in Anantapur
                   </Link>
@@ -426,13 +426,13 @@ const Footer: React.FC = () => {
           <div className="pt-8 border-t border-gray-800/50">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-gray-400">
-                &copy; {new Date().getFullYear()} <span className="text-brand-primary font-semibold">iConstructions Real Estate</span>. All rights reserved.
+                &copy; {new Date().getFullYear()} <span className="text-white font-semibold">iConstructions Real Estate</span>. All rights reserved.
               </p>
               <div className="flex flex-wrap gap-6 text-xs text-gray-400">
-                <Link to="#" className="hover:text-brand-primary transition-colors">Privacy Policy</Link>
-                <Link to="#" className="hover:text-brand-primary transition-colors">Terms & Conditions</Link>
-                <Link to="#" className="hover:text-brand-primary transition-colors">RERA Compliance</Link>
-                <Link to="#" className="hover:text-brand-primary transition-colors">Sitemap</Link>
+                <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+                <Link to="#" className="hover:text-white transition-colors">Terms & Conditions</Link>
+                <Link to="#" className="hover:text-white transition-colors">RERA Compliance</Link>
+                <Link to="#" className="hover:text-white transition-colors">Sitemap</Link>
               </div>
             </div>
           </div>
