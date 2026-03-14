@@ -108,21 +108,21 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Rajesh Kumar Reddy',
     role: 'Homeowner, Azure Heights',
     content: 'iConstructions delivered our dream home on time with exceptional quality. The Vastu-compliant design and attention to detail is unmatched.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh&backgroundColor=b6e3f4&radius=50'
+    image: 'https://api.dicebear.com/7.x/notionists/svg?seed=Rajesh&backgroundColor=b6e3f4'
   },
   {
     id: '2',
     name: 'Priya Lakshmi Naidu',
     role: 'CEO, TechStart India',
     content: 'The commercial space they built for us in Anantapur perfectly reflects our company culture. RERA-approved and delivered on time. Highly professional!',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya&backgroundColor=ffdfbf&radius=50'
+    image: 'https://api.dicebear.com/7.x/notionists/svg?seed=Priya&backgroundColor=ffdfbf'
   },
   {
     id: '3',
     name: 'Suresh Venkata Rao',
     role: 'Real Estate Investor, Hyderabad',
     content: 'Their transparency regarding project timelines, RERA compliance, and legal documentation builds great trust. Best investment decision I made!',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Suresh&backgroundColor=c0aede&radius=50'
+    image: 'https://api.dicebear.com/7.x/notionists/svg?seed=Suresh&backgroundColor=c0aede'
   }
 ];
 
