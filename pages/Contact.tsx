@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
           <div>
             <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-2 block">Get In Touch</span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-6">
-              Visit Our <span className="italic text-brand-primary">Office</span>
+              Visit Our <span className="italic text-brand-highlight">Office</span>
             </h2>
             <p className="text-gray-600 mb-10 leading-relaxed text-lg">
               Our office is located in Ananthapur, Andhra Pradesh. We welcome you to visit us for a coffee and a detailed walkthrough of our portfolio.
@@ -222,7 +222,7 @@ export const Contact: React.FC = () => {
               <span className="text-brand-primary font-bold tracking-widest uppercase text-xs">Find Us</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-4">
-              Our <span className="italic text-brand-primary">Location</span>
+              Our <span className="italic text-brand-highlight">Location</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Located in Ananthapur, Andhra Pradesh, we're easily accessible from all major areas of the region.

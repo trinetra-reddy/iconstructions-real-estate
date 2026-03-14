@@ -31,7 +31,7 @@ export const FlatsInAnantapur: React.FC = () => {
             <span>/</span>
             <Link to="/properties-in-anantapur" className="hover:text-brand-primary transition-colors">Properties in Anantapur</Link>
             <span>/</span>
-            <span className="text-brand-primary">Flats & Apartments</span>
+            <span className="text-brand-highlight">Flats & Apartments</span>
           </div>
 
           <div className="text-center mb-12">
@@ -71,7 +71,7 @@ export const FlatsInAnantapur: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-6">
-              Why Buy <span className="italic text-brand-primary">Flats</span> in Anantapur?
+              Why Buy <span className="italic text-brand-highlight">Flats</span> in Anantapur?
             </h2>
           </div>
 
@@ -96,7 +96,7 @@ export const FlatsInAnantapur: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-6">
-              Our <span className="italic text-brand-primary">Apartment Projects</span> in Anantapur
+              Our <span className="italic text-brand-highlight">Apartment Projects</span> in Anantapur
             </h2>
             <p className="text-gray-600 text-lg">Ready to move & under construction flats</p>
           </div>
@@ -154,7 +154,7 @@ export const FlatsInAnantapur: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-brand-dark to-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Find Your <span className="italic text-brand-primary">Perfect Flat</span> Today
+            Find Your <span className="italic text-brand-highlight">Perfect Flat</span> Today
           </h2>
           <p className="text-gray-300 text-lg mb-10">
             Contact us for floor plans, pricing, and site visits. Bank loan assistance available.

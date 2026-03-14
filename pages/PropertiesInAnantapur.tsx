@@ -43,7 +43,7 @@ export const PropertiesInAnantapur: React.FC = () => {
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
             <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-brand-primary">Properties in Anantapur</span>
+            <span className="text-brand-highlight">Properties in Anantapur</span>
           </div>
 
           {/* Main Heading */}
@@ -55,7 +55,7 @@ export const PropertiesInAnantapur: React.FC = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              Properties for Sale in <span className="italic text-brand-primary">Anantapur</span>
+              Properties for Sale in <span className="italic text-brand-highlight">Anantapur</span>
             </h1>
             
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
@@ -164,7 +164,7 @@ export const PropertiesInAnantapur: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-brand-dark to-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Ready to Invest in <span className="italic text-brand-primary">Anantapur?</span>
+            Ready to Invest in <span className="italic text-brand-highlight">Anantapur?</span>
           </h2>
           <p className="text-gray-300 text-lg mb-10">
             Contact us today for a free consultation and site visit. Our experts are ready to help you find your dream property.

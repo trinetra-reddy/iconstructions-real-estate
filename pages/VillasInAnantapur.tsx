@@ -29,7 +29,7 @@ export const VillasInAnantapur: React.FC = () => {
             <span>/</span>
             <Link to="/properties-in-anantapur" className="hover:text-brand-primary transition-colors">Properties in Anantapur</Link>
             <span>/</span>
-            <span className="text-brand-primary">Villas</span>
+            <span className="text-brand-highlight">Villas</span>
           </div>
 
           <div className="text-center mb-12">

@@ -26,7 +26,7 @@ export const PropertiesInHyderabad: React.FC = () => {
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
             <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-brand-primary">Properties in Hyderabad</span>
+            <span className="text-brand-highlight">Properties in Hyderabad</span>
           </div>
 
           <div className="text-center mb-12">
@@ -117,7 +117,7 @@ export const PropertiesInHyderabad: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-brand-dark to-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Ready to Invest in <span className="italic text-white">Hyderabad?</span>
+            Ready to Invest in <span className="italic text-brand-highlight">Hyderabad?</span>
           </h2>
           <p className="text-gray-300 text-lg mb-10">
             Contact us for expert guidance on Hyderabad real estate investments.

@@ -247,7 +247,7 @@ export const InteriorDesign: React.FC = () => {
         <div className="text-center mb-16">
           <span className="text-brand-primary font-bold tracking-widest uppercase text-sm">Our Services</span>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mt-3 mb-4">
-            Comprehensive <span className="italic text-brand-primary">Interior Solutions</span>
+            Comprehensive <span className="italic text-brand-highlight">Interior Solutions</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             From residential to commercial spaces, we offer end-to-end interior design services tailored to your vision and budget.
@@ -418,7 +418,7 @@ export const InteriorDesign: React.FC = () => {
         <div className="text-center mb-16">
           <span className="text-brand-primary font-bold tracking-widest uppercase text-sm">In Progress</span>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mt-3 mb-4">
-            Current <span className="italic text-brand-primary">Projects</span>
+            Current <span className="italic text-brand-highlight">Projects</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Take a peek at our ongoing interior design projects and see the transformation in action.

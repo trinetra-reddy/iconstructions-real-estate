@@ -25,7 +25,7 @@ export const PropertiesInKadapa: React.FC = () => {
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
             <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-brand-primary">Properties in Kadapa</span>
+            <span className="text-brand-highlight">Properties in Kadapa</span>
           </div>
 
           <div className="text-center mb-12">

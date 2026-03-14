@@ -29,7 +29,7 @@ export const CommercialPropertyAnantapur: React.FC = () => {
             <span>/</span>
             <Link to="/properties-in-anantapur" className="hover:text-brand-primary transition-colors">Properties in Anantapur</Link>
             <span>/</span>
-            <span className="text-brand-primary">Commercial Properties</span>
+            <span className="text-brand-highlight">Commercial Properties</span>
           </div>
 
           <div className="text-center mb-12">
@@ -40,7 +40,7 @@ export const CommercialPropertyAnantapur: React.FC = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              <span className="italic text-brand-primary">Commercial Properties</span> in Anantapur
+              <span className="italic text-brand-highlight">Commercial Properties</span> in Anantapur
             </h1>
             
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">

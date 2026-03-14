@@ -25,7 +25,7 @@ export const PropertiesInKurnool: React.FC = () => {
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
             <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-brand-primary">Properties in Kurnool</span>
+            <span className="text-brand-highlight">Properties in Kurnool</span>
           </div>
 
           <div className="text-center mb-12">
@@ -36,7 +36,7 @@ export const PropertiesInKurnool: React.FC = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              Properties for Sale in <span className="italic text-brand-primary">Kurnool</span>
+              Properties for Sale in <span className="italic text-brand-highlight">Kurnool</span>
             </h1>
             
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
