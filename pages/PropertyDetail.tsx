@@ -107,7 +107,7 @@ export const PropertyDetail: React.FC = () => {
           {/* Contact Card */}
           <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 h-fit sticky top-28">
             <div className="mb-8">
-              <p className="text-4xl font-bold text-brand-dark mb-3">{project.price}</p>
+              <p className="text-4xl font-bold text-brand-dark mb-3">{project.priceStart}</p>
               <div className="inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide bg-black text-white border border-gray-200">
                 {project.status}
               </div>
@@ -164,10 +164,15 @@ export const PropertyDetail: React.FC = () => {
               <h2 className="text-3xl font-serif font-bold text-brand-dark mb-8">Key Features</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {project.features.map((feature, idx) => {
-                  const [value, label] = feature.split(' ');
-                  const Icon = label.includes('BHK') ? Bed :
-                              label.includes('Bath') ? Bath :
-                              label.includes('Sq') ? Square : Car;
+                  const parts = feature.split(' ');
+                  const value = parts[0];
+                  const label = parts.slice(1).join(' ') || parts[0];
+                  const Icon = label?.includes('BHK') ? Bed :
+                              label?.includes('Bath') ? Bath :
+                              label?.includes('Sq') ? Square :
+                              label?.includes('Office') || label?.includes('Retail') ? Building2 :
+                              label?.includes('Conference') || label?.includes('Rooms') ? Building2 :
+                              label?.includes('Parking') ? Car : Building2;
                   return (
                     <div key={idx} className="flex flex-col items-center text-center">
                       <div className="w-14 h-14 bg-brand-primary/15 rounded-full flex items-center justify-center mb-4">
@@ -248,7 +253,7 @@ export const PropertyDetail: React.FC = () => {
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="text-gray-700 font-medium">Price</span>
-                  <span className="font-bold text-brand-primary text-lg">{project.price}</span>
+                  <span className="font-bold text-brand-primary text-lg">{project.priceStart}</span>
                 </div>
               </div>
             </div>
