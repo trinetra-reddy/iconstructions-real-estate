@@ -127,10 +127,10 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const STATS = [
-  { label: 'Years Experience', value: '15+' },
-  { label: 'Sq. Ft. Delivered', value: '2.5M+' },
-  { label: 'Happy Families', value: '500+' },
-  { label: 'Awards Won', value: '12' },
+  { label: 'Projects Completed', value: '500+' },
+  { label: 'Years Experience', value: '10+' },
+  { label: 'Sq.Ft Constructed', value: '25L+' },
+  { label: 'Client Satisfaction', value: '98%' },
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [

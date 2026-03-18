@@ -10,7 +10,7 @@ export const PropertiesInKurnool: React.FC = () => {
     p.location?.toLowerCase().includes('kurnool')
   );
 
-  const whatsappNumber = "919666622090";
+  const whatsappNumber = "919347244397";
   const whatsappMessage = "Hi, I'm interested in properties in Kurnool. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -23,16 +23,16 @@ export const PropertiesInKurnool: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
-            <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
+            <Link to="/" className="transition-colors">Home</Link>
             <span>/</span>
             <span className="text-brand-highlight">Properties in Kurnool</span>
           </div>
 
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-brand-primary" />
-              <span className="text-brand-primary font-bold tracking-widest uppercase text-xs">Emerging City</span>
-              <Sparkles className="w-5 h-5 text-brand-primary" />
+              <Sparkles className="w-5 h-5 text-white" />
+              <span className="text-white font-bold tracking-widest uppercase text-xs">Emerging City</span>
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
@@ -45,15 +45,15 @@ export const PropertiesInKurnool: React.FC = () => {
 
             <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <Award className="w-5 h-5 text-brand-primary" />
+                <Award className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">RERA Approved</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <CheckCircle className="w-5 h-5 text-brand-primary" />
+                <CheckCircle className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">Affordable Prices</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <Star className="w-5 h-5 text-brand-primary" />
+                <Star className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">High ROI</span>
               </div>
             </div>

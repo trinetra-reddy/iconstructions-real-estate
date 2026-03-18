@@ -17,14 +17,18 @@ import {
   IndianRupee,
   Sparkles
 } from 'lucide-react';
+import { usePremiumHeroAnimations, useCardAnimations } from '../src/hooks/usePageAnimations';
 
 export const PropertiesInAnantapur: React.FC = () => {
+  // 🎬 Premium hero animations
+  const { heroRef, categoryRef, headingRef, subtextRef, badgesRef, ctaRef } = usePremiumHeroAnimations();
+  const projectsGridRef = useCardAnimations('.project-card-wrapper');
   // Filter projects in Anantapur
   const anantapurProjects = PROJECTS.filter(p =>
     p.location?.toLowerCase().includes('anantapur')
   );
 
-  const whatsappNumber = "919666622090";
+  const whatsappNumber = "919347244397";
   const whatsappMessage = "Hi, I'm interested in properties in Anantapur. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -37,7 +41,7 @@ export const PropertiesInAnantapur: React.FC = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark pt-32 pb-20 overflow-hidden">
+      <section ref={heroRef} className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark pt-32 pb-20 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-96 h-96 bg-brand-primary rounded-full blur-3xl animate-pulse" />
@@ -50,33 +54,33 @@ export const PropertiesInAnantapur: React.FC = () => {
 
           {/* Main Heading */}
           <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-brand-primary" />
-              <span className="text-brand-primary font-bold tracking-widest uppercase text-xs">Prime Location</span>
-              <Sparkles className="w-5 h-5 text-brand-primary" />
+            <div ref={categoryRef} className="flex items-center justify-center gap-2 mb-4">
+              <Sparkles className="w-5 h-5 text-white" />
+              <span className="text-white font-bold tracking-widest uppercase text-xs">Prime Location</span>
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
-            
-            <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              Properties for Sale in <span className="italic text-brand-highlight">Anantapur</span>
+
+            <h1 ref={headingRef} className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+              Properties for Sale in Anantapur
             </h1>
-            
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
+
+            <p ref={subtextRef} className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
               Discover RERA approved residential apartments, luxury villas, and commercial properties in Anantapur. 
               15+ years of excellence, 500+ happy families, and transparent pricing.
             </p>
 
             {/* Trust Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <Award className="w-5 h-5 text-brand-primary" />
+            <div ref={badgesRef} className="flex flex-wrap items-center justify-center gap-6 mt-8">
+              <div className="hero-badge flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                <Award className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">RERA Approved</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <CheckCircle className="w-5 h-5 text-brand-primary" />
+              <div className="hero-badge flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                <CheckCircle className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">Vastu Compliant</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <Star className="w-5 h-5 text-brand-primary" />
+              <div className="hero-badge flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                <Star className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">500+ Happy Families</span>
               </div>
             </div>
@@ -144,7 +148,7 @@ export const PropertiesInAnantapur: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div ref={projectsGridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {anantapurProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

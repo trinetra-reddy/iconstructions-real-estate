@@ -64,7 +64,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
           ) : (
             <Link
               to={item.url}
-              className="hover:text-brand-primary transition-colors"
+              className="transition-colors"
             >
               {item.name}
             </Link>

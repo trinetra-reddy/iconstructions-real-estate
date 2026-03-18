@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Layout } from '../components/Layout';
 import { SERVICES } from '../constants';
 import {
@@ -19,6 +21,15 @@ import {
   KeyRound,
   Coins
 } from 'lucide-react';
+import {
+  hammerSnap,
+  brickByBrickReveal,
+  craneLift,
+  foundationToRoof
+} from '../src/utils/constructionAnimations';
+import { usePremiumHeroAnimations } from '../src/hooks/usePageAnimations';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const iconMap: Record<string, React.ReactNode> = {
   Home: <Home className="w-10 h-10" />,
@@ -30,47 +41,112 @@ const iconMap: Record<string, React.ReactNode> = {
   Coins: <Coins className="w-10 h-10" />
 };
 
-// Hook for scroll-triggered animations
-const useScrollAnimation = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+export const Services: React.FC = () => {
+  const [activeService, setActiveService] = useState<string | null>(null);
 
+  // 🎬 PREMIUM HERO ANIMATIONS
+  const { heroRef, categoryRef, headingRef, subtextRef, badgesRef } = usePremiumHeroAnimations();
+  const servicesGridRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  // 🏗️ SCROLL ANIMATIONS
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    console.log('🏗️ Initializing Services page scroll animations...');
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    // Services grid - Brick-by-brick on scroll
+    if (servicesGridRef.current) {
+      const serviceCards = servicesGridRef.current.querySelectorAll('.service-card');
+
+      if (serviceCards.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: servicesGridRef.current,
+            start: 'top 75%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          brickByBrickReveal(serviceCards, {
+            duration: 0.8,
+            stagger: 0.15,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 4. Process section - Hammer snap on scroll
+    if (processRef.current) {
+      const processSteps = processRef.current.querySelectorAll('.process-step');
+
+      if (processSteps.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: processRef.current,
+            start: 'top 75%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          hammerSnap(processSteps, {
+            duration: 0.6,
+            stagger: 0.12,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 5. Stats section - Crane lift on scroll
+    if (statsRef.current) {
+      const statItems = statsRef.current.querySelectorAll('.stat-item');
+
+      if (statItems.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: 'top 75%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          craneLift(statItems, {
+            duration: 1,
+            stagger: 0.15,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 6. CTA section - Foundation build on scroll
+    if (ctaRef.current) {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: 'top 75%',
+          end: 'top 40%',
+          toggleActions: 'play none none reverse'
+        }
+      }).add(
+        foundationToRoof(ctaRef.current, {
+          duration: 1,
+          delay: 0
+        })
+      );
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-
-  return { ref, isVisible };
-};
-
-export const Services: React.FC = () => {
-  const [activeService, setActiveService] = useState<string | null>(null);
-  const heroAnimation = useScrollAnimation();
-  const servicesAnimation = useScrollAnimation();
-  const processAnimation = useScrollAnimation();
-  const statsAnimation = useScrollAnimation();
-  const ctaAnimation = useScrollAnimation();
 
   return (
     <Layout>
       {/* Enhanced Hero Section with Parallax Effect */}
-      <div className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark pt-32 pb-24 overflow-hidden">
+      <div ref={heroRef} className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark pt-32 pb-24 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
@@ -81,41 +157,41 @@ export const Services: React.FC = () => {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           {/* Breadcrumb */}
           <div className="flex items-center justify-center gap-2 text-sm text-gray-300 mb-6 animate-fade-in">
-            <a href="/" className="hover:text-brand-primary transition-colors">Home</a>
+            <a href="/" className="transition-colors">Home</a>
             <span>/</span>
             <span className="text-brand-highlight">Services</span>
           </div>
 
           {/* Main Heading with Stagger Animation */}
           <div className="space-y-4 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+            <div ref={categoryRef} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
               <Sparkles className="w-4 h-4 text-white" />
               <span className="text-xs font-bold text-white tracking-widest uppercase">Premium Services</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              Our <span className="italic text-white">Expertise</span>
+            <h1 ref={headingRef} className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+              Our Expertise
             </h1>
 
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p ref={subtextRef} className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Comprehensive real estate and construction solutions tailored to meet global standards with unmatched quality and precision.
             </p>
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-6 mt-12 animate-fade-in delay-300">
-            <div className="flex items-center gap-2 text-white">
-              <CheckCircle className="w-5 h-5 text-brand-primary" />
+          <div ref={badgesRef} className="flex flex-wrap items-center justify-center gap-6 mt-12">
+            <div className="hero-badge flex items-center gap-2 text-white">
+              <CheckCircle className="w-5 h-5 text-white" />
               <span className="text-sm font-medium">500+ Projects</span>
             </div>
             <div className="w-px h-6 bg-gray-600" />
-            <div className="flex items-center gap-2 text-white">
-              <Award className="w-5 h-5 text-brand-primary" />
+            <div className="hero-badge flex items-center gap-2 text-white">
+              <Award className="w-5 h-5 text-white" />
               <span className="text-sm font-medium">15+ Years Experience</span>
             </div>
             <div className="w-px h-6 bg-gray-600" />
-            <div className="flex items-center gap-2 text-white">
-              <Shield className="w-5 h-5 text-brand-primary" />
+            <div className="hero-badge flex items-center gap-2 text-white">
+              <Shield className="w-5 h-5 text-white" />
               <span className="text-sm font-medium">100% Legal Compliance</span>
             </div>
           </div>
@@ -124,17 +200,14 @@ export const Services: React.FC = () => {
 
       {/* Services Grid - Enhanced with Cards */}
       <div
-        ref={servicesAnimation.ref}
+        ref={servicesGridRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
       >
         <div className="grid md:grid-cols-2 gap-8">
           {SERVICES.map((service, index) => (
             <div
               key={service.id}
-              className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary cursor-pointer transform hover:-translate-y-2 ${
-                servicesAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 150}ms` }}
+              className="service-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary cursor-pointer transform hover:-translate-y-2"
               onMouseEnter={() => setActiveService(service.id)}
               onMouseLeave={() => setActiveService(null)}
             >
@@ -155,7 +228,7 @@ export const Services: React.FC = () => {
 
                 {/* Content */}
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-serif font-bold text-brand-dark group-hover:text-brand-primary transition-colors duration-300">
+                  <h3 className="text-3xl font-serif font-bold text-brand-dark group-transition-colors duration-300">
                     {service.title}
                   </h3>
 
@@ -195,7 +268,7 @@ export const Services: React.FC = () => {
 
       {/* Stats Section - New Addition */}
       <div
-        ref={statsAnimation.ref}
+        ref={statsRef}
         className="bg-brand-dark py-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -208,10 +281,7 @@ export const Services: React.FC = () => {
             ].map((stat, idx) => (
               <div
                 key={idx}
-                className={`text-center group ${
-                  statsAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${idx * 100}ms` }}
+                className="stat-item text-center group"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-primary/10 rounded-full text-brand-primary mb-4 group-hover:scale-110 transition-transform duration-300">
                   {stat.icon}
@@ -230,7 +300,7 @@ export const Services: React.FC = () => {
 
       {/* Process Section - Enhanced */}
       <div
-        ref={processAnimation.ref}
+        ref={processRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
       >
         <div className="text-center mb-16">
@@ -283,10 +353,7 @@ export const Services: React.FC = () => {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className={`relative group ${
-                  processAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${idx * 150}ms` }}
+                className="process-step relative group"
               >
                 {/* Card */}
                 <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary transform hover:-translate-y-2">
@@ -302,7 +369,7 @@ export const Services: React.FC = () => {
                   </div>
 
                   {/* Content */}
-                  <h4 className="text-xl font-bold text-brand-dark mb-3 text-center group-hover:text-brand-primary transition-colors">
+                  <h4 className="text-xl font-bold text-brand-dark mb-3 text-center group-transition-colors">
                     {item.title}
                   </h4>
                   <p className="text-sm text-gray-600 text-center mb-4 leading-relaxed">
@@ -331,7 +398,7 @@ export const Services: React.FC = () => {
 
       {/* CTA Section - New Addition */}
       <div
-        ref={ctaAnimation.ref}
+        ref={ctaRef}
         className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark py-20 overflow-hidden"
       >
         {/* Background Pattern */}
@@ -339,11 +406,9 @@ export const Services: React.FC = () => {
           <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
         </div>
 
-        <div className={`relative z-10 max-w-4xl mx-auto text-center px-4 ${
-          ctaAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-        }`}>
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
           <div className="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-            <Sparkles className="w-4 h-4 text-brand-primary" />
+            <Sparkles className="w-4 h-4 text-white" />
             <span className="text-xs font-bold text-brand-primary tracking-widest uppercase">Get Started Today</span>
           </div>
 

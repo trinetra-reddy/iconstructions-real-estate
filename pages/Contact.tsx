@@ -1,8 +1,13 @@
 import React from 'react';
 import { Layout } from '../components/Layout';
 import { MapPin, Phone, Mail, Clock, Send, Navigation, Sparkles } from 'lucide-react';
+import { usePremiumHeroAnimations, useCardAnimations } from '../src/hooks/usePageAnimations';
 
 export const Contact: React.FC = () => {
+  // 🎬 PREMIUM HERO ANIMATIONS
+  const { heroRef, categoryRef, headingRef, subtextRef } = usePremiumHeroAnimations();
+  const contactCardsRef = useCardAnimations('.contact-card');
+  const whatsappSectionRef = useCardAnimations('.whatsapp-action');
   const whatsappNumber = "919347244397";
   const whatsappMessage = "Hi, I'm interested in your properties. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -16,7 +21,7 @@ export const Contact: React.FC = () => {
   return (
     <Layout>
       {/* Hero Section with Gradient */}
-      <div className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark pt-32 pb-20 text-center overflow-hidden">
+      <div ref={heroRef} className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark pt-32 pb-20 text-center overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-72 h-72 bg-brand-primary rounded-full blur-3xl animate-pulse" />
@@ -24,15 +29,15 @@ export const Contact: React.FC = () => {
         </div>
 
         <div className="relative z-10">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-5 h-5 text-brand-primary" />
-            <span className="text-brand-primary font-bold tracking-widest uppercase text-xs">Get In Touch</span>
-            <Sparkles className="w-5 h-5 text-brand-primary" />
+          <div ref={categoryRef} className="flex items-center justify-center gap-2 mb-4">
+            <Sparkles className="w-5 h-5 text-white" />
+            <span className="text-white font-bold tracking-widest uppercase text-xs">Get In Touch</span>
+            <Sparkles className="w-5 h-5 text-white" />
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">
-            Let's Build Your <span className="italic text-brand-highlight">Dream</span>
+          <h1 ref={headingRef} className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">
+            Let's Build Your Dream
           </h1>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto px-4 leading-relaxed">
+          <p ref={subtextRef} className="text-gray-300 text-lg max-w-3xl mx-auto px-4 leading-relaxed">
             Have a project in mind? Visit our office or connect with us instantly. We're here to bring your vision to life with expertise and dedication.
           </p>
         </div>
@@ -51,9 +56,9 @@ export const Contact: React.FC = () => {
               Our office is located in Ananthapur, Andhra Pradesh. We welcome you to visit us for a coffee and a detailed walkthrough of our portfolio.
             </p>
 
-            <div className="space-y-6">
+            <div ref={contactCardsRef} className="space-y-6">
               {/* Address Card */}
-              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
+              <div className="contact-card group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative flex items-start gap-4">
                   <div className="bg-gradient-to-br from-brand-primary to-amber-600 p-4 rounded-xl text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
@@ -80,7 +85,7 @@ export const Contact: React.FC = () => {
               </div>
 
               {/* Phone Card */}
-              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
+              <div className="contact-card group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative flex items-start gap-4">
                   <div className="bg-gradient-to-br from-brand-primary to-amber-600 p-4 rounded-xl text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
@@ -100,7 +105,7 @@ export const Contact: React.FC = () => {
               </div>
 
               {/* Email Card */}
-              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
+              <div className="contact-card group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative flex items-start gap-4">
                   <div className="bg-gradient-to-br from-brand-primary to-amber-600 p-4 rounded-xl text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
@@ -120,7 +125,7 @@ export const Contact: React.FC = () => {
               </div>
 
               {/* Working Hours Card */}
-              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
+              <div className="contact-card group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative flex items-start gap-4">
                   <div className="bg-gradient-to-br from-brand-primary to-amber-600 p-4 rounded-xl text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
@@ -137,7 +142,7 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* WhatsApp Contact Options */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          <div ref={whatsappSectionRef} className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
             <h3 className="text-2xl font-serif font-bold text-brand-dark mb-4">Get Instant Response</h3>
             <p className="text-gray-600 mb-8">
               Chat with us on WhatsApp for immediate assistance. Our team is available to answer all your queries!
@@ -161,7 +166,7 @@ export const Contact: React.FC = () => {
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi, I'd like to schedule a site visit. When are you available?")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-brand-light hover:bg-brand-primary/10 text-brand-dark font-semibold py-3 px-4 rounded-lg border-2 border-brand-primary/20 hover:border-brand-primary transition-all flex items-center justify-between group"
+                  className="whatsapp-action w-full bg-brand-light hover:bg-brand-primary/10 text-brand-dark font-semibold py-3 px-4 rounded-lg border-2 border-brand-primary/20 hover:border-brand-primary transition-all flex items-center justify-between group"
                 >
                   <span>📅 Schedule Site Visit</span>
                   <Send className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -303,6 +303,131 @@
         background-size: 1000px 100%;
         animation: shimmer 2s infinite;
       }
+
+      /* GSAP Animation Enhancements */
+      .word {
+        display: inline-block;
+        overflow: hidden;
+        will-change: transform, opacity;
+      }
+
+      /* Advanced Hero Animations */
+      .hero-line {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+      }
+
+      /* Hero word animations */
+      .hero-word {
+        display: inline-block;
+        white-space: nowrap;
+        will-change: transform, opacity;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .hero-word:hover {
+        cursor: pointer;
+      }
+
+      .hero-badge {
+        will-change: transform, opacity;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+      }
+
+      .hero-category {
+        will-change: transform, opacity, letter-spacing;
+      }
+
+      /* GPU acceleration for better performance */
+      .animate-element {
+        will-change: transform, opacity;
+      }
+
+      /* Remove will-change after animation completes */
+      .animation-complete {
+        will-change: auto;
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .word {
+          animation: none !important;
+        }
+      }
+
+      /* Smooth text rendering during animations */
+      .animating-text {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      /* Service card and project card animation classes */
+      .service-card,
+      .project-card-wrapper {
+        /* Start visible - GSAP will handle the animation */
+        opacity: 1;
+        transform: translateY(0);
+        perspective: 1000px;
+        transform-style: preserve-3d;
+      }
+
+      /* Ensure wrapper doesn't interfere with layout */
+      .project-card-wrapper {
+        height: 100%;
+        display: block;
+      }
+
+      /* 3D Transform support */
+      .service-card > *,
+      .project-card-wrapper > * {
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+      }
+
+      /* Smooth hardware acceleration */
+      .service-card,
+      .project-card-wrapper,
+      .hero-badge,
+      .hero-char {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      /* Default cursor restored */
+
+      /* Button ripple effect */
+      .button-ripple {
+        will-change: transform, opacity;
+      }
+
+      /* Magnetic elements */
+      .magnetic-element {
+        will-change: transform;
+        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      /* 3D tilt container */
+      .tilt-container {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      /* Smooth transitions for interactive elements */
+      a, button, [role="button"] {
+        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      }
     </style>
   <script type="importmap">
 {
@@ -326,7 +451,7 @@
       "name": "iConstructions Real Estate",
       "image": "https://iconstructions.in/logo.png",
       "url": "https://iconstructions.in",
-      "telephone": "+919666622090",
+      "telephone": "+919347244397",
       "email": "hello@iconstructions.in",
       "address": {
         "@type": "PostalAddress",

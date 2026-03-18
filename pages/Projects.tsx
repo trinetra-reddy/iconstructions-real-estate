@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
 import { PROJECTS } from '../constants';
@@ -10,11 +12,24 @@ import {
   buttonFilterPillInactive,
   buttonPrimary
 } from '../styles/designSystem';
+import {
+  hammerSnap,
+  tileLaying
+} from '../src/utils/constructionAnimations';
+import { usePremiumHeroAnimations } from '../src/hooks/usePageAnimations';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Projects: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [categoryFilter, setCategoryFilter] = useState<string>('All');
   const [statusFilter, setStatusFilter] = useState<string>('All');
+
+  // 🎬 PREMIUM HERO ANIMATIONS
+  const { heroRef, headingRef, subtextRef } = usePremiumHeroAnimations();
+  const categoryFiltersRef = useRef<HTMLDivElement>(null);
+  const statusFiltersRef = useRef<HTMLDivElement>(null);
+  const projectsGridRef = useRef<HTMLDivElement>(null);
 
   // Read URL parameters from hero search
   const locationParam = searchParams.get('location');
@@ -26,6 +41,63 @@ export const Projects: React.FC = () => {
       setCategoryFilter(typeParam);
     }
   }, [typeParam]);
+
+  // 🏗️ FILTER ANIMATIONS
+  useEffect(() => {
+    console.log('🏗️ Initializing Projects page filter animations...');
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    // Category filters - Hammer snap
+    if (categoryFiltersRef.current) {
+      const buttons = categoryFiltersRef.current.querySelectorAll('button');
+      if (buttons.length > 0) {
+        tl.add(
+          hammerSnap(buttons, {
+            duration: 0.5,
+            stagger: 0.05,
+            delay: 0
+          }),
+          1.5
+        );
+      }
+    }
+
+    // Status filters - Hammer snap
+    if (statusFiltersRef.current) {
+      const buttons = statusFiltersRef.current.querySelectorAll('button');
+      if (buttons.length > 0) {
+        tl.add(
+          hammerSnap(buttons, {
+            duration: 0.5,
+            stagger: 0.05,
+            delay: 0
+          }),
+          1.8
+        );
+      }
+    }
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+  // 🏗️ Animate project grid when filter changes
+  useEffect(() => {
+    if (projectsGridRef.current) {
+      const cards = projectsGridRef.current.querySelectorAll('.project-card-wrapper');
+
+      if (cards.length > 0) {
+        console.log(`🏗️ Laying ${cards.length} project tiles...`);
+
+        tileLaying(cards, {
+          duration: 0.6,
+          delay: 0
+        });
+      }
+    }
+  }, [categoryFilter, statusFilter]);
 
   const categories = ['All', ...Object.values(ProjectCategory)];
   const statuses = ['All', ...Object.values(ProjectStatus)];
@@ -50,20 +122,20 @@ export const Projects: React.FC = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <div className="bg-black pt-32 pb-16 sm:pb-20 md:pb-24 text-center">
+      <section ref={heroRef} className="bg-black pt-32 pb-16 sm:pb-20 md:pb-24 text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight" style={{ textShadow: '3px 6px 16px rgba(0,0,0,0.95)' }}>
+          <h1 ref={headingRef} className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight" style={{ textShadow: '3px 6px 16px rgba(0,0,0,0.95)' }}>
             Our Projects
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-3xl mx-auto px-2 leading-relaxed" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>
+          <p ref={subtextRef} className="text-sm sm:text-base md:text-lg text-white/70 max-w-3xl mx-auto px-2 leading-relaxed" style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.8)' }}>
             Discover our portfolio of completed and ongoing developments, ranging from luxury villas to state-of-the-art commercial hubs.
           </p>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         {/* Category Filters */}
-        <div className="mb-10 sm:mb-12">
+        <div ref={categoryFiltersRef} className="mb-10 sm:mb-12">
           <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Category</h3>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {categories.map((cat) => (
@@ -79,7 +151,7 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Status Filters */}
-        <div className="mb-12 sm:mb-16">
+        <div ref={statusFiltersRef} className="mb-12 sm:mb-16">
           <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest mb-6 sm:mb-8 text-center">Filter by Status</h3>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {statuses.map((status) => (
@@ -96,7 +168,7 @@ export const Projects: React.FC = () => {
 
         {/* Grid */}
         {filteredProjects.length > 0 ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          <div ref={projectsGridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {filteredProjects.map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}

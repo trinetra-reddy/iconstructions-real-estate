@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -22,8 +22,10 @@ import {
   Volume2,
   VolumeX
 } from 'lucide-react';
+import { gsap } from 'gsap';
 import { Layout } from '../components/Layout';
 import { ProjectCard } from '../components/ProjectCard';
+import { CustomCursor } from '../components/CustomCursor';
 import { PROJECTS, SERVICES, TESTIMONIALS, FAQS, TEAM_MEMBERS, STATS } from '../constants';
 import {
   buttonPrimary,
@@ -34,6 +36,20 @@ import {
   buttonFilterPillInactive,
   buttonIcon
 } from '../styles/designSystem';
+import {
+  getAnimationConfig,
+  animateCounter,
+  cleanupScrollTriggers
+} from '../src/utils/animations';
+import {
+  brickByBrickReveal,
+  foundationToRoof,
+  hammerSnap,
+  craneLift,
+  cementPour,
+  tileLaying,
+  scaffoldingReveal
+} from '../src/utils/constructionAnimations';
 
 // Icon mapping for Services
 const ServiceIconMap: any = {
@@ -51,6 +67,583 @@ export const Home: React.FC = () => {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [categoryIndex, setCategoryIndex] = useState<number>(0);
+
+  // Refs for hero section animations
+  const heroHeadingRef = useRef<HTMLHeadingElement>(null);
+  const heroSubtextRef = useRef<HTMLParagraphElement>(null);
+  const heroCTARef = useRef<HTMLDivElement>(null);
+  const heroStatsRef = useRef<HTMLDivElement>(null);
+  const heroBadgesRef = useRef<HTMLDivElement>(null);
+
+  // Refs for all sections - construction animations
+  const statsBarRef = useRef<HTMLElement>(null);
+  const introSectionRef = useRef<HTMLElement>(null);
+  const servicesSectionRef = useRef<HTMLElement>(null);
+  const categoriesSectionRef = useRef<HTMLElement>(null);
+  const projectsSectionRef = useRef<HTMLElement>(null);
+  const locationsSectionRef = useRef<HTMLElement>(null);
+  const floorPlansSectionRef = useRef<HTMLElement>(null);
+  const testimonialsSectionRef = useRef<HTMLElement>(null);
+  const faqsSectionRef = useRef<HTMLElement>(null);
+  const teamSectionRef = useRef<HTMLElement>(null);
+  const contactSectionRef = useRef<HTMLElement>(null);
+
+  // 🏗️ CONSTRUCTION-THEMED HERO ANIMATIONS
+  useEffect(() => {
+    const config = getAnimationConfig();
+    if (config.duration === 0) return;
+
+    console.log('🏗️ Initializing construction-themed animations...');
+
+    // Master timeline with construction theme
+    const masterTL = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      onComplete: () => console.log('🏗️ Construction animations complete!')
+    });
+
+    // Timeline labels
+    masterTL.addLabel('foundation', 0);
+    masterTL.addLabel('structure', 0.3);
+    masterTL.addLabel('walls', 0.8);
+    masterTL.addLabel('details', 1.5);
+    masterTL.addLabel('finishing', 2);
+
+    // 🧱 1. BADGES - Brick-by-Brick Build (CONSTRUCTION THEME)
+    if (heroBadgesRef.current) {
+      const badges = heroBadgesRef.current.querySelectorAll('.hero-badge');
+
+      console.log(`🧱 Building ${badges.length} trust badges brick-by-brick...`);
+
+      // Brick-by-brick reveal
+      masterTL.add(
+        brickByBrickReveal(badges, {
+          duration: 0.8,
+          stagger: 0.15,
+          delay: 0
+        }),
+        'foundation'
+      );
+    }
+
+    // 🏗️ 2. CATEGORY TEXT - Foundation Build (CONSTRUCTION THEME)
+    const categoryText = document.querySelector('.hero-category');
+    if (categoryText) {
+      console.log('🏗️ Building category foundation...');
+
+      masterTL.add(
+        foundationToRoof(categoryText, {
+          duration: 1,
+          delay: 0
+        }),
+        'foundation+=0.3'
+      );
+    }
+
+    // 🔨 3. HERO HEADING - Hammer Snap Build (CONSTRUCTION IMPACT)
+    if (heroHeadingRef.current) {
+      const heading = heroHeadingRef.current;
+
+      console.log('🔨 Hammering heading into place...');
+
+      // Split text into words while preserving HTML
+      const splitHeading = () => {
+        const walker = document.createTreeWalker(
+          heading,
+          NodeFilter.SHOW_TEXT,
+          null
+        );
+
+        const textNodes: Node[] = [];
+        let node: Node | null;
+        while ((node = walker.nextNode())) {
+          if (node.textContent?.trim()) {
+            textNodes.push(node);
+          }
+        }
+
+        textNodes.forEach(textNode => {
+          const text = textNode.textContent || '';
+          const words = text.split(' ').filter(w => w.trim());
+          const fragment = document.createDocumentFragment();
+
+          words.forEach((word, i) => {
+            const span = document.createElement('span');
+            span.className = 'hero-word';
+            span.style.display = 'inline-block';
+            span.style.whiteSpace = 'nowrap';
+            span.textContent = word;
+            fragment.appendChild(span);
+
+            if (i < words.length - 1) {
+              fragment.appendChild(document.createTextNode(' '));
+            }
+          });
+
+          textNode.parentNode?.replaceChild(fragment, textNode);
+        });
+      };
+
+      splitHeading();
+
+      const words = heading.querySelectorAll('.hero-word');
+
+      // Hammer snap animation - words snap into place like hammering nails
+      masterTL.add(
+        hammerSnap(words, {
+          duration: 0.7,
+          stagger: 0.08,
+          delay: 0
+        }),
+        'structure'
+      );
+    }
+
+    // 🧱 4. SUBTEXT - Cement Pour Effect (CONSTRUCTION THEME)
+    if (heroSubtextRef.current) {
+      console.log('🧱 Pouring cement for subtext...');
+
+      masterTL.add(
+        cementPour(heroSubtextRef.current, {
+          duration: 1.2,
+          delay: 0
+        }),
+        'walls'
+      );
+    }
+
+    // 🏗️ 5. CTA BUTTONS - Crane Lift Effect (CONSTRUCTION THEME)
+    if (heroCTARef.current) {
+      const buttons = heroCTARef.current.querySelectorAll('a');
+
+      console.log(`🏗️ Lifting ${buttons.length} CTA buttons with crane...`);
+
+      masterTL.add(
+        craneLift(buttons, {
+          duration: 1.2,
+          stagger: 0.2,
+          delay: 0
+        }),
+        'details'
+      );
+    }
+
+    // 🏗️ 6. STATS CARD - Foundation Build with Counter (CONSTRUCTION PROGRESS)
+    if (heroStatsRef.current) {
+      const statsCard = heroStatsRef.current;
+
+      console.log('🏗️ Building stats foundation...');
+
+      masterTL.add(
+        foundationToRoof(statsCard, {
+          duration: 1,
+          delay: 0
+        }),
+        'details+=0.3'
+      );
+
+      // Animate stat numbers with counter (construction progress)
+      const statNumbers = statsCard.querySelectorAll('.stat-number');
+      statNumbers.forEach((stat, index) => {
+        const element = stat as HTMLElement;
+        const valueText = element.getAttribute('data-value') || '0';
+        const suffix = element.getAttribute('data-suffix') || '';
+        const numericValue = parseInt(valueText.replace(/\D/g, ''));
+
+        setTimeout(() => {
+          console.log(`📊 Counting construction progress: ${numericValue}${suffix}`);
+          animateCounter(element, numericValue, suffix, 2.5);
+        }, 2000 + index * 250);
+      });
+    }
+
+    // Cleanup
+    return () => {
+      masterTL.kill();
+      cleanupScrollTriggers();
+    };
+  }, []);
+
+
+
+  // 🎬 EXPERT-LEVEL SCROLL ANIMATIONS - PARALLAX & REVEALS
+  useEffect(() => {
+    const config = getAnimationConfig();
+    if (config.duration === 0) return;
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const scrollAnimations: any[] = [];
+
+      // 🎯 1. VIDEO BACKGROUND - Multi-layer Parallax (DEPTH)
+      const videoElement = videoRef.current;
+      if (videoElement) {
+        const videoTL = gsap.timeline({
+          scrollTrigger: {
+            trigger: videoElement,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5,
+            // markers: true // Enable for debugging
+          }
+        });
+
+        videoTL
+          .to(videoElement, {
+            y: 200,
+            scale: 1.15,
+            ease: 'none'
+          })
+          .to(videoElement, {
+            opacity: 0.3,
+            ease: 'none'
+          }, 0);
+
+        scrollAnimations.push(videoTL);
+      }
+
+      // 🧱 2. SERVICES SECTION - Brick-by-Brick Build (CONSTRUCTION THEME)
+      if (servicesSectionRef.current) {
+        const serviceCards = servicesSectionRef.current.querySelectorAll('.service-card');
+
+        if (serviceCards.length > 0) {
+          console.log(`🧱 Building ${serviceCards.length} service cards brick-by-brick...`);
+
+          const servicesTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: servicesSectionRef.current,
+              start: 'top 75%',
+              end: 'top 30%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          // Brick-by-brick reveal for service cards
+          servicesTL.add(
+            brickByBrickReveal(serviceCards, {
+              duration: 0.9,
+              stagger: 0.15,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(servicesTL);
+        }
+      }
+
+      // 🏗️ 3. PROJECTS SECTION - Tile Laying Pattern (CONSTRUCTION THEME)
+      if (projectsSectionRef.current) {
+        const projectCards = projectsSectionRef.current.querySelectorAll('.project-card-wrapper');
+
+        if (projectCards.length > 0) {
+          console.log(`🏗️ Laying ${projectCards.length} project tiles...`);
+
+          const projectsTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: projectsSectionRef.current,
+              start: 'top 70%',
+              end: 'top 25%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          // Tile laying pattern - projects appear like laying tiles
+          projectsTL.add(
+            tileLaying(projectCards, {
+              duration: 0.8,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(projectsTL);
+        }
+      }
+
+      // 🏗️ 4. SECTION HEADINGS - Foundation Build (CONSTRUCTION THEME)
+      const sectionHeadings = document.querySelectorAll('h2');
+      console.log(`🏗️ Building ${sectionHeadings.length} section headings...`);
+
+      sectionHeadings.forEach((heading) => {
+        const headingTL = gsap.timeline({
+          scrollTrigger: {
+            trigger: heading,
+            start: 'top 85%',
+            end: 'top 60%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        // Foundation to roof build for headings
+        headingTL.add(
+          foundationToRoof(heading, {
+            duration: 1,
+            delay: 0
+          })
+        );
+
+        scrollAnimations.push(headingTL);
+      });
+
+      // 🧱 5. TESTIMONIALS SECTION - Brick-by-Brick Cards (CONSTRUCTION THEME)
+      if (testimonialsSectionRef.current) {
+        const testimonialCards = testimonialsSectionRef.current.querySelectorAll('.testimonial-card');
+
+        if (testimonialCards.length > 0) {
+          console.log(`🧱 Building ${testimonialCards.length} testimonial cards brick-by-brick...`);
+
+          const testimonialsTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: testimonialsSectionRef.current,
+              start: 'top 75%',
+              end: 'top 30%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          // Brick-by-brick reveal for testimonial cards
+          testimonialsTL.add(
+            brickByBrickReveal(testimonialCards, {
+              duration: 0.8,
+              stagger: 0.12,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(testimonialsTL);
+        }
+      }
+
+      // 🏗️ 6. STATS BAR - Foundation Build (CONSTRUCTION THEME)
+      if (statsBarRef.current) {
+        const statItems = statsBarRef.current.querySelectorAll('.stat-item');
+
+        if (statItems.length > 0) {
+          console.log(`🏗️ Building ${statItems.length} stat items...`);
+
+          const statsTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: statsBarRef.current,
+              start: 'top 85%',
+              end: 'top 60%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          statsTL.add(
+            hammerSnap(statItems, {
+              duration: 0.6,
+              stagger: 0.1,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(statsTL);
+        }
+      }
+
+      // 🧱 7. INTRO SECTION - Cement Pour (CONSTRUCTION THEME)
+      if (introSectionRef.current) {
+        const introContent = introSectionRef.current.querySelectorAll('.intro-content, p, .intro-image');
+
+        if (introContent.length > 0) {
+          console.log(`🧱 Pouring cement for intro section...`);
+
+          introContent.forEach((element) => {
+            const introTL = gsap.timeline({
+              scrollTrigger: {
+                trigger: element,
+                start: 'top 80%',
+                end: 'top 50%',
+                toggleActions: 'play none none reverse'
+              }
+            });
+
+            introTL.add(
+              cementPour(element, {
+                duration: 1,
+                delay: 0
+              })
+            );
+
+            scrollAnimations.push(introTL);
+          });
+        }
+      }
+
+      // 🏗️ 8. CATEGORIES SECTION - Tile Laying (CONSTRUCTION THEME)
+      if (categoriesSectionRef.current) {
+        const categoryCards = categoriesSectionRef.current.querySelectorAll('.category-card, .bg-white.rounded-lg');
+
+        if (categoryCards.length > 0) {
+          console.log(`🏗️ Laying ${categoryCards.length} category tiles...`);
+
+          const categoriesTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: categoriesSectionRef.current,
+              start: 'top 70%',
+              end: 'top 30%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          categoriesTL.add(
+            tileLaying(categoryCards, {
+              duration: 0.7,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(categoriesTL);
+        }
+      }
+
+      // 🏗️ 9. LOCATIONS SECTION - Crane Lift (CONSTRUCTION THEME)
+      if (locationsSectionRef.current) {
+        const locationCards = locationsSectionRef.current.querySelectorAll('.location-card, .group');
+
+        if (locationCards.length > 0) {
+          console.log(`🏗️ Lifting ${locationCards.length} location cards with crane...`);
+
+          const locationsTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: locationsSectionRef.current,
+              start: 'top 70%',
+              end: 'top 30%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          locationsTL.add(
+            craneLift(locationCards, {
+              duration: 1,
+              stagger: 0.15,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(locationsTL);
+        }
+      }
+
+      // 🧱 10. FLOOR PLANS SECTION - Brick-by-Brick (CONSTRUCTION THEME)
+      if (floorPlansSectionRef.current) {
+        const floorPlanElements = floorPlansSectionRef.current.querySelectorAll('.floor-plan-item, .bg-white');
+
+        if (floorPlanElements.length > 0) {
+          console.log(`🧱 Building ${floorPlanElements.length} floor plan elements...`);
+
+          const floorPlansTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: floorPlansSectionRef.current,
+              start: 'top 75%',
+              end: 'top 30%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          floorPlansTL.add(
+            brickByBrickReveal(floorPlanElements, {
+              duration: 0.8,
+              stagger: 0.1,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(floorPlansTL);
+        }
+      }
+
+      // 🔨 11. FAQs SECTION - Hammer Snap (CONSTRUCTION THEME)
+      if (faqsSectionRef.current) {
+        const faqItems = faqsSectionRef.current.querySelectorAll('.faq-item, .border-b');
+
+        if (faqItems.length > 0) {
+          console.log(`🔨 Hammering ${faqItems.length} FAQ items into place...`);
+
+          const faqsTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: faqsSectionRef.current,
+              start: 'top 75%',
+              end: 'top 30%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          faqsTL.add(
+            hammerSnap(faqItems, {
+              duration: 0.6,
+              stagger: 0.08,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(faqsTL);
+        }
+      }
+
+      // 🏗️ 12. TEAM SECTION - Crane Lift (CONSTRUCTION THEME)
+      if (teamSectionRef.current) {
+        const teamCards = teamSectionRef.current.querySelectorAll('.team-card, .text-center');
+
+        if (teamCards.length > 0) {
+          console.log(`🏗️ Lifting ${teamCards.length} team members with crane...`);
+
+          const teamTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: teamSectionRef.current,
+              start: 'top 70%',
+              end: 'top 30%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          teamTL.add(
+            craneLift(teamCards, {
+              duration: 1.1,
+              stagger: 0.15,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(teamTL);
+        }
+      }
+
+      // 🧱 13. CONTACT SECTION - Foundation Build (CONSTRUCTION THEME)
+      if (contactSectionRef.current) {
+        const contactElements = contactSectionRef.current.querySelectorAll('.contact-item, h2, p, a');
+
+        if (contactElements.length > 0) {
+          console.log(`🧱 Building contact section foundation...`);
+
+          const contactTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: contactSectionRef.current,
+              start: 'top 75%',
+              end: 'top 40%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+
+          contactTL.add(
+            foundationToRoof(contactSectionRef.current, {
+              duration: 1.2,
+              delay: 0
+            })
+          );
+
+          scrollAnimations.push(contactTL);
+        }
+      }
+
+      console.log(`🏗️ Created ${scrollAnimations.length} construction-themed scroll animations!`);
+    }, 100);
+
+    // Cleanup
+    return () => {
+      clearTimeout(timer);
+      cleanupScrollTriggers();
+    };
+  }, []);
 
   // Filter projects based on selected filter
   const getFilteredProjects = () => {
@@ -123,38 +716,39 @@ export const Home: React.FC = () => {
 
         <div className="relative z-20 text-center text-white px-4 sm:px-6 max-w-6xl mx-auto">
           {/* Trust Badges - Construction Focused with Enhanced Styling */}
-          <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8 mb-4 sm:mb-6 animate-fade-in flex-wrap">
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
+          <div ref={heroBadgesRef} className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8 mb-4 sm:mb-6 flex-wrap">
+            <div className="hero-badge flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
               <Award className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
               <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap">Licensed & Certified</span>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
+            <div className="hero-badge flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
               <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap">500+ Projects Completed</span>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
+            <div className="hero-badge flex items-center gap-1.5 sm:gap-2 bg-white/15 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 cursor-default">
               <Star className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
               <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap">On-Time Delivery</span>
             </div>
           </div>
 
-          <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wide sm:tracking-wider uppercase mb-4 sm:mb-6 text-white animate-fade-in font-bold" style={{ textShadow: '2px 3px 8px rgba(0,0,0,1), 0px 0px 20px rgba(0,0,0,0.8)' }}>
+          <p className="hero-category text-[10px] sm:text-xs md:text-sm font-medium tracking-wide sm:tracking-wider uppercase mb-4 sm:mb-6 text-white font-bold" style={{ textShadow: '2px 3px 8px rgba(0,0,0,1), 0px 0px 20px rgba(0,0,0,0.8)' }}>
             RESIDENTIAL • COMMERCIAL • CONSTRUCTION SERVICES
           </p>
 
           {/* Decorative Accent Line */}
-          <div className="w-16 h-0.5 mx-auto mb-6 bg-gradient-to-r from-transparent via-white to-transparent opacity-70 animate-fade-in" />
+          <div className="w-16 h-0.5 mx-auto mb-6 bg-gradient-to-r from-transparent via-white to-transparent opacity-70" />
 
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 sm:mb-6 leading-tight animate-fade-in-up px-2" style={{ textShadow: '4px 8px 20px rgba(0,0,0,1), 0px 0px 30px rgba(0,0,0,0.9)' }}>
-            We Build Your <br />
-            <span className="italic bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent" style={{ textShadow: 'none' }}>Dream Home</span>
+          <h1 ref={heroHeadingRef} className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 sm:mb-6 leading-tight px-2" style={{ textShadow: '4px 8px 20px rgba(0,0,0,1), 0px 0px 30px rgba(0,0,0,0.9)' }}>
+            We Build Your
+            <br />
+            <span className="italic">Dream Home</span>
           </h1>
-          <p className="text-sm sm:text-lg md:text-xl text-white mb-8 sm:mb-12 max-w-3xl mx-auto font-semibold leading-relaxed animate-fade-in-up delay-100 px-2" style={{ textShadow: '3px 5px 15px rgba(0,0,0,1), 0px 0px 25px rgba(0,0,0,0.8)' }}>
+          <p ref={heroSubtextRef} className="text-sm sm:text-lg md:text-xl text-white mb-8 sm:mb-12 max-w-3xl mx-auto font-semibold leading-relaxed px-2" style={{ textShadow: '3px 5px 15px rgba(0,0,0,1), 0px 0px 25px rgba(0,0,0,0.8)' }}>
             End-to-end residential and commercial construction services with structural precision, transparent pricing, and on-time project delivery.
           </p>
 
           {/* Construction-Focused CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-fade-in-up delay-200 px-4">
+          <div ref={heroCTARef} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
             <Link
               to="/contact"
               className={buttonPrimary}
@@ -173,24 +767,24 @@ export const Home: React.FC = () => {
         </div>
 
         {/* Construction Impact Stats Card - Glassmorphism */}
-        <div className="absolute bottom-20 right-8 md:right-20 z-20 bg-white/85 backdrop-blur-xl p-6 shadow-2xl shadow-white/10 rounded-lg hidden md:block animate-fade-in delay-300 max-w-xs border border-white/30 hover:shadow-2xl hover:shadow-white/20 transition-all duration-300">
+        <div ref={heroStatsRef} className="absolute bottom-20 right-8 md:right-20 z-20 bg-white/85 backdrop-blur-xl p-6 shadow-2xl shadow-white/10 rounded-lg hidden md:block max-w-xs border border-white/30 hover:shadow-2xl hover:shadow-white/20 transition-all duration-300">
           <h3 className="text-sm font-bold text-black uppercase tracking-wider mb-4">Our Construction Impact</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <span className="text-xs text-gray-600 uppercase tracking-wider">Projects Completed</span>
-              <span className="text-2xl font-bold text-black">500+</span>
+              <span className="stat-number text-2xl font-bold text-black" data-value="500" data-suffix="+">0+</span>
             </div>
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <span className="text-xs text-gray-600 uppercase tracking-wider">Years Experience</span>
-              <span className="text-2xl font-bold text-black">10+</span>
+              <span className="stat-number text-2xl font-bold text-black" data-value="10" data-suffix="+">0+</span>
             </div>
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <span className="text-xs text-gray-600 uppercase tracking-wider">Sq.Ft Constructed</span>
-              <span className="text-2xl font-bold text-black">25L+</span>
+              <span className="stat-number text-2xl font-bold text-black" data-value="25" data-suffix="L+">0L+</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-gray-600 uppercase tracking-wider">Client Satisfaction</span>
-              <span className="text-2xl font-bold text-black">98%</span>
+              <span className="stat-number text-2xl font-bold text-black" data-value="98" data-suffix="%">0%</span>
             </div>
           </div>
         </div>
@@ -205,11 +799,11 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 2. Stats Bar - Quick Trust Signals */}
-      <section className="py-6 sm:py-8 bg-black text-white">
+      <section ref={statsBarRef} className="py-6 sm:py-8 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             {STATS.map((stat, idx) => (
-              <div key={idx} className="text-center">
+              <div key={idx} className="stat-item text-center">
                 <p className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-1">{stat.value}</p>
                 <p className="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-gray-300">{stat.label}</p>
               </div>
@@ -219,17 +813,17 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 3. Intro / About Section - Enhanced */}
-      <section className="py-12 sm:py-24 md:py-32 bg-white">
+      <section ref={introSectionRef} className="py-12 sm:py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 sm:gap-20 items-center">
             {/* Left Content */}
-            <div>
+            <div className="intro-content">
               <span className="text-gray-600 text-xs sm:text-sm tracking-wider sm:tracking-widest uppercase mb-3 sm:mb-4 block">About iConstructions</span>
               <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-black mb-6 sm:mb-8 leading-tight sm:leading-none">
                 Building <span className="italic text-gray-600">Trust</span> Through <br className="hidden sm:block" />
                 Quality & Transparency
               </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed text-base sm:text-lg font-light">
+              <p className="intro-content text-gray-600 mb-6 leading-relaxed text-base sm:text-lg font-light">
                 Since 2008, we've been transforming the real estate landscape in Anantapur and beyond. Our commitment to quality construction, transparent pricing, and timely delivery has made us the preferred choice for over 500 families.
               </p>
 
@@ -288,7 +882,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 4. Services Section - Enhanced with CTAs */}
-      <section className="py-12 sm:py-24 bg-gray-50">
+      <section ref={servicesSectionRef} className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-16">
             <span className="text-gray-600 text-xs tracking-wider sm:tracking-widest uppercase">What We Offer</span>
@@ -308,7 +902,7 @@ export const Home: React.FC = () => {
                 <Link
                   key={idx}
                   to="/services"
-                  className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer border border-transparent hover:border-black block"
+                  className="service-card bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer border border-transparent hover:border-black block"
                 >
                   <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-black transition-all duration-300 group-hover:scale-110">
                     <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-black group-hover:text-white transition-colors" />
@@ -334,7 +928,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 4. Explore Categories */}
-      <section className="py-12 sm:py-24 bg-white overflow-hidden">
+      <section ref={categoriesSectionRef} className="py-12 sm:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4">
             <div>
@@ -397,7 +991,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 6. Featured Properties - Enhanced with Filters */}
-      <section className="py-12 sm:py-24 bg-white">
+      <section ref={projectsSectionRef} className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <span className="text-gray-600 text-xs tracking-wider sm:tracking-widest uppercase">Featured Properties</span>
@@ -426,7 +1020,9 @@ export const Home: React.FC = () => {
           {featuredProjects.length > 0 ? (
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 mb-8 sm:mb-12">
               {featuredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} />
+                <div key={project.id} className="project-card-wrapper">
+                  <ProjectCard project={project} />
+                </div>
               ))}
             </div>
           ) : (
@@ -456,7 +1052,7 @@ export const Home: React.FC = () => {
 
 
       {/* 6.5 Properties by Location - NEW SEO SECTION */}
-      <section className="py-12 sm:py-24 bg-gradient-to-br from-black to-gray-900 text-white overflow-hidden">
+      <section ref={locationsSectionRef} className="py-12 sm:py-24 bg-gradient-to-br from-black to-gray-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-16">
             <span className="text-white text-xs tracking-wider sm:tracking-widest uppercase font-bold">Explore by Location</span>
@@ -536,7 +1132,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 7. Floor Plans / Infrastructure */}
-      <section className="py-24 bg-white">
+      <section ref={floorPlansSectionRef} className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-gray-600 text-xs tracking-widest uppercase">Floor Plans</span>
@@ -583,7 +1179,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 9. Testimonials - Enhanced with Verification */}
-      <section className="py-12 sm:py-24 bg-gray-50">
+      <section ref={testimonialsSectionRef} className="py-12 sm:py-24 bg-gray-50">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-10 sm:mb-16">
              <span className="text-gray-600 text-xs tracking-wider sm:tracking-widest uppercase">Client Reviews</span>
@@ -597,7 +1193,7 @@ export const Home: React.FC = () => {
 
            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
              {TESTIMONIALS.map((t) => (
-               <div key={t.id} className="bg-white p-6 sm:p-8 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-100">
+               <div key={t.id} className="testimonial-card bg-white p-6 sm:p-8 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 relative border border-gray-100">
                  <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-black/10 absolute top-4 sm:top-6 right-4 sm:right-6" />
 
                  {/* Rating */}
@@ -647,7 +1243,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 9. FAQs & Awards Split Section */}
-      <section className="py-12 sm:py-24 bg-white">
+      <section ref={faqsSectionRef} className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid lg:grid-cols-2 gap-10 sm:gap-20">
 
@@ -660,7 +1256,7 @@ export const Home: React.FC = () => {
 
                <div className="space-y-3 sm:space-y-4">
                  {FAQS.map((faq, index) => (
-                   <div key={index} className="border-b border-gray-100 pb-3 sm:pb-4">
+                   <div key={index} className="faq-item border-b border-gray-100 pb-3 sm:pb-4">
                      <button
                        className="w-full flex justify-between items-start gap-3 py-2 text-left"
                        onClick={() => toggleAccordion(index)}
@@ -685,7 +1281,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 11. Team Section */}
-      <section className="py-12 sm:py-24 bg-white">
+      <section ref={teamSectionRef} className="py-12 sm:py-24 bg-white">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-10 sm:mb-16">
              <span className="text-gray-600 text-xs tracking-wider sm:tracking-widest uppercase">Our Team</span>
@@ -696,7 +1292,7 @@ export const Home: React.FC = () => {
 
            <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
               {TEAM_MEMBERS.map((member) => (
-                <div key={member.id} className="group text-center">
+                <div key={member.id} className="team-card group text-center">
                   <div className="relative overflow-hidden mb-4 sm:mb-6 rounded-full w-48 h-48 sm:w-64 sm:h-64 mx-auto border-4 border-gray-200 shadow-xl">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
@@ -719,7 +1315,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 13. Pre-Footer Contact - Enhanced */}
-      <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-br from-black via-black to-gray-900 relative overflow-hidden">
+      <section ref={contactSectionRef} className="py-16 sm:py-24 md:py-32 bg-gradient-to-br from-black via-black to-gray-900 relative overflow-hidden">
          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url('/images/image10.jpg')` }} />
 
          {/* Decorative Elements */}

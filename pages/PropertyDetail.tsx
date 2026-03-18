@@ -49,7 +49,7 @@ export const PropertyDetail: React.FC = () => {
     );
   }
 
-  const whatsappNumber = "919666622090";
+  const whatsappNumber = "919347244397";
   const whatsappMessage = `Hi, I'm interested in ${project.title} in ${project.location}. Can you provide more details?`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Layout } from '../components/Layout';
 import {
   INTERIOR_SERVICES,
@@ -34,6 +36,15 @@ import {
   Volume2,
   VolumeX
 } from 'lucide-react';
+import {
+  hammerSnap,
+  brickByBrickReveal,
+  craneLift,
+  tileLaying
+} from '../src/utils/constructionAnimations';
+import { usePremiumHeroAnimations } from '../src/hooks/usePageAnimations';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Icon mapping for interior services
 const iconMap: Record<string, React.ReactNode> = {
@@ -79,20 +90,22 @@ const useScrollAnimation = () => {
 export const InteriorDesign: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
-  const [activeService, setActiveService] = useState<string | null>(null);
   const [activeProcessStep, setActiveProcessStep] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const servicesAnimation = useScrollAnimation();
-  const portfolioAnimation = useScrollAnimation();
-  const ongoingAnimation = useScrollAnimation();
-  const processAnimation = useScrollAnimation();
-  const stylesAnimation = useScrollAnimation();
-  const ctaAnimation = useScrollAnimation();
+  // 🎬 PREMIUM HERO ANIMATIONS
+  const { heroRef, categoryRef, headingRef, subtextRef, badgesRef } = usePremiumHeroAnimations();
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const portfolioRef = useRef<HTMLDivElement>(null);
+  const ongoingRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
+  const stylesRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
-  const whatsappNumber = "919666622090";
+  const whatsappNumber = "919347244397";
   const whatsappMessage = "Hi, I'm interested in your interior design services. Can you help me?";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -103,6 +116,146 @@ export const InteriorDesign: React.FC = () => {
   const filteredPortfolio = selectedCategory === 'All'
     ? INTERIOR_PORTFOLIO
     : INTERIOR_PORTFOLIO.filter(item => item.category === selectedCategory);
+
+  // 🏗️ SCROLL ANIMATIONS
+  useEffect(() => {
+    console.log('🏗️ Initializing Interior Design page scroll animations...');
+
+    // Services section - Brick-by-brick on scroll
+    if (servicesRef.current) {
+      const serviceCards = servicesRef.current.querySelectorAll('.service-card');
+
+      if (serviceCards.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: servicesRef.current,
+            start: 'top 75%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          brickByBrickReveal(serviceCards, {
+            duration: 0.8,
+            stagger: 0.12,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 3. Portfolio section - Tile laying on scroll
+    if (portfolioRef.current) {
+      const portfolioItems = portfolioRef.current.querySelectorAll('.portfolio-item');
+
+      if (portfolioItems.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: portfolioRef.current,
+            start: 'top 70%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          tileLaying(portfolioItems, {
+            duration: 0.7,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 4. Ongoing projects - Crane lift on scroll
+    if (ongoingRef.current) {
+      const projectCards = ongoingRef.current.querySelectorAll('.ongoing-card');
+
+      if (projectCards.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: ongoingRef.current,
+            start: 'top 75%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          craneLift(projectCards, {
+            duration: 1,
+            stagger: 0.15,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 5. Process section - Hammer snap on scroll
+    if (processRef.current) {
+      const processSteps = processRef.current.querySelectorAll('.process-step');
+
+      if (processSteps.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: processRef.current,
+            start: 'top 75%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          hammerSnap(processSteps, {
+            duration: 0.6,
+            stagger: 0.1,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 6. Design styles - Brick-by-brick on scroll
+    if (stylesRef.current) {
+      const styleCards = stylesRef.current.querySelectorAll('.style-card');
+
+      if (styleCards.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: stylesRef.current,
+            start: 'top 75%',
+            end: 'top 30%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          brickByBrickReveal(styleCards, {
+            duration: 0.8,
+            stagger: 0.12,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    // 7. Stats section - Crane lift on scroll
+    if (statsRef.current) {
+      const statItems = statsRef.current.querySelectorAll('.stat-item');
+
+      if (statItems.length > 0) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: 'top 80%',
+            end: 'top 40%',
+            toggleActions: 'play none none reverse'
+          }
+        }).add(
+          craneLift(statItems, {
+            duration: 0.9,
+            stagger: 0.12,
+            delay: 0
+          })
+        );
+      }
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   // Auto-play process step animations
   useEffect(() => {
@@ -132,7 +285,7 @@ export const InteriorDesign: React.FC = () => {
   return (
     <Layout>
       {/* Hero Section - Full Page with Video Background */}
-      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-20 sm:py-0">
+      <section ref={heroRef} className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-20 sm:py-0">
         {/* Video Background */}
         <video
           ref={videoRef}
@@ -176,24 +329,23 @@ export const InteriorDesign: React.FC = () => {
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-0">
           {/* Premium Badge */}
-          <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse" />
+          <div ref={categoryRef} className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             <span className="text-white font-bold tracking-widest uppercase text-[10px] sm:text-xs">Premium Interior Design</span>
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse" />
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
-            Transform Your <span className="italic text-white">Space</span><br />
-            Into a Masterpiece
+          <h1 ref={headingRef} className="text-3xl sm:text-5xl md:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
+            Transform Your Space Into a Masterpiece
           </h1>
 
-          <p className="text-gray-300 text-sm sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-10 leading-relaxed px-4">
+          <p ref={subtextRef} className="text-gray-300 text-sm sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-10 leading-relaxed px-4">
             Award-winning interior design services that blend aesthetics with functionality. From concept to completion, we create spaces that inspire and delight.
           </p>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-12 mb-6 sm:mb-10 px-2">
+          <div ref={badgesRef} className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-12 mb-6 sm:mb-10 px-2">
             <div className="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md px-3 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
               <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               <div className="text-left">
@@ -209,7 +361,7 @@ export const InteriorDesign: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md px-3 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
-              <Target className="w-5 h-5 sm:w-6 sm:h-6 text-brand-primary" />
+              <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               <div className="text-left">
                 <p className="text-white font-bold text-base sm:text-lg">Award</p>
                 <p className="text-gray-300 text-[10px] sm:text-xs">Winning Designs</p>
@@ -241,7 +393,7 @@ export const InteriorDesign: React.FC = () => {
 
       {/* Design Services Section */}
       <div
-        ref={servicesAnimation.ref}
+        ref={servicesRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
       >
         <div className="text-center mb-16">
@@ -258,12 +410,7 @@ export const InteriorDesign: React.FC = () => {
           {INTERIOR_SERVICES.map((service, index) => (
             <div
               key={service.id}
-              className={`group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-black cursor-pointer transform hover:-translate-y-2 ${
-                servicesAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 100}ms` }}
-              onMouseEnter={() => setActiveService(service.id)}
-              onMouseLeave={() => setActiveService(null)}
+              className="service-card group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-black cursor-pointer transform hover:-translate-y-2"
             >
               {/* Gradient Overlay */}
               <div className={`absolute inset-0 bg-gradient-to-br from-black/5 to-gray-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -309,7 +456,7 @@ export const InteriorDesign: React.FC = () => {
       {/* Portfolio/Gallery Section - Enhanced Background */}
       <div
         id="portfolio"
-        ref={portfolioAnimation.ref}
+        ref={portfolioRef}
         className="bg-gradient-to-b from-white via-gray-50 to-white py-24 relative"
       >
         {/* Decorative Elements */}
@@ -348,10 +495,7 @@ export const InteriorDesign: React.FC = () => {
             {filteredPortfolio.map((item, index) => (
               <div
                 key={item.id}
-                className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2 ${
-                  portfolioAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="portfolio-item group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
                 onClick={() => setLightboxImage(item.image)}
               >
                 {/* Image */}
@@ -412,7 +556,7 @@ export const InteriorDesign: React.FC = () => {
 
       {/* Ongoing Projects Section */}
       <div
-        ref={ongoingAnimation.ref}
+        ref={ongoingRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
       >
         <div className="text-center mb-16">
@@ -429,10 +573,7 @@ export const InteriorDesign: React.FC = () => {
           {ONGOING_INTERIOR_PROJECTS.map((project, index) => (
             <div
               key={project.id}
-              className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary ${
-                ongoingAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 150}ms` }}
+              className="ongoing-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-primary"
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
@@ -493,7 +634,7 @@ export const InteriorDesign: React.FC = () => {
 
       {/* Design Process Section - Enhanced with Auto-Playing Animations */}
       <div
-        ref={processAnimation.ref}
+        ref={processRef}
         className="bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark py-24 relative overflow-hidden"
       >
         {/* Animated Background Pattern */}
@@ -584,12 +725,11 @@ export const InteriorDesign: React.FC = () => {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className={`group relative bg-white/5 backdrop-blur-md rounded-2xl p-8 border-2 transition-all duration-700 ${
+                className={`process-step group relative bg-white/5 backdrop-blur-md rounded-2xl p-8 border-2 transition-all duration-700 ${
                   activeProcessStep === idx
                     ? 'border-white bg-gradient-to-br from-black/20 to-gray-600/20 shadow-2xl shadow-black/50 scale-105 -translate-y-2'
                     : 'border-white/10 hover:border-white/50 hover:bg-white/10 hover:scale-102 hover:-translate-y-1'
-                } ${processAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-                style={{ animationDelay: `${idx * 100}ms` }}
+                }`}
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
               >
@@ -668,7 +808,7 @@ export const InteriorDesign: React.FC = () => {
 
       {/* Style Showcase Section */}
       <div
-        ref={stylesAnimation.ref}
+        ref={stylesRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
       >
         <div className="text-center mb-16">
@@ -685,10 +825,7 @@ export const InteriorDesign: React.FC = () => {
           {DESIGN_STYLES.map((style, index) => (
             <div
               key={style.id}
-              className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2 ${
-                stylesAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="style-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
@@ -730,7 +867,7 @@ export const InteriorDesign: React.FC = () => {
 
       {/* CTA Section */}
       <div
-        ref={ctaAnimation.ref}
+        ref={ctaRef}
         className="relative bg-gradient-to-br from-brand-dark via-gray-900 to-brand-dark py-24 overflow-hidden"
       >
         {/* Animated Background */}
@@ -740,7 +877,7 @@ export const InteriorDesign: React.FC = () => {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className={`${ctaAnimation.isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <div>
             <Sparkles className="w-12 h-12 text-white mx-auto mb-6 animate-pulse" />
             <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
               Ready to Transform <br />
@@ -762,7 +899,7 @@ export const InteriorDesign: React.FC = () => {
                 Get Free Consultation
               </a>
               <a
-                href="tel:+919666622090"
+                href="tel:+919347244397"
                 className="px-10 py-5 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-xl font-bold text-lg transition-all duration-300 border-2 border-white/30 hover:border-white/50 flex items-center gap-3"
               >
                 <Clock className="w-5 h-5" />

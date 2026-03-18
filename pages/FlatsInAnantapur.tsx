@@ -27,9 +27,9 @@ export const FlatsInAnantapur: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-6">
-            <Link to="/" className="hover:text-brand-primary transition-colors">Home</Link>
+            <Link to="/" className="transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/properties-in-anantapur" className="hover:text-brand-primary transition-colors">Properties in Anantapur</Link>
+            <Link to="/properties-in-anantapur" className="transition-colors">Properties in Anantapur</Link>
             <span>/</span>
             <span className="text-brand-highlight">Flats & Apartments</span>
           </div>
@@ -51,15 +51,15 @@ export const FlatsInAnantapur: React.FC = () => {
 
             <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <Award className="w-5 h-5 text-brand-primary" />
+                <Award className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">RERA Approved</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <CheckCircle className="w-5 h-5 text-brand-primary" />
+                <CheckCircle className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">Vastu Compliant</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                <IndianRupee className="w-5 h-5 text-brand-primary" />
+                <IndianRupee className="w-5 h-5 text-white" />
                 <span className="text-white font-medium">Bank Loan Available</span>
               </div>
             </div>
