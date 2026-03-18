@@ -305,17 +305,21 @@ export const Home: React.FC = () => {
             {SERVICES.map((service, idx) => {
               const Icon = ServiceIconMap[service.iconName] || HomeIcon;
               return (
-                <div key={idx} className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer border border-transparent hover:border-black">
+                <Link
+                  key={idx}
+                  to="/services"
+                  className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer border border-transparent hover:border-black block"
+                >
                   <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-black transition-all duration-300 group-hover:scale-110">
                     <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-black group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-base sm:text-lg font-bold font-serif text-black mb-2 sm:mb-3 group-hover:text-gray-700 transition-colors">{service.title}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-3 sm:mb-4">{service.description}</p>
-                  <div className="flex items-center gap-2 mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="flex items-center gap-2 justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <span className="text-xs font-bold uppercase tracking-widest text-black">Learn More</span>
                     <ArrowRight className="w-3 h-3 text-black transition-transform duration-300 group-hover:translate-x-2" />
                   </div>
-                </div>
+                </Link>
               )
             })}
           </div>

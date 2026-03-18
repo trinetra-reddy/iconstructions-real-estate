@@ -132,7 +132,7 @@ export const InteriorDesign: React.FC = () => {
   return (
     <Layout>
       {/* Hero Section - Full Page with Video Background */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black py-20 sm:py-0">
         {/* Video Background */}
         <video
           ref={videoRef}
@@ -168,70 +168,70 @@ export const InteriorDesign: React.FC = () => {
           )}
         </button>
 
-        {/* Animated Overlay Elements */}
-        <div className="absolute inset-0 z-10 opacity-20">
+        {/* Animated Overlay Elements - Hidden on mobile for better performance */}
+        <div className="absolute inset-0 z-10 opacity-20 hidden md:block">
           <div className="absolute top-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-gray-400 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-0">
           {/* Premium Badge */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-5 h-5 text-white animate-pulse" />
-            <span className="text-white font-bold tracking-widest uppercase text-xs">Premium Interior Design</span>
-            <Sparkles className="w-5 h-5 text-white animate-pulse" />
+          <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse" />
+            <span className="text-white font-bold tracking-widest uppercase text-[10px] sm:text-xs">Premium Interior Design</span>
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse" />
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
             Transform Your <span className="italic text-white">Space</span><br />
             Into a Masterpiece
           </h1>
 
-          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-gray-300 text-sm sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-10 leading-relaxed px-4">
             Award-winning interior design services that blend aesthetics with functionality. From concept to completion, we create spaces that inspire and delight.
           </p>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 mb-10">
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-              <Award className="w-6 h-6 text-white" />
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-12 mb-6 sm:mb-10 px-2">
+            <div className="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md px-3 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
+              <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               <div className="text-left">
-                <p className="text-white font-bold text-lg">500+</p>
-                <p className="text-gray-300 text-xs">Interiors Designed</p>
+                <p className="text-white font-bold text-base sm:text-lg">500+</p>
+                <p className="text-gray-300 text-[10px] sm:text-xs">Interiors Designed</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-              <Users className="w-6 h-6 text-white" />
+            <div className="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md px-3 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
+              <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               <div className="text-left">
-                <p className="text-white font-bold text-lg">15+</p>
-                <p className="text-gray-300 text-xs">Years Experience</p>
+                <p className="text-white font-bold text-base sm:text-lg">15+</p>
+                <p className="text-gray-300 text-[10px] sm:text-xs">Years Experience</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-              <Target className="w-6 h-6 text-brand-primary" />
+            <div className="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md px-3 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
+              <Target className="w-5 h-5 sm:w-6 sm:h-6 text-brand-primary" />
               <div className="text-left">
-                <p className="text-white font-bold text-lg">Award</p>
-                <p className="text-gray-300 text-xs">Winning Designs</p>
+                <p className="text-white font-bold text-base sm:text-lg">Award</p>
+                <p className="text-gray-300 text-[10px] sm:text-xs">Winning Designs</p>
               </div>
             </div>
           </div>
 
           {/* Primary CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group px-8 py-4 bg-black hover:bg-gray-900 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-black/50 hover:scale-105 flex items-center gap-3 border border-white/20"
+              className="w-full sm:w-auto group px-6 sm:px-8 py-3 sm:py-4 bg-black hover:bg-gray-900 text-white rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-black/50 hover:scale-105 flex items-center justify-center gap-2 sm:gap-3 border border-white/20"
             >
-              <Send className="w-5 h-5 group-hover:rotate-45 transition-transform" />
-              Schedule Design Consultation
+              <Send className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 transition-transform" />
+              <span className="whitespace-nowrap">Schedule Design Consultation</span>
             </a>
             <a
               href="#portfolio"
               onClick={scrollToPortfolio}
-              className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-xl font-bold text-lg transition-all duration-300 border-2 border-white/30 hover:border-white/50 cursor-pointer"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 border-2 border-white/30 hover:border-white/50 cursor-pointer"
             >
               View Portfolio
             </a>

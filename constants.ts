@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     location: 'Housing Board Colony, Anantapur',
     category: ProjectCategory.INTERIOR,
     status: ProjectStatus.COMPLETED,
-    image: '/images/image6.jpg',
+    image: '/images/Villa Interiors - Anantapur.png',
     description: 'Complete Vastu-compliant interior design for luxury duplex with traditional Indian aesthetics blended with modern minimalism.',
     features: ['2 BHK', '1200 Sq.Ft', '2 Bathrooms', 'Modular Kitchen']
   },
@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     location: 'Rudrampeta, Anantapur',
     category: ProjectCategory.RESIDENTIAL,
     status: ProjectStatus.UPCOMING,
-    image: '/images/residential-apartments.jpg',
+    image: '/images/Gated-community.jpg',
     priceStart: '₹65 Lakhs',
     description: 'RERA-approved affordable luxury apartments with Vastu-compliant design, surrounded by greenery and excellent highway connectivity.',
     features: ['2 BHK', '1100 Sq.Ft', '2 Bathrooms', 'Bike Parking']
@@ -69,7 +69,7 @@ export const PROJECTS: Project[] = [
     location: 'Clock Tower Area, Anantapur',
     category: ProjectCategory.COMMERCIAL,
     status: ProjectStatus.COMPLETED,
-    image: '/images/commercial.jpg',
+    image: '/images/Boutique Hotel - Vijayawada.png',
     description: 'RERA-registered mixed-use development with premium retail spaces and corporate offices, featuring 100% power backup.',
     features: ['Retail Space', '2000 Sq.Ft', 'Food Court', 'Parking']
   }
